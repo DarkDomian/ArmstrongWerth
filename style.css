@@ -1,0 +1,303 @@
+/*
+Theme Name: AW oboe theme
+Author: Demian
+Description: special theme for Armstrong & Werth website 
+Version: 1.0
+*/
+
+body {
+  overflow-x: hidden;
+  overflow-y: scroll;
+  width: 100%;
+  right: 0px;
+  margin: 0;
+  background-color: white;  
+  font-family: 'Arial', sans-serif;
+  padding: 0;
+  }
+  
+  #top-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: black; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+    z-index: 999;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+  }
+
+  .logo {
+    width: 50px; 
+    height: 50px; 
+    display: block; 
+    float: left;
+    
+    margin-right: 10px; 
+  }
+
+  .navigation-menu {
+    width: 100%;
+    padding: 20px;
+    margin: 0;
+    align-items: center;
+    margin-right: 60px;
+  }
+
+  .navigation-menu ul {
+    list-style-type: none;
+    margin: 0;
+    align-items: center;
+    display: flex;
+    flex-direction: row;    
+    justify-content: space-between;
+  }
+
+
+  .menu-object {
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+    margin-right: 10px; 
+  }
+
+  .menu-object:hover {
+      color: #c2c2c2; 
+      cursor: pointer; 
+  }
+
+  .background-image {
+    position: relative;
+    width: 100%;
+    height: auto;
+    bottom: 0px;
+  }
+
+  .wellcome-overlay {
+    position: absolute;
+    top: 120px;
+    left: 50px;
+    width: 50%;
+    text-align: left;
+  }
+
+  .wellcome-overlay .title {
+    color: rgb(218, 218, 218); 
+    font-size: 70px;
+    text-shadow: 2px 2px 4px rgba(58, 58, 58, 0.781);
+  }
+
+  .wellcome-overlay .subtitle {
+    color: rgb(199, 199, 199); 
+    font-size: 36px; 
+  }
+
+  /* 
+  here is popup styles here is popup styles here is popup styles here is popup styles here is popup styles here is popup styles
+  here is popup styles here is popup styles here is popup styles here is popup styles here is popup styles here is popup styles
+  here is popup styles here is popup styles here is popup styles here is popup styles here is popup styles here is popup styles
+  here is popup styles here is popup styles here is popup styles here is popup styles here is popup styles here is popup styles
+  here is popup styles here is popup styles here is popup styles here is popup styles here is popup styles here is popup styles
+  here is popup styles here is popup styles here is popup styles here is popup styles here is popup styles here is popup styles
+  */
+  #popup-container {
+    z-index: 1000;
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); 
+    justify-content: center;
+    align-items: center;
+  }
+
+  #cta-popup-content {
+    flex-direction: column;
+    color: black;
+    display: none;
+    background: #fff;
+    padding: 20px;
+    width: 80%;
+    height: 80%;
+    border-radius: 10px;
+  }
+
+  #regal-popup-content {
+    flex-direction: column;
+    color: black;
+    display: none;
+    background: #fff;
+    padding: 20px;
+    width: 80%;
+    height: 80%;
+    border-radius: 10px;
+  }
+  
+  #imperial-popup-content {
+    flex-direction: column;
+    color: black;
+    display: none;
+    background: #fff;
+    padding: 20px;
+    width: 80%;
+    height: 80%;
+    border-radius: 10px;
+  }
+  #pan-popup-content {
+    flex-direction: column;
+    color: black;
+    display: none;
+    background: #fff;
+    padding: 20px;
+    width: 80%;
+    height: 80%;
+    border-radius: 10px;
+  }
+
+  #rocket-popup-content {
+    flex-direction: column;
+    color: black;
+    display: none;
+    background: #fff;
+    padding: 20px;
+    width: 80%;
+    height: 80%;
+    border-radius: 10px;
+  }
+
+  #horn-popup-content {
+    flex-direction: column;
+    color: black;
+    display: none;
+    background: #fff;
+    padding: 20px;
+    width: 80%;
+    height: 80%;
+    border-radius: 10px;
+  } 
+
+  .popup-close {
+    margin-top: 10px;
+    cursor: pointer;
+  }
+
+  .popup-conten {
+    flex-direction: column;
+    color: black;
+    display: none;
+    background: #fff;
+    padding: 20px;
+    width: 80%;
+    height: 80%;
+    border-radius: 10px;
+  }
+
+  .catalog-popup-close {
+    margin-top: 10px;
+    cursor: pointer;
+  }
+
+  /* 
+  here is end of popup styles here is end of popup styles here is end of popup styles here is end of popup styles
+  here is end of popup styles here is end of popup styles here is end of popup styles here is end of popup styles
+  here is end of popup styles here is end of popup styles here is end of popup styles here is end of popup styles
+  here is end of popup styles here is end of popup styles here is end of popup styles here is end of popup styles
+  here is end of popup styles here is end of popup styles here is end of popup styles here is end of popup styles
+  here is end of popup styles here is end of popup styles here is end of popup styles here is end of popup styles
+  */
+
+  .craft-overlay{
+    scroll-margin-top: 81px;
+    position: absolute;
+    top: 10%;
+    right: 10%;
+    width: 50%;
+    text-align: right;
+  }
+
+  .craft-overlay .title{
+    color: rgb(27, 21, 4); 
+    font-size: 43px;
+    text-shadow: 2px 2px 4px rgba(71, 50, 6, 0.5);
+  }
+
+  .craft-overlay .subtitle{
+    color: rgb(56, 44, 29); 
+    font-size: 30px;
+  }
+
+  .craft-overlay p{
+    color: rgb(78, 55, 25); 
+    font-size: 30px;
+  }
+  
+  .statistic-overlay{
+    position: absolute;
+    bottom: 10%;
+    left: 10%;
+    width: 100%;
+    text-align: left;    
+  }
+
+  .statistic-overlay ul{
+    list-style-type: none; 
+  }
+
+  .statistic-overlay li{
+    font-size: 40px;
+    color: rgb(122, 121, 119);
+  }
+
+  #products {
+    scroll-margin-top: 81px; /* impotent things make's navigate better*/
+    position: relative;
+    width: 102%;
+    background-color: black;
+    color: white;
+  }
+
+  .discription-of-products-section {
+    padding: 40px;
+    text-align: center;
+  }
+
+  .catalog-grid {
+    display: flex;
+    padding: 30px;
+    flex-wrap: wrap;
+    justify-content: center; 
+  }
+
+  .catalog-card {       
+    width: 280px;
+    height: 360px;
+    margin-right: 30px;
+    margin-bottom: 30px;
+    background-color: rgb(7, 7, 7);
+    box-shadow: 0 0 10px rgba(46, 46, 46, 0.74); 
+  }
+
+  .card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* transition: opacity 0.3s ease-in-out; */
+  } 
+
+  #process {
+    display: flex;
+    padding: 30px;
+    flex-wrap: wrap;
+    justify-content: center; 
+  }
+
+  #videoPlayer {
+    width: 80%
+  }
+
+
