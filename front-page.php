@@ -6,36 +6,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Armstrong & Werth oboe</title>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Commissioner:wght@100..900&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="<?php echo esc_url( get_stylesheet_uri() ); ?>">
 
 </head>
 <body>
-    <header id="top-menu">
-        <div class="logo">
-            <a href="#top"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/img/mini-logo.jpg" alt="Logotype"></a>
+    <header>
+        <div class="logo-menu">
+            <a href="#top"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/img/logo-menu.svg" alt="Logotype"></a>
         </div>
-
-        <nav class="navigation-menu"> <!-- menu -->
+        <nav class="navigation-menu">
             <ul>
-                <li><a class="menu-object" href="#about">About us</a></li>
-                <li><a class="menu-object" href="#products">Catalog</a></li>
-                <li><a class="menu-object" href="#partners">Distributors</a></li>
-                <li><a class="menu-object" href="#contacts">Contacts</a></li>
-                <li><button class="popup-open menu-object" data-popup-id="cta-popup-content">Call Back</button></li>
-                <li>
-                    <select id="languageSelector">
-                        <option value="en">English</option>
-                        <option value="ru">Русский</option>
-                        <option value="ch">中文</option>
-                    </select>
-                </li>
+                <li><a class="menu-object" href="#about">about us</a></li>
+                <li><a class="menu-object" href="#products">instruments</a></li>
+                <li><a class="menu-object" href="#partners">retailers</a></li>
+                <li><a class="menu-object" href="#contacts">contacts</a></li>                
             </ul>
-        </nav> <!-- end of menu section -->
+        </nav>
+        <select class="menu-object">
+            <option value="en">en</option>
+            <option value="ru">ru</option>
+            <option value="ch">中文</option>
+        </select>
+        <button class="popup-open menu-object" data-popup-id="cta-popup-content">submit</button>
     </header>
 
-    <div id="popup-container"> <!-- pop up container is here -->
-
-        <div class="popup-content" id="cta-popup-content"><!-- CTA content -->
+    <div id="popup-container"> 
+        <div class="popup-content" id="cta-popup-content">
             <div>
                 <button class="popup-close" data-popup-id="cta-popup-content" >Close</button>
                 <h4 class="title">Immerse yourself in a world where every note resonates with the passion of true craftsmanship.</h4>
@@ -179,20 +179,22 @@
     </div>
     
     <main>
-        <section id="welcome-section">
-            <div class="background-image"><!-- full img -->        
-                <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/img/wellcome-bg.jpg" alt="Welcome Image" width="1600" height="900">            
-                <div class="wellcome-overlay">
-                    <h2 class="title">Welcome to Armstrong-Werth</h2>
-                    <h4 class="subtitle">Experience the beauty of music with our exceptional collection of oboes</h4>
-                    <button class="popup-open" data-popup-id="cta-popup-content">Explore Now</button>
-                </div>
+        <section id="welcome">
+            <div class="wellcome-overlay">
+                <h1 class="title">Welcome to ArmstrongWerth</h1>
             </div>
-        </section><!-- end of welcome section -->
+            <div>
+                <p>Experience the beauty of music with our exceptional collection of oboes</p>
+                <button class="popup-open" data-popup-id="cta-popup-content">Explore Now</button>
+            </div>
+            <div class="background-image">      
+                <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/img/wellcome-bg.jpg" alt="nth" >
+            </div>         
+        </section>
 
         <section id="about">
             <div class="background-image">
-                <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/img/crafts.jpg" alt="Welcome Image" width="1600" height="900">            
+                <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/img/crafts.jpg" alt="nth1">            
                 <div class="craft-overlay">
                     <h2 class="title">Harmony Crafters</h2>
                     <h4 class="subtitle">Embark on a harmonious journey: discover the symphony behind our craft, where musical mastery meets timeless artistry</h4>
