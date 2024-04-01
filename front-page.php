@@ -15,8 +15,8 @@
 </head>
 <body>
     <header>
-        <div class="logo-menu">
-            <a href="#top"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/img/logo-menu.svg" alt="Logotype"></a>
+        <div class="logo-container">
+            <a href="#top"><img class="adaptive-svg" src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/img/logo-menu.svg" alt="Logotype"></a>
         </div>
         <nav class="navigation-menu">
             <ul>
@@ -31,7 +31,8 @@
             <option value="ru">ru</option>
             <option value="ch">中文</option>
         </select>
-        <button class="popup-open menu-object" data-popup-id="cta-popup-content">submit</button>
+        <button class="menu-submit popup-open menu-object" data-popup-id="cta-popup-content">submit</button>
+        <button class="menu-toggle"><img class="adaptive-svg" src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/img/menu-toggle.svg" alt="Logotype"></button>
     </header>
 
     <div id="popup-container"> 
@@ -181,13 +182,13 @@
     <main>
         <section id="welcome">
             <div class="wellcome-overlay">
-                <h1 class="title">Welcome to ArmstrongWerth</h1>
+                <h1>Welcome to<br>Armstrong<br>Werth</h1>
             </div>
             <div>
                 <p>Experience the beauty of music with our exceptional collection of oboes</p>
-                <button class="popup-open" data-popup-id="cta-popup-content">Explore Now</button>
+                <button class="menu-submit popup-open" data-popup-id="cta-popup-content">Explore Now</button>
             </div>
-            <div class="background-image">      
+            <div class="image">      
                 <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/img/wellcome-bg.jpg" alt="nth" >
             </div>         
         </section>

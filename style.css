@@ -5,6 +5,20 @@ Description: special theme for Armstrong & Werth website
 Version: 2.0
 */
 
+* {
+  /* Убирает отступы */
+  margin: 0;
+  padding: 0;
+  /* Гарантирует, что размеры элементов будут считаться с учетом границы и отступов, а не внутреннего пространства */
+  box-sizing: border-box;
+  /* Убирает стандартное выделение текста при выделении */
+  -webkit-tap-highlight-color: transparent;
+  /* Убирает стандартные стили ссылок */
+  text-decoration: none;
+  /* Убирает список у элементов списка */
+  list-style: none;
+}
+ 
 body {
   margin: 0;
   overflow-x: hidden;
@@ -16,57 +30,20 @@ body {
   font-size: 18px;
 }
 
+section {
+  height: 100vh;
+  padding: auto 0;
+  margin: 40px 0;
+}
+
 p {
   font-family: "Commissioner";
   font-size: 18px;
   font-style: normal;
   font-weight: 300;
   line-height: 120%;
-}
 
-/* Стили для экранов шириной больше 768px */
-@media screen and (min-width: 769px) {
-  body {
-      padding-left: 50px;
-      padding-right: 50px;
-  }
-
-  header {    
-    margin-left: -50px;
-    margin-right: -50px;
-    padding-left: 50px;
-    padding-right: 50px;
-  }
-}
-
-/* Стили для экранов шириной от 321px до 768px */
-@media screen and (max-width: 768px) {
-  body {
-      padding-left: 20px;
-      padding-right: 20px;
-  }
-
-  header {    
-    margin-left: -20px;
-    margin-right: -20px;
-    padding-left: 20px;
-    padding-right: 20px;
-  }
-}
-
-/* Стили для экранов шириной меньше или равной 320px */
-@media screen and (max-width: 320px) {
-  body {
-      padding-left: 10px;
-      padding-right: 10px;
-  }
-
-  header {    
-    margin-left: -10px;
-    margin-right: -10px;
-    padding-left: 10px;
-    padding-right: 10px;
-  }
+  text-wrap: wrap;
 }
 
 header::before {  
@@ -75,7 +52,7 @@ header::before {
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   background-color:#0C0C0E;
   z-index: -1;
 }
@@ -100,7 +77,7 @@ header {
   text-decoration: none;
 }
 
-.logo-menu {
+.logo-container {
   justify-self: start;
   margin-right: auto;
 }
@@ -120,6 +97,12 @@ header ul {
 }
 
 header button {
+  border: none; 
+  background: none; 
+  padding: 0;
+}
+
+.menu-submit {
   margin-right: 5px;
   margin-left: 25px;  
   padding: 10px 25px;
@@ -165,22 +148,190 @@ header select::-webkit-dropdown-list {
   background-color: #0C0C0E;  
 }
 
-#welcome p {
-  color: #FFF;
-  font-size: 20px;  
+#welcome {
+  display: flex;
+  flex-direction: column;  
 }
 
 #welcome h1 {
+  margin: 0;
+
   color: #AC8643;
-  font-family: "Nautica", serif;
-  font-size: 150px;
+  font-family: "Nautica", serif;  
   font-style: normal;
   font-weight: 250;
   line-height: 110%;
   text-transform: uppercase;
 }
 
+#welcome p {
+  color: #FFF;
+  font-size: 20px;
+  
+  padding: 0;
+  margin: 0;
+}
+
+#welcome .image {
+  position: fixed;
+  display: none;
+}
+
+#welcome div:nth-of-type(2) {
+  margin-left: auto;                                                 
+  margin-top: auto;
+  margin-bottom: 50px;
+
+  display: flex;
+  flex-direction: column;  
+  gap: 30px;
+  width: 25%;
+}
 
 #popup-container {
   display: none;
+}
+
+@media screen and (min-width: 1600px) {
+  body {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+
+  header {    
+    margin-left: -50px;
+    margin-right: -50px;
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+
+  .logo-container {
+    height: 87px;
+  }
+  .menu-toggle {display: none;}
+
+  #welcome {
+    height: calc(100vh - 97px);
+  }
+
+  
+  #welcome h1 {
+    font-size: 150px; 
+  }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1599px) {
+  body {
+      padding-left: 50px;
+      padding-right: 50px;
+  }
+
+  header {    
+    margin-left: -50px;
+    margin-right: -50px;
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+  
+  .logo-container {
+    height: calc(76px + 11 * ((100vw - 769px) / 830));
+  }
+  .menu-toggle {display: none;}
+
+  #welcome {
+    height: calc(100vh - 10px - (76px + 11 * ((100vw - 769px) / 830)));
+  }
+
+  
+  #welcome h1 {
+    font-size: calc(100px + (100vw - 769px) / 15);
+  }
+}
+
+
+@media screen and (min-width: 321px) and (max-width: 768px) {
+  body {
+      padding-left: 20px;
+      padding-right: 20px;
+  }
+
+  header {    
+    margin-left: -20px;
+    margin-right: -20px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .logo-container {
+    height: calc(40px + 36 * ((100vw - 321px) / 447));
+  }
+
+  #welcome {
+    height: calc(100vh - 10px - (40px + 36 * ((100vw - 321px) / 447)));
+  }
+  #welcome div:nth-of-type(2) {    
+    margin: auto;
+    margin-bottom: 44px;
+    
+    width: 49.5%; /* nead a cheak with image */
+  }
+
+  .menu-object {display: none;}  
+  .menu-toggle {
+    width: 28px;
+    height: 18px;
+  }
+
+  #welcome h1 {
+    font-size: calc(43px + (100vw - 321px) / 8.21);
+  }
+}
+
+@media screen and (max-width: 320px) {
+  body {
+      padding-left: 10px;
+      padding-right: 10px;
+  }
+
+  header {    
+    margin-left: -10px;
+    margin-right: -10px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .logo-container {
+    height: 40px;
+  }
+
+  #welcome {
+    height: calc(100vh - 50px);
+  }
+  #welcome div:nth-of-type(2) {    
+    margin: auto;    
+    margin-bottom: 30px;
+
+    width: 100%;
+  }
+
+  .menu-object {display: none;}
+  .menu-toggle {
+    width: 20px;
+    height: 12px;
+  }
+
+  .my-element {
+    font-size: 42px; 
+  }
+}
+
+.adaptive-svg {
+  width: auto;
+  height: 100%;
+}
+.adaptive-svg.menu-toggle {
+  display: block;
+  
+  width: 100%;
+  height: 100%;
 }
