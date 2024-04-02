@@ -1,46 +1,134 @@
-/*
-Theme Name: AW oboe theme
-Author: Demian
-Description: special theme for Armstrong & Werth website 
-Version: 2.0
-*/
+:root {
+  --bg-black: #0C0C0E;
+  --bg-white: #FAFAFA;
+  --black-tr: rgba(12, 12, 14, 0.3);
+
+  --gold: #A77E3D;
+
+  --white: #FFFFFF;
+  --white-tr: rgba(255, 255, 255, 0.6);
+  --dr-gray: #161616;
+  --gray: #2E2E2E;
+}
+
 
 * {
-  /* Убирает отступы */
   margin: 0;
   padding: 0;
-  /* Гарантирует, что размеры элементов будут считаться с учетом границы и отступов, а не внутреннего пространства */
   box-sizing: border-box;
-  /* Убирает стандартное выделение текста при выделении */
   -webkit-tap-highlight-color: transparent;
-  /* Убирает стандартные стили ссылок */
   text-decoration: none;
-  /* Убирает список у элементов списка */
   list-style: none;
 }
- 
+
 body {
-  margin: 0;
-  overflow-x: hidden;
-
-  background-color: #FAFAFA;
-
-  font-family: "Commissioner";
-  color: #2E2E2E;
-  font-size: 18px;
-}
-
-p {
-  font-family: "Commissioner";
-  font-size: 18px;
+  margin: 0 10px;
+  background-color: var(--bg-white);
+  
+  font-family: "Commissioner", sans-serif;
+  color: var(--dr-gray);
   font-style: normal;
   font-weight: 300;
+  font-size: 12px;
   line-height: 120%;
 
-  text-wrap: wrap;
+  
+  border-color: var(--dr-gray);
 }
 
-header::before {  
+section {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  gap: 10px;
+
+  margin: 50px 0;
+}
+section:nth-of-type(1) {
+  margin-top: 0;
+  padding-top: 0;
+}
+section:not(:nth-of-type(3)) > div:last-of-type {
+  margin-top: 10px;
+}
+
+.bgblack {
+  position: relative;
+
+  background-color: var(--bg-black);
+
+  padding: 30px 0;
+
+  color: var(--white);
+  border-color: var(--bg-white);
+}
+.bgblack::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100vw;
+  height: 100%;   
+  z-index: -1;
+  background-color: var(--bg-black);
+}
+
+h4 {
+  color: var(--gray);
+  font-family: "Playfair Display", serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 120%;
+}
+
+button {
+  padding: 10px 25px;
+  width: 100%;
+
+  border: 1px solid;
+  border-color: inherit;
+  border-radius: 120px;
+  background-color: inherit;
+  
+  font-family: "Commissioner", sans-serif;
+  color: inherit;
+  font-size: 14px;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.bordered-list {
+  display: flex;
+  flex-direction: column;
+
+  gap: 10px;
+}
+
+.bordered-list > div {
+  padding-top: 10px;
+
+  border-top: 1px solid;
+  border-color: var(--black-tr);
+}
+.bordered-list > div:last-child {
+  padding-bottom: 10px;
+
+  border-bottom: 1px solid;
+  border-color: var(--black-tr);
+}
+
+.headings {
+  width: 100%;
+  height: auto;
+}
+.headings img {
+  width: 100%;
+  height: 100%;
+}
+/*
+.header::before {  
   content: "";
   position: absolute;
   top: 0;
@@ -66,7 +154,7 @@ header {
   font-size: 15px;
   font-style: normal;
   font-weight: 400;
-  line-height: 120%; /* 18px */
+  line-height: 120%; 
   text-transform: uppercase;
   text-decoration: none;
 }
@@ -267,7 +355,7 @@ header select::-webkit-dropdown-list {
     margin: auto;
     margin-bottom: 44px;
     
-    width: 49.5%; /* nead a cheak with image */
+    width: 49.5%; 
   }
 
   .menu-object {display: none;}  
@@ -328,4 +416,4 @@ header select::-webkit-dropdown-list {
   
   width: 100%;
   height: 100%;
-}
+} */

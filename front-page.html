@@ -4,53 +4,69 @@
     <meta charset="UTF-8">
     <meta name="Armstrong & Werth oboe factoty" content="Here is you can finde beutiful musical instrument's - oboe. Also we sold English Horn">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Armstrong & Werth oboe</title>
 
+    <title>Armstrong & Werth oboe</title>
+    <!-- commissioner font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Commissioner:wght@100..900&display=swap" rel="stylesheet">
+    
+    <!-- playfair display font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Commissioner:wght@100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="<?php echo esc_url( get_stylesheet_uri() ); ?>">
-
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <header>
-        <div class="logo-container">
-            <a href="#top"><img class="adaptive-svg" src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/img/logo-menu.svg" alt="Logotype"></a>
-        </div>
-        <nav class="navigation-menu">
-            <ul>
-                <li><a class="menu-object" href="#about">about us</a></li>
-                <li><a class="menu-object" href="#products">instruments</a></li>
-                <li><a class="menu-object" href="#partners">retailers</a></li>
-                <li><a class="menu-object" href="#contacts">contacts</a></li>                
-            </ul>
-        </nav>
-        <select class="menu-object">
-            <option value="en">en</option>
-            <option value="ru">ru</option>
-            <option value="ch">中文</option>
-        </select>
-        <button class="menu-submit popup-open menu-object" data-popup-id="cta-popup-content">submit</button>
-        <button class="menu-toggle"><img class="adaptive-svg" src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/img/menu-toggle.svg" alt="Logotype"></button>
-    </header>
-
-    <div id="popup-container"> 
-        <div class="popup-content" id="cta-popup-content">
-            <div>
-                <button class="popup-close" data-popup-id="cta-popup-content" >Close</button>
-                <h4 class="title">Immerse yourself in a world where every note resonates with the passion of true craftsmanship.</h4>
+<body>    
+    <section class="bgblack">
+        <header>
+            <div >
+                <a href="#top"><img  src="/assets/img/logo-menu.svg" alt="Logotype"></a>
             </div>
-            <form action="<?php echo esc_url( get_template_directory_uri() ); ?>/mail-handler.php" method="POST">            
+            <nav >
+                <ul>
+                    <li><a  href="#about">about us</a></li>
+                    <li><a  href="#products">instruments</a></li>
+                    <li><a  href="#partners">retailers</a></li>
+                    <li><a  href="#contacts">contacts</a></li>                
+                </ul>
+            </nav>
+            <select >
+                <option value="en">en</option>
+                <option value="ru">ru</option>
+                <option value="ch">中文</option>
+            </select>
+            <button>submit</button>
+            <button><img  src="/assets/img/mobile/menu-toggle.svg" alt="menu"></button>
+        </header>
+        <div class="headings"><img  src="assets/img/mobile/welcome.svg" alt="Welcome to Armstrong Werth"></div>
+        <div>      
+            <img src=".jpg" alt="oboes" >
+        </div>
+        <div>
+            <p>Experience the beauty of music with our exceptional collection of oboes</p>
+            <button  >Explore Now</button>
+        </div>              
+    </section>
+    
+
+    <div style="display: none;"> 
+        <div  >
+            <div>
+                <button>Close</button>
+                <h4 >Immerse yourself in a world where every note resonates with the passion of true craftsmanship.</h4>
+            </div>
+            <form action="" method="POST">            
                 <ul>
                     <li><div><label for="name">Name:</label></div>
-                    <div><input type="text" id="name" name="name"></div></li>
+                    <div><input type="text"  name="name"></div></li>
 
                     <li><div><label for="email">email</label></div>
-                    <div><input type="email" id="email" name="email"></div></li>
+                    <div><input type="email"  name="email"></div></li>
 
                     <li><div><label for="tel">Tel.</label></div>
-                    <div><input type="tel" id="tel" name="tel"></div></li>
+                    <div><input type="tel"  name="tel"></div></li>
 
                     <li><div><input type="submit" value="Submit"></div></li>
                 </ul>
@@ -58,8 +74,8 @@
         </div>
 
 
-        <div class="popup-content" id="regal-popup-content"><!-- REGAL oboe content -->
-            <button class="popup-close" data-popup-id="regal-popup-content">Close</button>
+        <div >
+            <button  >Close</button>
             <img src="way/to/img" alt="Regal Oboe">
             <h3>Regal Oboe</h3>
             <p> Indulge in the unparalleled sophistication of our premium professional model, the Continental-style AW Regal Oboe. 
@@ -83,8 +99,8 @@
         </div>
 
         
-        <div class="popup-content" id="imperial-popup-content">
-            <button class="popup-close" data-popup-id="imperial-popup-content">Close</button>
+        <div  >
+            <button  >Close</button>
             <img src="way/to/img" alt="Imperial Oboe">
             <h3>Imperial Oboe</h3>
             <p> Introducing the Imperial Oboe, a traditional instrument designed for musicians who value clarity of expression. 
@@ -105,8 +121,8 @@
             </div>
         </div>
 
-        <div class="popup-content" id="pan-popup-content">
-            <button class="popup-close" data-popup-id="pan-popup-content">Close</button>
+        <div  >
+            <button  >Close</button>
             <img src="way/to/img" alt="Pan Oboe">
             <h3>Pan Oboe</h3>
             <p> Meet the Pan, our reigning bestseller that has captured hearts from the Australian outback to the Siberian wilderness. 
@@ -129,8 +145,8 @@
             </div>
         </div>        
                     
-        <div class="popup-content" id="rocket-popup-content">
-            <button class="popup-close" data-popup-id="rocket-popup-content">Close</button>
+        <div  >
+            <button  >Close</button>
             <img src="way/to/img" alt="Rocket Oboe">
             <h3>Rocket and Rocket Plus Oboes </h3>
             <p> Meet the Rocket and Rocket "plus" - your lightweight entry into the world of oboe playing, tailor-made for budding musicians. 
@@ -153,8 +169,8 @@
             </div>
         </div>
 
-        <div class="popup-content" id="horn-popup-content">
-            <button class="popup-close" data-popup-id="horn-popup-content">Close</button>
+        <div  >
+            <button  >Close</button>
             <img src="way/to/img" alt="English Horn">
             <h3>English Horn</h3>
             <p> Welcome to the world of the AW English Horn - a premium instrument designed for professionals seeking a rich and stable sound with harmonics. 
@@ -175,314 +191,391 @@
                     <li>Secure your investment with a 1-year warranty.</li>
             </div>
         </div>
-                    
-
     </div>
     
     <main>
-        <section id="welcome">
-            <div class="wellcome-overlay">
-                <h1>Welcome to<br>Armstrong<br>Werth</h1>
+        <section >
+            <div class="headings"><img src="assets/img/mobile/about.svg" alt="Enjoy the classic"></div>
+            <div>
+                <h4>Embark on a harmonious journey: discover the symphony behind our craft, where musical mastery meets timeless
+                    artistry</h4>
             </div>
             <div>
-                <p>Experience the beauty of music with our exceptional collection of oboes</p>
-                <button class="menu-submit popup-open" data-popup-id="cta-popup-content">Explore Now</button>
+                <p>We are a team of seasoned experts with years of experience in crafting outstanding musical instruments. Our CEO,
+                    dedicating a lifetime to music, leads our team, ensuring the highest standards of quality and reliability. We
+                    create instruments that compete with the best, demonstrating the experience is not just a matter of years.</p>
             </div>
-            <div class="image">      
-                <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/img/wellcome-bg.jpg" alt="nth" >
-            </div>         
-        </section>
-
-        <section id="about">
-            <div class="background-image">
-                <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/img/crafts.jpg" alt="nth1">            
-                <div class="craft-overlay">
-                    <h2 class="title">Harmony Crafters</h2>
-                    <h4 class="subtitle">Embark on a harmonious journey: discover the symphony behind our craft, where musical mastery meets timeless artistry</h4>
-                    <p>We are a team of seasoned experts with years of experience in crafting outstanding musical instruments. Our CEO, dedicating a lifetime to music, leads our team, ensuring the highest standards of quality and reliability. We create instruments that compete with the best, demonstrating the experience is not just a matter of years.</p>                   
-                </div>
-                <div class="statistic-overlay">
-                    <ul>
-                        <li>21 years in the industry</li>
-                        <li>14 distributors worldwide</li>
-                        <li>over 486 instruments sold per year</li>
-                    </ul>
-                </div>
-            </div>
-        </section><!-- end of about section -->
-
-        <section id="products" >
-            <div class="discription-of-products-section">
-                <h2 class="title">Discover Our Products</h2>
-                <h4 class="subtitle">Our instruments are the result of mastery, attention to detail, and a deep understanding of a musician's needs</h4>
-                <p>Our instruments are the result of mastery, attention to detail, and a deep understanding of a musician's needs</p>
-            </div>
-            <div class="catalog-grid" >                
-                <div class="popup-open catalog-card" data-popup-id="regal-popup-content" data-normal-image="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/default-regal.jpg" data-hover-image="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/regal.jpg">
-                    <img class="card-image" src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/default-regal.jpg" alt="Regal Oboe Image">
-                </div>
-
-                <div class="popup-open catalog-card" data-popup-id="imperial-popup-content" data-normal-image="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/default-imperial.jpg" data-hover-image="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/imperial.jpg">
-                    <img class="card-image" src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/default-imperial.jpg" alt="Imperial Oboe Image">                
-                    
-                    
-                </div>
-
-                <div class="popup-open catalog-card" data-popup-id="pan-popup-content" data-normal-image="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/default-pan.jpg" data-hover-image="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/pan.jpg">
-                    <img class="card-image" src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/default-pan.jpg" alt="Pan Oboe Image">
-                    
-                    
-                </div>
-
-                <div class="popup-open catalog-card" data-popup-id="rocket-popup-content" data-normal-image="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/default-rocket.jpg" data-hover-image="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/rocket.jpg">
-                    <img class="card-image" src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/default-rocket.jpg" alt="Rocket Oboe Image">
-                    
-                    
-                </div>
-
-                <div class="popup-open catalog-card" data-popup-id="horn-popup-content" data-normal-image="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/default-horn.jpg" data-hover-image="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/horn.jpg">
-                    <img class="card-image" src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/default-horn.jpg" alt="English Horn Image">
-                    
-                     
-                </div>               
-            </div><!-- end of grid -->
-        </section><!-- end of catalog section -->
-
-        <section id="process">
             <div>
-                <h2 class="title">The Art of Instrument Production</h2>
-                <h4 class="subtitle">Unveiling the craftsmanship: step into the exquisite world of instrument production with Armstrong-Werth, where precision meets passion in every harmonious creation</h4>
-                <p>Explore the meticulous world of instrument craftsmanship with Armstrong-Werth. Our master craftsmen weave unparalleled sound quality and durability into each musical masterpiece. From handpicking the finest materials to precision tuning, every detail reflects our commitment to the art of instrument making. </p>
-            </div>
-
-            <video controls autoplay muted autopause="0" id="videoPlayer">
-                <!-- Путь к вашему видеофайлу -->
-                <source src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/wood-craftwork-1.mp4" type="video/mp4">
-                <script>
-                    const videoSources = [
-                    '<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/wood-craftwork-1.mp4',
-                    '<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/wood-craftwork-2.mp4',
-                    ];
-                </script>                
-                Ваш браузер не поддерживает тег video.
-            </video>    
-        </section><!-- end of process section -->
-
-        <div id="cta-short" >
-            <h2 class="title">Explore Harmonic Beauty</h2>
-            <h4 class="subtitle">Immerse yourself in a world where every note resonates with the passion of true craftsmanship.</h4>
-            <form action="" method="">
-                <!-- forms element -->
-            </form>
-            <button scr="way/to/image" alt="exit" onclick="hidePopup('common-popup')"></button>
-        </div>
-    
-
-        <section id="partners">
-            <div>
-                <h2 class="title">Explore Authorized Retailers</h2>
-                <h4 class="subtitle">Discover a curated selection of trusted music stores worldwide where you can seamlessly purchase our instruments. </h4>
-                    <p> Our network of authorized retailers ensures a convenient and reliable shopping experience for our valued customers. 
-                        Simply click on the logos below to explore and make your purchase from our esteemed partners. 
-                        Your musical journey starts with a click. 
-                    </p>
-            </div>
-        </section><!-- end of partners section -->
-
-        <section id="founder">
-            <div>
-                <h2 class="title">A Legacy Built on Passion</h2>
-                <h4 class="subtitle">Meet our founder, John Armstrong. His unwavering dedication towards creating exceptional musical instruments has been the driving force behind our success. Learn more about his vision and commitment to the art of music. </h4>
-                    <p> John Armstrong is an Australian oboist and oboe maker with a rich history in the music industry. He has worked for reputable companies such as T.W. Howarth in London, 
-                        the KG reed company in Shanghai, Rigoutat in Paris, Jinyin and Bailicheng in Hebei, China. His extensive experience and dedication to the craft make him a respected div in the world of oboe making.
-                        Having started making oboes in 1989, John has since been committed to producing high-quality instruments. In 2006, he partnered with oboe maker Tony Ward to create the Armstrong Ward oboe for the Australian market, 
-                        later rebranded the "KG" oboe in Shanghai. John's continuous dedication to improving oboe manufacturing has led to the development of the Armstrong Werth brand, which aims to provide oboe players with more affordable and rewarding playing experiences through modern manufacturing techniques and quality components. 
-                        His designs are a reflection of both tradition and the evolving preferences of today's oboists. 
-                    </p>
-
-                    <blockquote>
-                        <p>"In every instrument we craft, we weave the timeless threads of culture and creativity, giving life to the symphony of human expression."</p>
-                        <cite>© Armstrong John</cite>
-                    </blockquote>
-            </div>
-
-            <div class="timeline">
-                <h2 class="title">Embark on John Armstrong's musical odyssey through time: </h2>
                 <ul>
-                    <li>
-                        <div class="timeline-date">1980</div>
-                        <div class="timeline-description">At just 13, John's symphony begins at the Sydney Conservatorium High School, where oboe lessons lay the groundwork for his future in London, painted with the hues of a scholarship.</div>
-                        <div class="timeline-image"><img src="way/to/img" alt="1980"></div>
-                    </li>
-                    <li>
-                        <div class="timeline-date">1989</div>
-                        <div class="timeline-description">The heart of London becomes a stage for enchantment as John explores the Howarth oboe factory in Worthing. A catalyst moment, this visit kindles a lifelong passion, guiding him through two years as an apprentice before his return to Australia.</div>
-                        <div class="timeline-image"><img src="way/to/img" alt="1989"></div>
-                    </li>
-                    <li>
-                        <div class="timeline-date">2003</div>
-                        <div class="timeline-description">A harmonious chord strikes when John seamlessly weaves his musical career with the art of crafting oboes, marking a pivotal transition from full-time musician to a devotee of oboe making and repair.</div>
-                        <div class="timeline-image"><img src="way/to/img" alt="2003"></div>
-                    </li>
-                    <li>
-                        <div class="timeline-date">2006</div>
-                        <div class="timeline-description">A significant chapter unfolds as John acquires Tony Ward's oboe-making tools. The first AW oboes, born in 2006, carry the legacy of 'Armstrong Ward,' a collaborative masterpiece drawing inspiration from a cherished French style.</div>
-                        <div class="timeline-image"><img src="way/to/img" alt="2006"></div>
-                    </li>
-                    <li>
-                        <div class="timeline-date">2008</div>
-                        <div class="timeline-description">Shanghai becomes the canvas as John shifts AW oboe production, harmonizing with joint ventures for Howarth and Rigoutat until 2012. Collaborations with K.G. oboe reed company and the development of key designs in Korea enrich this chapter.</div>
-                        <div class="timeline-image"><img src="way/to/img" alt="2008"></div>
-                    </li>
-                    <li>
-                        <div class="timeline-date">2012</div>
-                        <div class="timeline-description">Shanghai echoes with K.G. oboes, while AW now embodies Armstrong Werth since Tony Ward's 2012 retirement. John's expertise blossoms, sought after as an expert in establishing production facilities.</div>
-                        <div class="timeline-image"><img src="way/to/img" alt="2012"></div>
-                    </li>
-                    <li>
-                        <div class="timeline-date">2020</div>
-                        <div class="timeline-description">A new crescendo unfolds as John, invited to a European state, pioneers a locally crafted oboe. Abroad, he orchestrates the continued production of Armstrong Werth oboes, embodying a foreign expert's role.</div>
-                        <div class="timeline-image"><img src="way/to/img" alt="2020"></div>
-                    </li>
-                    <li>
-                        <div class="timeline-date">Present</div>
-                        <div class="timeline-description">Rooted in Australia, Armstrong Werth Pty Ltd harmonizes local and international expertise from Europe, China, and Korea. John, a proud member of the International Double Reeds Society, resonates through global conferences and musical instrument trade exhibitions.</div>
-                        <div class="timeline-image"><img src="way/to/img" alt="Present"></div>
-                    </li>                                
+                    <li>21 years in the industry</li>
+                    <li>14 distributors worldwide</li>
+                    <li>over 486 instruments sold per year</li>
                 </ul>
             </div>
+        </section>
 
-        </section><!-- end of founder section -->
-
-        <section id="faq">
-            <h2 class="title">Your Queries Answered</h2>
-            <h4 class="subtitle">Explore shipping, warranty, returns, and more in our FAQ section. Reach out to our friendly customer support team for personalized assistance. </h4>   
-            <div class="faq">
-                <div class="question">
-                    <h5>What is the warranty for this instrument, and what does it cover? </h5>
-                    <div class="answer">
-                        <p>A: Your AW oboe comes with a solid 1-year warranty covering both the body and mechanism. Unfortunately, it won't shield against accidental damage, so keep those playing sessions accident-free!</p>
-                    </div>
-                </div>
-                <div class="question">
-                    <h5>How should I care for and maintain this instrument to ensure its longevity?</h5>
-                    <div class="answer">
-                        <p>A: Post-performance TLC is key! After playing, give your oboe a gentle swab or pull-through. For wooden beauties like the Regal, Imperial, and English Horn, show some extra love by lightly oiling the top joint with bore oil every week for the first 2 months. Assemble with a touch of cork grease on the tenons, occasionally hand-polish the mechanism, and rest easy - the mechanism is fully oiled during final assembly. If adjustments are needed during the warranty period, we've got your back - details of a nearby technician and free adjustments if done by an approved technician.</p>
-                    </div>
-                </div>
-                <div class="question">
-                    <h5>Are there any recommended accessories or products that should be used with this instrument? </h5>
-                    <div class="answer">
-                        <p>A: Your AW oboe plays at a cool 442! Pair it with European or USA school reeds. Feeling Euro? Opt for the Chiarugi 47mm, type 2. And for cleaning, choose a pull-through with a cord on both ends to avoid those "oops, it's stuck" moments inside the bore!</p>
-                    </div>
-                </div>
-                </div>
-                <div class="question">
-                    <h5>What is the return policy if I am not satisfied with the instrument? </h5>
-                    <div class="answer">
-                        <p>A: Not feeling the musical magic? No worries! If you're not over the moon with your instrument within the first 2 weeks, you can return it, no questions asked. And even after that, if something's not quite right during the warranty period, we've got your back - swap it for a shiny new one after confirmation of a fault by an approved technician.</p>
-                    </div>
-                </div>
-                </div>
-                <div class="question">
-                    <h5>How long will it take to receive my order, and do you offer expedited shipping? </h5>
-                    <div class="answer">
-                        <p>A: Snagging your dream AW oboe is a breeze when you go through our awesome dealers! If they happen to be out of stock on your preferred model, don't fret. There might be a brief waiting period (usually around a month), but hey, good things come to those who wait. Plus, if your dealer gives us the nod, we can fast-track an oboe straight to your doorstep!</p>
-                    </div>
-                </div>
-                </div>
-                <div class="question">
-                    <h5>Do you offer any financing options for purchasing this instrument? </h5>
-                    <div class="answer">
-                        <p>A: Nope, we don't have financing options on our end, but guess what? Some of our awesome dealers might! They could hook you up with a sweet deal.</p>
-                    </div>
-                </div>
-                </div>
-                <div class="question">
-                    <h5>Can I try this instrument before purchasing it, and if so, how do I arrange a demo or trial period?</h5>
-                    <div class="answer">
-                        <p>A: Want to get hands-on with your potential AW oboe? Swing by our dealership spots for an initial test play! If you need more quality time, no worries - ask your dealer to set you up with a 1-week demo outside the store. And hey, if you're a pro teacher or player, testing in your natural habitat or an orchestral setting is totally on the table. Just loop in your dealer, and pending their decision, they'll make it happen!</p>
-                    </div>
-                </div>
-                </div>
-                <div class="question">
-                    <h5>What is the process for repairing or servicing this instrument if it becomes damaged or malfunctions?</h5>
-                    <div class="answer">
-                        <p>A: Good news - our AW dealers are like superheroes for oboe repairs! They can handle most fixes, including warranty adjustments and even some accidental oopsies (not covered by warranty, though). If things get wild with severe damage, don't worry - our manufacturing wizards might step in to save the day.</p>
-                    </div>
-                </div>
-                </div>
-                <div class="question">
-                    <h5>Do you offer any customization options for this instrument, such as engraving or personalization?</h5>
-                    <div class="answer">
-                        <p>A: Make your AW oboe uniquely yours! Add extra keywork for a personalized vibe. Looking for a touch of glamour? Rose gold plating for the mechanism is just a request away. Explore the perfect blend with our hybrid models - wooden joints and ABS synthetic joints in sync. Dreaming of a specially adorned oboe? Engraving or decoration services are on the table - just let us know what you have in mind!</p>
-                    </div>
-                </div>
-                </div>
-                <div class="question">
-                    <h5>How can I contact customer support if I have any questions or issues with my order or the instrument itself? </h5>
-                    <div class="answer">
-                        <p>A: Chat or call, your pick! If you're all about direct vibes, find our contact info on the website for a quick call. But hey, if chatting is more your speed, catch us on our social network pages - the chat is wide open. Not in the mood for either? No problem! Just leave your details below, and we'll reach out to you!</p>
-                    </div>
-                </div>
-                </div>
-                <div class="question">
-                    <h5>What types of musicians is this instrument best suited for? </h5>
-                    <div class="answer">
-                        <p>A: From tiny virtuosos to seasoned pros, our oboe family has something for everyone and every style. Let's meet the crew: Regal, the black wood virtuoso; Imperial, its equally talented sibling in the same classy material; Pan, the ABS sensation with the same pro vibes as Imperial; and the adorable Rocket and Rocket "plus," perfect for the budding musicians. For the juicy details on each character, flip through the catalog - it's a musical treasure trove!</p>
-                    </div>
-                </div>
-                </div>
-                <div class="question">
-                    <h5>Are there any additional accessories or features included with the instrument, such as a case or cleaning kit? </h5>
-                    <div class="answer">
-                        <p>A: Your AW oboe comes with a little entourage! Picture this - a cozy case and its stylish cover, a comfy reed box, a trusty pull-through, and a polishing cloth for that extra shine. It's like your oboe has its own squad, ready to keep it in tip-top shape!</p>
-                    </div>
-                </div>
-                            
+        <section>
+            <div class="headings">
+                <img src="assets/img/mobile/products.svg" alt="Discover Our Products">
             </div>
-        </section><!-- end of FAQ section -->
+            <div>
+                <h4>Our instruments are the result of mastery, attention to detail, and a deep understanding of a musician's needs</h4>
+            </div>
+            <div>
+                <p>Our instruments are the result of mastery, attention to detail, and a deep understanding of a musician's needs</p>
+            </div>
+            
+            <div class="bordered-list">
+                <div>
+                    <div>
+                        <div>01/</div>
+                        <div>Regal Oboe</div>
+                    </div>
+                    <div><img src=".jpg" alt="regal oboe image"></div>
+                    <div><button>learn more</button></div>
+                </div>
+                <div>
+                    <div>
+                        <div>02/</div>
+                        <div>Imperial Oboe</div>
+                    </div>
+                    <div><img src=".jpg" alt="imperial oboe image"></div>
+                    <div><button>learn more</button></div>
+                </div>
+                <div>
+                    <div>
+                        <div>03/</div>
+                        <div>Pan Oboe</div>
+                    </div>
+                    <div><img src=".jpg" alt="pan oboe image"></div>
+                    <div><button>learn more</button></div>
+                </div>
+                <div>
+                    <div>
+                        <div>04/</div>
+                        <div>Rocket and Rocket Plus Oboe</div>
+                    </div>
+                    <div><img src=".jpg" alt="rocket oboe image"></div>
+                    <div><button>learn more</button></div>
+                </div>
+                <div>
+                    <div>
+                        <div>05/</div>
+                        <div>AW English Horn</div>
+                    </div>
+                    <div><img src=".jpg" alt="horn image"></div>
+                    <div><button>learn more</button></div>
+                </div>                             
+            </div>
+        </section>
 
-        <div id="cta-large" >
-            <h2 class="title">Start Your Melodic Journey Today!</h2>
-            <h4 class="subtitle">We believe in nurturing strong partnerships with like-minded individuals who share our love for music. Whether you are an instrument seller or a passionate musician looking to collaborate, we welcome you to join our community of partners. </h4>
-            <form action="" method="">
-                <!-- forms element -->
-            </form>
-            <button scr="" alt="exit" onclick="hidePopup('common-popup')"></button>
-        </div>
+        <section>
+            <div class="headings">
+                <img src="assets/img/mobile/production.svg" alt="The Art of Instrument Production">
+            </div>              
+            <div>
+                <h4>Unveiling the craftsmanship: step into the exquisite world of instrument production with Armstrong-Werth, where
+                    precision meets passion in every harmonious creation</h4>
+            </div>
+            <div>
+                <p>At the inception of its journey toward becoming your personalized companion, your oboe begins as a humble blackwood,
+                    thriving in a southern land. Much later, after being felled and segmented, it undergoes a period of stabilization
+                    lasting several years — a crucial phase to prevent cracking during subsequent shaping and, ultimately, musical
+                    performance.</p>
+                <p>As an unrefined block, it enters our production workshop, where it assumes its preliminary form.
+                    High-precision machines carve out spaces for the future metal fixtures, housing the valves. Meanwhile, in another
+                    workshop, all the hardware is prepared.</p>
+                <p>Once the basic wooden framework is ready, it moves to the assembly master,
+                    where fixtures are screwed in, and other elements are added. But this is merely the beginning.</p>
+                <p>Following the manual
+                    adjustment of all metal components, the valves undergo soldering and electroplating (silver or gold coating). The
+                    final assembly stage, conducted by the master, involves affixing tempered springs for smooth yet responsive valve
+                    action and fitting pads into place.</p>
+                <p>The ultimate tuning and refinement of instruments are personally overseen by John
+                    and his apprentices, the future of the Armstrong-Werth legacy. It is this final phase of labor that holds paramount
+                    importance in shaping the sound of the end product.</p>
+            </div>
+        </section>
+
+        
+        <section>
+            <div class="headings"><img src="assets/img/mobile/explore-beauty.svg" alt="Explore Harmonic Beauty"></div>
+            <div>
+                <h4>Immerse yourself in a world where every note resonates with the passion of true craftsmanship.</h4>
+            </div>
+            <div><button>submit</button></div>
+        </section>
+
+        <section >            
+            <div class="headings"><img src="assets/img/mobile/retailers.svg" alt="Explore Authorized Retailers"></div>
+            <div>
+                <h4>Discover a curated selection of trusted music stores worldwide where you can seamlessly purchase our
+                    instruments. </h4>
+            </div>
+            <div>
+                <p> Our network of authorized retailers ensures a convenient and reliable shopping experience for our valued
+                    customers.
+                    Simply click on the logos below to explore and make your purchase from our esteemed partners.
+                    Your musical journey starts with a click.
+                </p>
+            </div>
+            <div>
+                here is realy long list with retailers
+            </div>
+        </section>
+
+        <section class="bgblack">        
+            <div class="headings"><img src="assets/img/mobile/founder.svg" alt="A Legacy Built on Passion"></div>
+            <div><img src=".jpg" alt="Jhon's photo"></div>
+            <div>
+                <h4>Meet our founder, <i>John Armstrong</i>. His unwavering dedication towards creating exceptional musical instruments has
+                    been the driving force behind our success. Learn more about his vision and commitment to the art of music. </h4>
+            </div>
+            <div>
+                <p> John Armstrong is an Australian oboist and oboe maker with a rich history in the music industry. He has worked
+                    for reputable companies such as T.W. Howarth in London,
+                    the KG reed company in Shanghai, Rigoutat in Paris, Jinyin and Bailicheng in Hebei, China. His extensive
+                    experience and dedication to the craft make him a respected div in the world of oboe making.
+                    Having started making oboes in 1989, John has since been committed to producing high-quality instruments. In
+                    2006, he partnered with oboe maker Tony Ward to create the Armstrong Ward oboe for the Australian market,
+                    later rebranded the "KG" oboe in Shanghai. John's continuous dedication to improving oboe manufacturing has led
+                    to the development of the Armstrong Werth brand, which aims to provide oboe players with more affordable and
+                    rewarding playing experiences through modern manufacturing techniques and quality components.
+                    His designs are a reflection of both tradition and the evolving preferences of today's oboists.
+                </p>
+            </div>
+
+            <div>
+                <h2>hronology</h2>
+                <ul>
+                    <li>1980</li>
+                    <li>1989</li>
+                    <li>2003</li>
+                    <li>2006</li>
+                    <li>2008</li>
+                    <li>2012</li>
+                    <li>2020</li>
+                    <li>now</li>
+                </ul>                    
+                <div>
+                    <div>
+                        <div>1980</div>
+                        <div>At just 13, John's symphony begins at the Sydney Conservatorium High School, where oboe lessons lay the
+                            groundwork
+                            for his future in London, painted with the hues of a scholarship.</div>
+                        <div><img src=".jpg" alt="1980"></div>
+                    </div>
+                    <div>
+                        <div>2003</div>
+                        <div>A harmonious chord strikes when John seamlessly weaves his musical career with the art of crafting oboes,
+                            marking a pivotal transition from full-time musician to a devotee of oboe making and repair.</div>
+                        <div><img src="way/to/img" alt="2003"></div>
+                    </div>
+                    <div>
+                        <div>2006</div>
+                        <div>A significant chapter unfolds as John acquires Tony Ward's oboe-making tools. The first AW oboes, born in
+                            2006, carry the legacy of 'Armstrong Ward,' a collaborative masterpiece drawing inspiration from a cherished
+                            French style.</div>
+                        <div><img src="way/to/img" alt="2006"></div>
+                    </div>
+                    <div>
+                        <div>2008</div>
+                        <div>Shanghai becomes the canvas as John shifts AW oboe production, harmonizing with joint ventures for Howarth
+                            and Rigoutat until 2012. Collaborations with K.G. oboe reed company and the development of key designs in
+                            Korea enrich this chapter.</div>
+                        <div><img src="way/to/img" alt="2008"></div>
+                    </div>
+                    <div>
+                        <div>2012</div>
+                        <div>Shanghai echoes with K.G. oboes, while AW now embodies Armstrong Werth since Tony Ward's 2012 retirement.
+                            John's expertise blossoms, sought after as an expert in establishing production facilities.</div>
+                        <div><img src="way/to/img" alt="2012"></div>
+                    </div>
+                    <div>
+                        <div>2020</div>
+                        <div>A new crescendo unfolds as John, invited to a European state, pioneers a locally crafted oboe. Abroad, he
+                            orchestrates the continued production of Armstrong Werth oboes, embodying a foreign expert's role.</div>
+                        <div><img src="way/to/img" alt="2020"></div>
+                    </div>
+                    <div>
+                        <div>Present</div>
+                        <div>Rooted in Australia, Armstrong Werth Pty Ltd harmonizes local and international expertise from Europe,
+                            China, and Korea. John, a proud member of the International Double Reeds Society, resonates through global
+                            conferences and musical instrument trade exhibitions.</div>
+                        <div><img src="way/to/img" alt="Present"></div>
+                    </div>
+                </div>
+                </div>
+                <div class="quote">
+                    <div><img src=".jpg" alt="photo of Jhon"></div>
+                    <div>
+                        <p>"In every instrument we craft, we weave the timeless threads of culture and creativity, giving life to the
+                            symphony of human expression."</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="headings"><img src="assets/img/mobile/faq.svg" alt="Your Queries Answered"></div>
+            <div>
+                <h4>Explore shipping, warranty, returns, and more in our FAQ section. Reach out to our friendly customer support
+                    team for personalized assistance. </h4>
+            </div>
+            <div>
+                <dl class="bordered-list">
+                    <div>
+                        <dt>What is the warranty for this instrument, and what does it cover?</dt>
+                        <dd>A: Your AW oboe comes with a solid 1-year warranty covering both the body and mechanism. Unfortunately, it
+                            won't
+                            shield against accidental damage, so keep those playing sessions accident-free!</dd>
+                    </div>
+                    <div>
+                        <dt>How should I care for and maintain this instrument to ensure its longevity?</dt>
+                        <dd>A: Post-performance TLC is key! After playing, give your oboe a gentle swab or pull-through. For wooden
+                            beauties
+                            like the Regal, Imperial, and English Horn, show some extra love by lightly oiling the top joint with bore
+                            oil every
+                            week for the first 2 months. Assemble with a touch of cork grease on the tenons, occasionally hand-polish
+                            the
+                            mechanism, and rest easy - the mechanism is fully oiled during final assembly. If adjustments are needed
+                            during the
+                            warranty period, we've got your back - details of a nearby technician and free adjustments if done by an
+                            approved
+                            technician.</dd>
+                    </div>
+                    <div>
+                        <dt>Are there any recommended accessories or products that should be used with this instrument? </dt>
+                        <dd>A: Your AW oboe plays at a cool 442! Pair it with European or USA school reeds. Feeling Euro? Opt for the
+                            Chiarugi
+                            47mm, type 2. And for cleaning, choose a pull-through with a cord on both ends to avoid those "oops, it's
+                            stuck"
+                            moments inside the bore!</dd>
+                    </div>
+                    <div>
+                        <dt>What is the return policy if I am not satisfied with the instrument? </dt>
+                        <dd>A: Not feeling the musical magic? No worries! If you're not over the moon with your instrument within the
+                            first 2 weeks, you can return it, no questions asked. And even after that, if something's not quite right
+                            during the warranty period, we've got your back - swap it for a shiny new one after confirmation of a fault
+                            by an approved technician.</dd>
+                    </div>
+                    <div>
+                        <dt>How long will it take to receive my order, and do you offer expedited shipping? </dt>
+                        <dd>A: Snagging your dream AW oboe is a breeze when you go through our awesome dealers! If they happen to be out
+                            of stock
+                            on your preferred model, don't fret. There might be a brief waiting period (usually around a month), but
+                            hey, good
+                            things come to those who wait. Plus, if your dealer gives us the nod, we can fast-track an oboe straight to
+                            your
+                            doorstep!</dd>
+                    </div>
+                    <div>
+                        <dt>Do you offer any financing options for purchasing this instrument? </dt>
+                        <dd>A: Nope, we don't have financing options on our end, but guess what? Some of our awesome dealers might! They
+                            could
+                            hook you up with a sweet deal.</dd>
+                    </div>
+                    <div>
+                        <dt>Can I try this instrument before purchasing it, and if so, how do I arrange a demo or trial period?</dt>
+                        <dd>A: Want to get hands-on with your potential AW oboe? Swing by our dealership spots for an initial test play!
+                            If you
+                            need more quality time, no worries - ask your dealer to set you up with a 1-week demo outside the store. And
+                            hey, if
+                            you're a pro teacher or player, testing in your natural habitat or an orchestral setting is totally on the
+                            table.
+                            Just loop in your dealer, and pending their decision, they'll make it happen!</dd>
+                    </div>
+                    <div>
+                        <dt>What is the process for repairing or servicing this instrument if it becomes damaged or malfunctions?</dt>
+                        <dd>A: Good news - our AW dealers are like superheroes for oboe repairs! They can handle most fixes, including
+                            warranty
+                            adjustments and even some accidental oopsies (not covered by warranty, though). If things get wild with
+                            severe
+                            damage, don't worry - our manufacturing wizards might step in to save the day.</dd>
+                    </div>
+                    <div>
+                        <dt>Do you offer any customization options for this instrument, such as engraving or personalization?</dt>
+                        <dd>A: Make your AW oboe uniquely yours! Add extra keywork for a personalized vibe. Looking for a touch of
+                            glamour? Rose
+                            gold plating for the mechanism is just a request away. Explore the perfect blend with our hybrid models -
+                            wooden
+                            joints and ABS synthetic joints in sync. Dreaming of a specially adorned oboe? Engraving or decoration
+                            services are
+                            on the table - just let us know what you have in mind!</dd>
+                    </div>
+                    <div>
+                        <dt>How can I contact customer support if I have any questions or issues with my order or the instrument itself?
+                        </dt>
+                        <dd>A: Chat or call, your pick! If you're all about direct vibes, find our contact info on the website for a
+                            quick call.
+                            But hey, if chatting is more your speed, catch us on our social network pages - the chat is wide open. Not
+                            in the
+                            mood for either? No problem! Just leave your details below, and we'll reach out to you!</dd>
+                    </div>
+                    <div>
+                        <dt>What types of musicians is this instrument best suited for? </dt>
+                        <dd>A: From tiny virtuosos to seasoned pros, our oboe family has something for everyone and every style. Let's
+                            meet the
+                            crew: Regal, the black wood virtuoso; Imperial, its equally talented sibling in the same classy material;
+                            Pan, the
+                            ABS sensation with the same pro vibes as Imperial; and the adorable Rocket and Rocket "plus," perfect for
+                            the
+                            budding musicians. For the juicy details on each character, flip through the catalog - it's a musical
+                            treasure
+                            trove!</dd>
+                    </div>
+                    <div>
+                        <dt>Are there any additional accessories or features included with the instrument, such as a case or cleaning
+                            kit? </dt>
+                        <dd>A: Your AW oboe comes with a little entourage! Picture this - a cozy case and its stylish cover, a comfy
+                            reed box, a
+                            trusty pull-through, and a polishing cloth for that extra shine. It's like your oboe has its own squad,
+                            ready to
+                            keep it in tip-top shape!</dd>
+                    </div>
+                </dl>
+            </div>
+            <button>learn more</button>
+        </section>
+
+        <section class="bgblack">
+            <div class="headings"><img src="assets/img/mobile/melodic-journey.svg" alt="Start Your Melodic Journey Today!"></div>
+            <div>
+                <h4>We believe in nurturing strong partnerships with like-minded individuals who share our love for music. Whether you are an instrument seller or a passionate musician looking to collaborate, we welcome you to join our community of partners. </h4>
+            </div>
+            <div>
+                <form action=""></form>
+                <button>learn more</button>
+            </div>            
+        </section>
  
     </main>
 
     <footer>
-    <div id="contacts">
-        <h4>Our contacts</h4>
-        <p>Tel.: +374 55 15-10-96</p>
-        <p>Email: info@example.com</p>
-    </div>
-
-    <div class="footer-navigation">
-        <ul>
-            <li><a  href="#about">About us</a></li>
-            <li><a  href="#catalog">Catalog</a></li>
-            <li><a  href="#partners">Distributors</a></li>
-            <li><button class="menu-object cta-button">Call Back</button></li>
-        </ul>
-    </div>
-
-    <div class="logo">
-        <a href="#top"><img src="way/to/logo" alt="Logotype"></a>
-    </div>
-
-    <div class="credits">
+        <div><img src=".svg" alt="logotype"></div>
+        <div class="headings"><img src="assets/img/mobile/footer-name.svg" alt="armstrong werth"></div>
+        <div>
+            <div><a  href="#about">about us</a></div>
+            <div><a  href="#products">instruments</a></div>
+            <div><a  href="#partners">retailers</a></div>
+            <div><a  href="#contacts">contacts</a></div>
+        </div>
+        <div>
+            <dl>
+                <td>E-mail</td>
+                <dd>Example@aytlook.com</dd>
+                <td>Tel</td>
+                <dd>+123 45 67-89-10</dd>
+                <td>community</td>
+                <dd>Instagramm </dd>
+                <dd>Facebook</dd>
+            </dl>
+        </div>        
+        <script src=" /assets/js/main.js"></script>
+    </footer>
+    <div >
         <p><a href="https://t.me/Ministrely">designer</a></p>
         <p><a href="https://t.me/DarkVib">programmer</a></p>
     </div>
-    
-    <script src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/js/main.js"></script>
-
-    </footer><!-- end of footer section -->
-
-
 </body>
 </html>
