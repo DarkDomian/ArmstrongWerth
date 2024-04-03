@@ -32,10 +32,12 @@ body {
   font-size: 12px;
   line-height: 120%;
 
-  
+  overflow-x: hidden;
   border-color: var(--dr-gray);
 }
+main {z-index: 1;}
 
+/* maijer distanse between sactions */
 section {
   display: flex;
   flex-direction: column;
@@ -46,12 +48,12 @@ section {
 }
 section:nth-of-type(1) {
   margin-top: 0;
-  padding-top: 0;
 }
 section:not(:nth-of-type(3)) > div:last-of-type {
   margin-top: 10px;
 }
 
+/* black background and settings for elements on it */
 .bgblack {
   position: relative;
 
@@ -74,6 +76,7 @@ section:not(:nth-of-type(3)) > div:last-of-type {
   background-color: var(--bg-black);
 }
 
+/* subtitles */
 h4 {
   color: var(--gray);
   font-family: "Playfair Display", serif;
@@ -83,6 +86,7 @@ h4 {
   line-height: 120%;
 }
 
+/* any button */
 button {
   padding: 10px 25px;
   width: 100%;
@@ -99,13 +103,13 @@ button {
   text-transform: uppercase;
 }
 
+/* lines for any list: FAQ and catalog too */
 .bordered-list {
   display: flex;
   flex-direction: column;
 
   gap: 10px;
 }
-
 .bordered-list > div {
   padding-top: 10px;
 
@@ -118,13 +122,310 @@ button {
   border-bottom: 1px solid;
   border-color: var(--black-tr);
 }
+.bordered-list.catalog-template > div {padding-top: 15px;}
 
-.headings {
+/* instruments tamplates - dependency, location */
+.catalog-template > div{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.catalog-template > div div:first-child {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+.catalog-template img {
+  padding: 5px 0;
+}
+.catalog-template .catalog-numbers {font-size: 8px;}
+.catalog-template .catalog-name {
+  font-family: "Playfair Display";
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 100%;
+}
+
+/* FAQ tamplates - dependency, location */
+.faq-template > div {
+  display: flex;
+  flex-direction: row;
+}
+.faq-template > div div:first-child {
+  display: flex;
+  flex-direction: column;
+  margin-right: auto;
+  
+  width: 78.75%; /* was 78.75vw */
+
+  gap: 10px;
+}
+.faq-template > div div:first-child dt {
+  font-family: "Playfair Display";
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 120%;
+}
+.faq-template > div div:last-child {
+  align-self: flex-start;
+}
+
+/* all with menu */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
   height: auto;
+  z-index: 800;
+
+  display: flex;
+  flex-direction: column;
+  padding: 0 10px;
+
+  background-color: var(--bg-black);
 }
-.headings img {
+header.fullscreen {
+  height: 100vh;
+}
+header > div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  padding-top: 10px;
+}
+.header-logo {
+  height: 40px;
+  width: auto;  
+}
+.header-toggle {
+  height: auto;
+  width: 24px;
+
+  padding: 0;
+  border: none;
+}
+header nav {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+header ul {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 30px; 
+
+  margin-top: 20vw;
+  font-size: 24px;  
+  text-transform: uppercase;
+  text-decoration: none;  
+}
+header a {color: var(--white);}
+.header-button {
+  margin-top: auto;
+  margin-bottom: 10vw;
+
+  padding: 0 3px;
+}
+
+/* main page - what ur see first */
+.welcome-page {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 100vh;
+  align-items: center;
+  justify-content: space-between;
+
+  padding-top: 80px;
+}
+.welcome-cta {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.welcome-cta p {
+  font-size: 18px;
+  text-align: center;
+}
+
+/* numbers in 'about' section */
+.about-numbers-grid {
+  display: flex;
+  flex-wrap: wrap;
+  
+  gap: 10px; 
+}
+.square {
+  flex: 1;
+  aspect-ratio: 1/1;
+  min-width: 125px;
+
+  border: 1px solid;
+  border-color: inherit;
+  border-radius: 50%;
+}
+.rectangle {
+  flex: 2;
+  aspect-ratio: 2/1;
+  min-width: 125px;
+
+  border: 1px solid;
+  border-color: inherit;
+  border-radius: 120px;
+}
+.about-numbers {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+
+  justify-content: center;
+  text-align: center;
+}
+.about-numbers div:first-child {
+  color: var(--gold);
+  
+  font-family: "Playfair Display";
+  font-size: 70px;
+}
+.about-numbers div:last-child {
+  width: 70px;
+  align-self: center;
+}
+
+/* button in 'explore harmony beuty' section */
+.special-button {
+  width: 53vw;
+  align-self: center;
+}
+
+/* crutch */
+.center-content {
+  text-align: center;
+}
+
+/* retailers templats, card, overflous etc. */
+.retailers {
+  overflow-x: scroll;
+
+  display: flex;
+  gap: 10px;
+  flex-wrap: nowrap;
+}
+.retailers::-webkit-scrollbar {
+  width: 20px;
+}
+.retailers::-webkit-scrollbar-thumb {
+  background-color: var(--dr-gray);
+  width: 100px;
+  height: 5px;
+  border-radius: 2px;
+}
+.retailers::-webkit-scrollbar-track {
+  background-color: transparent;
+  width: 20px;
+}
+.retailers::-webkit-scrollbar-track-piece {
   width: 100%;
+  background-color: var(--black-tr);
+  height: 1px;
+}
+.retailers-card {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;  
+}
+.retailers-image {
+  width: 200px;  
+  height: 100px;
+  border: 1px solid var(--black-tr);
+  
+}
+.retailers-infobar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.retailers button:last-child {
+  padding: 0;
+  height: 24px;
+  width: auto;
+  border: none;
+}
+.retailers-name {
+  font-family: "Playfair Display";
+  font-size: 18px;
+}
+.retailers-country {font-size: 9px;}
+
+/* images of headings */
+.welcome-mobile {
+  width: auto;
+  height: 37.5vw;
+}
+.welcome-desctop {display: none;}
+
+.about-mobile {  
+  width: auto;
+  height: 22.5vw;
+}
+.about-desctop {display: none;}
+
+.products-mobile{
+  width: auto;
+  height: 22.5vw;
+}
+.products-desctop {display: none;}
+
+.process-mobile {
+  width: auto;
+  height: 35vw;
+}
+.process-desctop {display: none;}
+
+.explore-beauty-mobile {
+  width: auto;
+  height: 37.5vw;
+}
+.explore-beauty-desctop {display: none;}
+
+.retailers-mobile {
+  width: auto;
+  height: 22.5vw;
+}
+.retailers-desctop {display: none;}
+
+.founder-mobile {
+  width: auto;
+  height: 35vw;
+}
+.founder-desctop {display: none;}
+
+.faq-mobile {
+  width: auto;
+  height: 35vw;
+}
+.faq-desctop {display: none;}
+
+.melodic-journey-mobile {
+  width: auto;
+  height: 46.25vw;
+}
+.melodic-journey-desctop {display: none;}
+
+.footer-name-mobile {
+  width: auto;
+  height: 22.5vw;
+}
+.footer-name-desctop {display: none;}
+
+img[src$=".svg"] {  
   height: 100%;
 }
 /*
