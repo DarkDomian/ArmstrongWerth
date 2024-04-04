@@ -49,7 +49,7 @@ section {
 section:nth-of-type(1) {
   margin-top: 0;
 }
-section:not(:nth-of-type(3)) > div:last-of-type {
+section:not(:nth-of-type(3n)) > div:last-of-type {
   margin-top: 10px;
 }
 
@@ -273,7 +273,7 @@ header a {color: var(--white);}
 }
 .rectangle {
   flex: 2;
-  aspect-ratio: 2/1;
+  aspect-ratio: 2/0.8;
   min-width: 125px;
 
   border: 1px solid;
@@ -299,6 +299,38 @@ header a {color: var(--white);}
   align-self: center;
 }
 
+/* image before process section */
+.process-photo {  
+  position: relative;
+  z-index: -1;
+  
+  bottom: -35px;
+  margin-top: -35px;
+
+  border-radius: 50%;
+  
+  width: 100%;
+  aspect-ratio: 1/1;
+  overflow: hidden;  
+}
+.process-photo-position {
+  position: absolute;
+  left: -300px;
+  top: -300px;
+  width: 100%;
+  height: 100%;
+  transform: rotate(30deg);
+}
+.process-photo::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 150px;
+  background: linear-gradient(to bottom,  rgba(240,240,240,0), rgba(240,240,240,1));
+}
+
 /* button in 'explore harmony beuty' section */
 .special-button {
   width: 53vw;
@@ -311,32 +343,24 @@ header a {color: var(--white);}
 }
 
 /* retailers templats, card, overflous etc. */
-.retailers {
-  overflow-x: scroll;
+.retailers {  
+  overflow-y: auto;
+  
+  position: relative;
 
   display: flex;
   gap: 10px;
   flex-wrap: nowrap;
 }
-.retailers::-webkit-scrollbar {
-  width: 20px;
-}
-.retailers::-webkit-scrollbar-thumb {
-  background-color: var(--dr-gray);
-  width: 100px;
-  height: 5px;
-  border-radius: 2px;
-}
-.retailers::-webkit-scrollbar-track {
-  background-color: transparent;
-  width: 20px;
-}
-.retailers::-webkit-scrollbar-track-piece {
-  width: 100%;
-  background-color: var(--black-tr);
-  height: 1px;
+.retailers, .retailers-card {
+  transform:rotateX(180deg);
+  -moz-transform:rotateX(180deg); /* Mozilla */
+  -webkit-transform:rotateX(180deg); /* Safari and Chrome */
+  -ms-transform:rotateX(180deg); /* IE 9+ */
+  -o-transform:rotateX(180deg); /* Opera */
 }
 .retailers-card {
+  padding-top: 10px;
   display: flex;
   flex-direction: column;
   gap: 5px;  
@@ -363,6 +387,154 @@ header a {color: var(--white);}
   font-size: 18px;
 }
 .retailers-country {font-size: 9px;}
+
+/* very big section about founder */
+#founder {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  
+
+  gap: 50px;
+}
+/* first section with many text */
+#founder .founder-bio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 10px;
+}
+#founder .founder-title {
+  position: relative;
+  z-index: 1;
+  
+  bottom: -35px;
+  margin-top: -35px;
+}
+#founder .founder-photo-rectangle {
+  padding-bottom: 10px;
+  width: 50vw;
+  aspect-ratio: 0.8/1;
+  overflow: hidden;
+}
+#founder .founder-photo-rectangle img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+#founder h4 {
+  color: var(--white);
+  text-align: center;
+}
+#founder .founder-bio-text {
+  width: 68.75vw;
+  text-align: justify;
+}
+/* second section with timeline and chronology */
+#founder .founder-chronology {
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+  gap: 20px;
+}
+#founder .founder-chronology h4 {
+  text-transform: uppercase;  
+}
+#founder .overflow-timeline {
+  position: relative;
+  left: -10px;
+  width: 100vw;
+  padding-left: 10px;
+  padding-right: 10px;
+  overflow:hidden;
+}
+#founder .timeline {
+  border: 1px solid;
+  border-color: inherit;
+  border-radius: 25px;
+  width: min-content;  
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: nowrap;
+  padding: 0 30px;
+  height: 30px;
+  gap: 30px;
+}
+#founder .timeline > div {
+  color: var(--white-tr);
+  font-size: 18px;
+
+  font-family: "Playfair Display";
+}
+#founder .timeline > div[data-activity="activ"] {
+  color: var(--bg-white);  
+}
+#founder .bio-facts > div[data-activity="activ"] {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+#founder .bio-facts > div[data-activity="activ"] {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 20px;
+
+  width: 100%;
+}
+#founder .bio-facts-text{flex: 1;}
+#founder .bio-facts > div[data-activity="activ"] div:nth-child(1) {
+  font-size: 22vw;
+  font-family: "Playfair Display";
+  line-height: 90%;
+}
+#founder .bio-facts > div[data-activity="activ"] div:nth-child(2) {
+  font-size: 9px;
+  background: linear-gradient(180deg, var(--white) 20.59%, var(--white-tr) 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+#founder .bio-facts-photo {
+  width: 100%;
+  aspect-ratio: 3/2;
+  overflow: hidden;
+}
+#founder .bio-facts-photo img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+#founder .bio-facts > div {
+  display: none;
+}
+#founder .quote-photo {
+  position: relative;
+  width: 100%;
+  border-radius: 50%;
+  aspect-ratio: 1/1;
+  overflow: hidden;
+}
+#founder .quote-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+#founder .quote {
+  position: absolute;
+  top: 15%;
+  z-index: 20;
+
+  font-family: "Playfair Display";
+  font-size: 9vw;
+  line-height: 100%;
+  color: var(--gold);
+  text-align: justify;  
+}
 
 /* images of headings */
 .welcome-mobile {
