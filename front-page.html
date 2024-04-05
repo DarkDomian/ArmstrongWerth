@@ -684,45 +684,63 @@
                 <div class="melodic-journey-mobile"><img src="assets/img/mobile/melodic-journey.svg" alt="Start Your Melodic Journey Today!"></div>
                 <div class="melodic-journey-desctop"><img src="assets/img/mobile/melodic-journey.svg" alt="Start Your Melodic Journey Today!"></div>
             </div>
-            <div>
-                <h4>We believe in nurturing strong partnerships with like-minded individuals who share our love for music. Whether you are an instrument seller or a passionate musician looking to collaborate, we welcome you to join our community of partners. </h4>
+            <div class="feedback-text">
+                <h4>We believe in nurturing strong partnerships with like-minded individuals who share our love for music. Whether you are
+                an instrument seller or a passionate musician looking to collaborate, we welcome you to join our community of partners.
+                </h4>
             </div>
             <div>
-                <form action=""></form>
-                <button>learn more</button>
+                <form class="feedback-form" action="" method="post">                    
+                    <input type="username" id="username" name="username" value="NAME">                 
+                    <input type="email" id="email" name="email" value="E-MAIL">               
+                    <input type="tel" id="tel" name="tel" value="TELEPHONE">               
+                    <input type="submit" value="LEARN MORE">
+                    <divcl class="checkbox">
+                        <input type="checkbox" id="consentCheckbox" name="consentCheckbox">
+                        <label for="consentCheckbox"><a href="">I agree with the privacy policy</a></label>
+                    </div>
+                </form>
             </div>            
         </section>
  
     </main>
 
     <footer>
-        <div><img src=".svg" alt="logotype"></div>
+        <div class="footer-logo"><img src="assets/img/footer-logo.svg" alt="logotype"></div>
         <div>
             <div class="footer-name-mobile"><img src="assets/img/mobile/footer-name.svg" alt="armstrong werth"></div>
             <div class="footer-name-desctop"><img src="assets/img/mobile/footer-name.svg" alt="armstrong werth"></div>
         </div>
-        <div>
-            <div><a  href="#about">about us</a></div>
-            <div><a  href="#products">instruments</a></div>
-            <div><a  href="#partners">retailers</a></div>
-            <div><a  href="#contacts">contacts</a></div>
+        <div class="footer-menu">
+            <div><a href="#about">about us</a></div>
+            <div><a href="#products">instruments</a></div>
+            <div><a href="#partners">retailers</a></div>
+            <div><a href="#contacts">contacts</a></div>
         </div>
         <div>
-            <dl>
-                <td>E-mail</td>
-                <dd>Example@aytlook.com</dd>
-                <td>Tel</td>
-                <dd>+123 45 67-89-10</dd>
-                <td>Community</td>
-                <dd>Instagramm </dd>
-                <dd>Facebook</dd>
+            <dl id="contacts">
+                <div>
+                    <td>E-mail</td>
+                    <dd>Example@aytlook.com</dd>
+                </div>
+                <div>
+                    <td>Tel</td>
+                    <dd>+123 45 67-89-10</dd>
+                </div>
+                <div>
+                    <td>Community</td>
+                    <div class="social-media">
+                        <dd>Instagramm</dd>
+                        <dd>Facebook</dd>
+                    </div>
+                </div>
             </dl>
         </div>        
         <script src=" /assets/js/main.js"></script>
     </footer>
-    <div >
-        <p><a href="https://t.me/Ministrely">designer</a></p>
-        <p><a href="https://t.me/DarkVib">programmer</a></p>
+    <div class="underfooter">
+        <a href="https://t.me/Ministrely">designer</a>
+        <a href="https://t.me/DarkVib">programmer</a>
     </div>
 </body>
 </html>
