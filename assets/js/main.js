@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function () { //CTA popup window f
 
             popupContainer.style.display = "flex";
             targetPopup.style.display = "flex";
-            document.body.style.overflow = "hidden";            
+            document.body.style.overflow = "hidden";
 
             if(targetPopup.style.display === "flex"){
                 topMenu.style.width = "98.9%";
