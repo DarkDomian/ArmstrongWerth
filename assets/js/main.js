@@ -1,3 +1,45 @@
+gsap.from('.header', { duration: 3, opasity: 0, y: '-100%', ease: 'circ.out', deley: .5})
+gsap.to('.title-animation-target', { duration: 2, y: 0, ease: 'sine.out', deley: .5})
+gsap.from('.title-animation', {duration: 3, y: '60%', ease: 'circ.uot', delay: .5})
+gsap.to('.welcome-photo-animation', {duration: 3, y: '0', opacity: 1, ease: 'circ.uot', delay: .5})
+gsap.to('.welcome-p-animation', {duration: 2, y: 0, ease: 'sine.out', deley: .5})
+gsap.to('.welcome-button-animation', {duration: 2, y: 0, ease: 'sine.out', deley: .5})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 document.addEventListener("DOMContentLoaded", function () { //CTA popup window functionality    
     const popupOpen = document.querySelectorAll(".popup-open");
