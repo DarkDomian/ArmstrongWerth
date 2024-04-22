@@ -66,7 +66,7 @@ section:not(:nth-of-type(3n)) > div:last-of-type {
   border-color: var(--bg-white);
 }
 .bgblack::before {
-  content: "";
+  content: var(--before-content, '');
   position: absolute;
   top: 0;
   left: 50%;
@@ -102,8 +102,12 @@ button {
   color: inherit;
   font-size: 14px;
   font-weight: 400;
+  letter-spacing: 1px;
   text-transform: uppercase;
 }
+button:hover {cursor: pointer;}
+.cross:hover {cursor: pointer;}
+.timeline-date {cursor: pointer;}
 button img[data-arrow="true"] {
   width: 17px;
   height: 12px;
@@ -112,7 +116,17 @@ button img[data-arrow="true"] {
   left: 50%;
   transform: translate(-50%, -50%); 
 }
+button svg[data-arrow="true"] {
+  width: 17px;
+  height: 12px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); 
+}
+
 img[data-arrow="true"].right-arrows {transform:translate(-50%, -50%) rotate(180deg);}
+svg[data-arrow="true"][ alt="right arrow"] {transform:translate(-50%, -50%) rotate(180deg);}
 
 /* lines for any list: FAQ and catalog too */
 .bordered-list {
@@ -128,6 +142,12 @@ img[data-arrow="true"].right-arrows {transform:translate(-50%, -50%) rotate(180d
   border-color: var(--black-tr);
 }
 .bordered-list > div:last-child {
+  padding-bottom: 10px;
+
+  border-bottom: 1px solid;
+  border-color: var(--black-tr);
+}
+.faq-closing {
   padding-bottom: 10px;
 
   border-bottom: 1px solid;
@@ -184,17 +204,19 @@ img[data-arrow="true"].right-arrows {transform:translate(-50%, -50%) rotate(180d
 .faq-template > div div:last-child {
   align-self: flex-start;
 }
+.answer {overflow: hidden;}
 
 /* all with menu */
+.fixed-header {display: flex;}
 header {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
+  width: 100vw;
   height: auto;
   z-index: 800;
 
-  display: flex;
+  display: none;
   flex-direction: column;
   padding: 0 10px;
 
@@ -267,9 +289,9 @@ header a {color: var(--white);}
   font-size: 18px;
   text-align: center;
   line-height: normal;
-  transform: translateY(-100%);
+  transform: translateY(-150%);
 }
-.welcome-cta button { transform: translateY(100%);}
+.welcome-cta button { transform: translateY(150%);}
 .welcome-photo {
   width: 60%;  
   height: auto;
@@ -282,7 +304,37 @@ header a {color: var(--white);}
   object-fit: cover;
   transform: translateY(-80%);
   opacity: 0;
+  scale: 0.8;
 }
+
+/* overlay animations and positions */
+.main-overlay {
+  position: absolute;
+  text-align: left;
+  width: 100vw;
+  height: 100vh; 
+  bottom: -10px;
+  left: 0;
+
+  z-index: 999;
+}
+#partners {position: relative;}
+.main-overlay svg path {fill: var(--bg-white);}
+.founder-overlay {
+  position: absolute;
+  text-align: left;
+  width: 100vw;
+  height: 100vh; 
+  bottom: -60px;
+  left: -10px;
+  margin: 0;
+  padding: 0;
+
+  z-index: 999;
+}
+.founder-overlay svg path {fill: var(--bg-black);}
+
+
 
 /* numbers in 'about' section */
 .about-numbers-grid {
@@ -328,6 +380,9 @@ header a {color: var(--white);}
   align-self: center;
 }
 
+/* some from products section */
+.opacity-paragraph {opacity: 0;}
+
 /* image before process section */
 .process-photo {  
   position: relative;
@@ -340,14 +395,17 @@ header a {color: var(--white);}
   
   width: 100%;
   aspect-ratio: 1/1;
-  overflow: hidden;  
+  overflow: hidden;
+  
+  transform: translateY(280px);
+  scale: 0.8;
 }
 .process-photo-position {  
   object-fit: cover;
   position: absolute;
   width: 100%;
   height: 100%;
-  transform: rotate(25deg)  scale(1.5);
+  transform: rotate(15deg)  scale(1.3);
 }
 .process-photo::after {
   content: "";
@@ -500,8 +558,11 @@ header a {color: var(--white);}
   width: 100vw;
   padding-left: 10px;
   padding-right: 10px;
-  overflow:hidden;
+
+  overflow: auto;
+  scrollbar-width: 0;
 }
+.overflow-timeline::-webkit-scrollbar {width: 0; height: 0;}
 #founder .timeline {
   border: 1px solid;
   border-color: inherit;
@@ -525,6 +586,8 @@ header a {color: var(--white);}
 #founder .timeline > div[data-activity="activ"] {
   color: var(--bg-white);  
 }
+.bio-facts {position: relative;}
+.timeline-fact {position: absolute; top: 0;}
 #founder .bio-facts > div[data-activity="activ"] {
   display: flex;
   flex-direction: row;
@@ -565,6 +628,7 @@ header a {color: var(--white);}
   border-radius: 50%;
   aspect-ratio: 1/1;
   overflow: hidden;
+  scale: 0.8
 }
 #founder .quote-photo img {
   width: 100%;
@@ -580,8 +644,10 @@ header a {color: var(--white);}
   font-size: 9vw;
   line-height: 100%;
   color: var(--gold);
-  text-align: justify;  
+  text-align: justify; 
+  overflow: hidden; 
 }
+.quote-animation {transform: translateY(100%); opacity: 0;}
 
 /* feedback form */
 .feedback-text p {
@@ -616,6 +682,8 @@ header a {color: var(--white);}
   margin-top: 5px;
   padding: 0;
 
+  cursor: pointer;
+
   border: 1px solid;  
   border-radius: 120px;  
   font-family: "Commissioner", sans-serif;
@@ -641,6 +709,8 @@ header a {color: var(--white);}
 input[type="checkbox"] {
   height: 100%;
   aspect-ratio: 1/1; 
+
+  cursor: pointer;
 
   appearance: none;
   -webkit-appearance: none;
@@ -820,6 +890,7 @@ footer {
   right: 50%;
   top: 20px;
   transform: translatex(50%) rotate(45deg);
+  z-index: 1;
 
   height: 24px;
   width: 24px;
@@ -830,6 +901,35 @@ footer {
 #modal-container.modal-black .modal-cross img{
   filter: invert(79%) sepia(47%) saturate(0%) hue-rotate(50deg) brightness(109%) contrast(107%);
 }
+#modal-container.modal-black .instrument-nav {display: none;}
+#modal-container.modal-white .instrument-nav {
+  position: absolute;
+  right: 10px;
+  bottom: 20px;
+
+  display: flex;
+  gap: 10px;
+  align-items: stretch;
+}
+button:disabled{
+  color: var(--black-tr);
+  border-color: var(--black-tr);
+  stroke: var(--black-tr);
+  fill: var(--black-tr);
+
+  cursor: default;
+}
+.paginator-index {color: var(--black-tr); cursor: pointer;}
+.activ-paginator-index {color: var(--bg-black);}
+/* .button:disabled img path {fill: var(--black-tr); stroke: var(--black-tr);} */
+.instrument-arrow {
+  position: relative;
+  max-width: 39px;
+  height: auto;
+  aspect-ratio: 1/1;
+  padding: 0;  
+}
+/* .instrument-arrow img path {fill: var(--dr-gray); stroke: var(--dr-gray);} */
 
 #modal-feedback {
   margin-top: 65px;
@@ -920,26 +1020,6 @@ footer {
   border-radius: 2px;
   background: var(--black-tr);
 }
-.instrument-nav {
-  display: flex;
-  gap: 10px;
-  align-items: stretch;
-  margin-top: 20px;
-  margin-bottom: 10px;
-}
-button:disabled{
-  color: var(--black-tr);
-  border-color: var(--black-tr);
-  stroke: var(--black-tr);
-  fill: var(--black-tr);
-}
-.instrument-arrow {
-  position: relative;
-  max-width: 39px;
-  height: auto;
-  aspect-ratio: 1/1;
-  padding: 0;  
-}
 
 #data-sent {
   display: none;
@@ -983,9 +1063,10 @@ button:disabled{
 }
 
 /* animation */
-.title-animation, .title-animation-body {
+.welcome-title-animation, .title-animation-body {
   overflow: hidden;
 }
+.welcome-title-animation img {transform: translateY(110%);}
 .title-animation img {transform: translateY(110%);}
 .title-animation-body img {transform: translateY(110%);}
 
@@ -997,7 +1078,8 @@ button:disabled{
   h4 {font-size: 24px;}
   
   button {font-size: 20px;}
-  button img[data-arrow="true"]
+  button img[data-arrow="true"],
+  button svg[data-arrow="true"]
   { width: 22px; height: 15px;}
   section {    
     gap: 20px;  
@@ -1011,6 +1093,7 @@ button:disabled{
   .bordered-list {gap: 20px;}
   .bordered-list.catalog-template > div {padding-top: 20px;}
   .bordered-list > div:last-child {padding-bottom: 20px;}
+  .faq-closing {padding-bottom: 20px;}
 
   .newspaper-style {
     margin-left: 22.8%;
@@ -1088,6 +1171,11 @@ button:disabled{
   .retailers button:last-child 
   { width: 52px; height: 35px;}
   
+
+  .founder-overlay {
+    bottom: -90px;
+    left: -20px;
+  }
   #founder {gap: 80px;}
   #founder .founder-bio {gap: 20px;}
   #founder .founder-title
@@ -1219,6 +1307,7 @@ button:disabled{
   
   #modal-container {padding: 0 20px;}
   #modal-container.modal-white .modal-cross {right: 28px; top: 30px;}
+  #modal-container.modal-white .instrument-nav {right: 28px; bottom: 30px;}
   .instrument-card {margin: 30px 0; gap: 20px;}
   .instrument-name {font-size: 60px;}
   .instrument-discription {font-size: 18px; width: 92%;}
@@ -1245,8 +1334,6 @@ button:disabled{
     align-items: stretch;
     width: 44%;
     margin-left: auto;
-    margin-top: 40px;
-    margin-bottom: 0;
   }
   .instrument-arrow {max-width: 55px; aspect-ratio: auto;}
   
@@ -1267,7 +1354,8 @@ button:disabled{
   h4 {font-size: 34px;}
   
   button {font-size: 20px;}
-  button img[data-arrow="true"]
+  button img[data-arrow="true"],
+  button svg[data-arrow="true"]
   { width: 22px; height: 15px;}
   section {    
     gap: 30px;  
@@ -1281,6 +1369,7 @@ button:disabled{
   .bordered-list {gap: 20px;}
   .bordered-list.catalog-template > div {padding-top: 20px;}
   .bordered-list > div:last-child {padding-bottom: 20px;}
+  .faq-closing {padding-bottom: 20px;}
 
   .newspaper-style {
     margin-left: 36%;
@@ -1297,7 +1386,7 @@ button:disabled{
   header ul {
     flex-direction: row;
     margin-top: 0;
-    margin-right: calc((100vw - 787.84px)/2);
+    margin-right: calc((100vw - 799.84px)/2);
   }
   header ul li {white-space: nowrap;}
   .header-button {margin: 0; width: auto;} 
@@ -1368,7 +1457,7 @@ button:disabled{
   .about-numbers-grid {margin-top: 20px;}
   
 
-  #products p {max-width: 370px;}
+  .opacity-paragraph {max-width: 370px;}
 
   .catalog-template {flex: 1;}
   .catalog-template > div {gap: 20px;}
@@ -1410,7 +1499,7 @@ button:disabled{
   .catalog-button {
     overflow: hidden;
     text-align: start;    
-    width: 181.83px;
+    width: 191.83px;
 
     transition-property: width; 
     transition-duration: 0.4s;
@@ -1419,7 +1508,7 @@ button:disabled{
     transition-timing-function: linear;
   }
   .catalog-button:hover {
-    width: 236.83px;
+    width: 246.83px;
     cursor: pointer;
   }
   
@@ -1427,7 +1516,7 @@ button:disabled{
     content: url(assets/img/catalog-arrow.svg);
     margin-left: 20px;
     position: absolute;
-    left: 159.83px;
+    left: 169.83px;
   } 
 
   
@@ -1458,12 +1547,43 @@ button:disabled{
   .harmonic-beayty > div:nth-child(1)
   {bottom: -45px; margin-top: -45px;}
   .harmonic-beayty > div:nth-child(2){
-    width: 440px;
+    max-width: 370px;
     text-align: center;
   }
-  .harmonic-beayty button { width: auto;}
- 
+  .harmonic-beayty > div:nth-child(3){
+    align-items: center;    
+    text-align: center;
+  }
+  .harmonic-beayty button  {
+    overflow: hidden;
+    text-align: start;    
+    width: min-content;
+    width: 134.81px;
 
+    transition-property: width, transform; 
+    transition-duration: 0.4s;
+    transition-delay: 0.05s;
+    
+    transition-timing-function: linear;
+    transform: translateX(0);
+  }
+  .harmonic-beayty button:hover {
+    width: 189.81px;
+    cursor: pointer;
+    transform: translateX(0);
+  }
+  
+  .harmonic-beayty button::after {
+    content: url(assets/img/catalog-arrow.svg);
+    
+    position: absolute;
+    left: 132.81px;
+  } 
+  
+  .founder-overlay {
+    bottom: -190px;
+    left: -50px;
+  }
   #partners p {width: 389px;}
   #partners h4 {
     max-width: 800px;    
@@ -1636,6 +1756,7 @@ button:disabled{
   
   #modal-container {padding: 0 50px;}
   #modal-container.modal-white .modal-cross {right: 50px; top: 50px;}
+  #modal-container.modal-white .instrument-nav {right: 50px; bottom: 50px;}
   .instrument-card {     
     grid-template-columns: auto 1fr;
     grid-auto-rows: auto;
@@ -1659,8 +1780,7 @@ button:disabled{
     width: 41vw;
   }
   .instrument-name, .instrument-discription,
-  .instrument-card > div:nth-child(4), .features-list,
-  .instrument-nav {grid-column: 2/3;}
+  .instrument-card > div:nth-child(4), .features-list{grid-column: 2/3;}
   .photo-pagination {bottom: 30px; gap: 30px; height: 35px;}
   .photo-pagination button {width: 52px; height: 35px;}
   .photo-pagination ul {gap: 20px;}
@@ -1683,13 +1803,7 @@ button:disabled{
   }
   
   .marker {width: 20px;}
-  .instrument-nav {
-    gap: 20px;
-    margin: 0;
-    margin-left: auto;
-    margin-top: auto;
-    align-self: end;
-  }
+  .instrument-nav {gap: 20px;}
   .instrument-nav button {
     width: 253px;
     height: 44px;
