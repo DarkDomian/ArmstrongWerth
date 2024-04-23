@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    gsap.from('header', { duration: 3, opasity: 0, y: '-100%', ease: 'circ.out', deley: .5});
+    gsap.from('header', {duration: 3, opasity: 0, y: '-100%', ease: 'circ.out', deley: .5});
     gsap.from('.welcome-title-animation', {duration: 3, y: '60%', ease: 'circ.out', delay: .5});
     gsap.to('.welcome-title-animation-target', { duration: 2, y: 0, ease: 'sine.out', deley: .5});
     gsap.to('.welcome-photo-animation', {duration: 1.5, y: 0, opacity: 1, ease: 'circ.uot', delay: .5});
@@ -33,6 +33,21 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    const photoHolderHint = document.querySelectorAll('.photo-holder')[1];
+    console.log(photoHolderHint);
+    gsap.to(photoHolderHint, {
+        opacity: 1,
+        maxHeight: photoHolderHint.scrollHeight,
+        duration: 1.5,
+        scrollTrigger: {
+            trigger: '.catalog-template',
+            start: 'center center'
+        },
+        onComplete: () => {
+            photoHolderHint.classList.add('opened');
+        }
+    })
 
     gsap.to('.process-photo', {
         duration: 2.5,
@@ -306,98 +321,178 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     window.addEventListener('load', overlayFunction);
 
-    document.querySelector('.faq-button').addEventListener('click', () => {
-        const hiddenPlaceholders = document.querySelectorAll('.faq-placeholder[style*="display: none"]');
-        const tl = gsap.timeline();        
-
-        document.querySelector('.faq-closing').classList.remove('faq-closing');
-        
-        tl.to('.faq-button', { opacity: 0, duration: 0.5, display: 'none'});
-        tl.fromTo(hiddenPlaceholders, { opacity: 0, y: 100, display: 'none'}, {opacity: 1, y: 0, display: 'flex', duration: 0.5, stagger: 0.4,}, "<");
-    });
-    
-    const factsContainer = document.querySelector('.bio-facts');
-    const dates = document.querySelectorAll('.timeline-date');
-    const facts = document.querySelectorAll('.timeline-fact');
-    let maxHeight = 0;
-    dates.forEach((date, index) => {
-        if (facts[index].offsetHeight > maxHeight) {
-            maxHeight = facts[index].offsetHeight;
-        }
-        factsContainer.style.height = `${maxHeight}px`;
-
-        date.addEventListener('click', () => {
-            const previousFact = document.querySelector('.timeline-fact[data-activity="activ"]');
-            const previousDate = document.querySelector('.timeline-date[data-activity="activ"]');
-
-            if (previousDate == date) {
-                return;
-            } else {
-                dates.forEach(date => date.setAttribute('data-activity', ''));
-                date.setAttribute('data-activity', 'activ');
-    
-                facts[index].setAttribute('data-activity', 'activ')
-                gsap.timeline()
-                    .fromTo(previousFact,
-                        {opacity: 1},
-                        {   opacity: 0,
-                            duration: 0.5,
-                            onComplete: () => {previousFact.setAttribute('data-activity', '');}
-                        })
-                    .fromTo(facts[index],
-                        {opacity: 0},
-                        {   opacity: 1,
-                            duration: 0.5
-                        }, 0);
-            }
-        });
-    });
-    const placeholders = document.querySelectorAll('.faq-placeholder');
-    placeholders.forEach(placeholder => {
-        const answer = placeholder.querySelector('.answer');
-        const cross = placeholder.querySelector('.cross');
-
-        // answer.style.display = 'none';
-        answer.style.maxHeight = '0';
-
-        cross.addEventListener('click', () => {
-            const openedPlaceholder = document.querySelector('.faq-placeholder.opened');
-            if (openedPlaceholder && openedPlaceholder !== placeholder) {
-                const openedAnswer = openedPlaceholder.querySelector('.answer');
-                const openedCross = openedPlaceholder.querySelector('.cross');
-
-                const tlClose = gsap.timeline();
-                tlClose.to(openedAnswer, { opacity: 0, maxHeight: 0, duration: 1});
-                tlClose.to(openedCross, {rotation: 0, duration: 1}, "<");
-
-                openedPlaceholder.classList.remove('opened');
-            }
-            
-            if (answer.style.maxHeight === '0px') {
-                const tl = gsap.timeline();
-                tl.to(answer, { opacity: 1, maxHeight: answer.scrollHeight, duration: 1});
-                tl.to(cross, {rotation: 45, duration: 1}, "<");
-
-                placeholder.classList.add('opened');
-            } else {
-                const tl = gsap.timeline();
-                tl.to(answer, { opacity: 0, maxHeight: 0, duration: 1});
-                tl.to(cross, {rotation: 0, duration: 1}, "<");
-
-                placeholder.classList.remove('opened');  
-            }
-        });
-    });
-    
-
-      
-
-    
-
-
-
 });
 
+if (window.innerWidth < 1025) {
+    const menu = document.querySelector('.header-toggle');
+    const peaceOfMenu = document.querySelector('nav');
+    const clickableElements = [
+        document.querySelector('.header-logo'),
+        ...document.querySelectorAll('.menu-target-link'),
+        document.querySelector('.header-button')
+    ];
+    
+    menu.addEventListener('click', toggleMenu);
+    
+    function toggleMenu() {
+        if (window.getComputedStyle(peaceOfMenu).display === 'flex') {
+    
+            document.querySelector('body').style.overflowY = 'auto';
+            peaceOfMenu.style.display = 'none';
+        } else {
+    
+            document.querySelector('body').style.overflowY = 'hidden';
+            peaceOfMenu.style.display = 'flex';
+        }
+    }
+    
+    clickableElements.forEach(element => {
+        element.addEventListener('click', () => {
+            if (window.getComputedStyle(peaceOfMenu).display === 'flex') {
+                toggleMenu();
+            }
+        });
+    });
+}
+
+
+document.querySelector('.faq-button').addEventListener('click', () => {
+    const hiddenPlaceholders = document.querySelectorAll('.faq-placeholder[style*="display: none"]');
+    const tl = gsap.timeline();        
+
+    document.querySelector('.faq-closing').classList.remove('faq-closing');
+    
+    tl.to('.faq-button', { opacity: 0, duration: 0.5, display: 'none'});
+    tl.fromTo(hiddenPlaceholders, { opacity: 0, y: 100, display: 'none'}, {opacity: 1, y: 0, display: 'flex', duration: 0.5, stagger: 0.4,}, "<");
+});
+
+const factsContainer = document.querySelector('.bio-facts');
+const dates = document.querySelectorAll('.timeline-date');
+const facts = document.querySelectorAll('.timeline-fact');
+let maxHeight = 0;
+dates.forEach((date, index) => {
+    if (facts[index].offsetHeight > maxHeight) {
+        maxHeight = facts[index].offsetHeight;
+    }
+    factsContainer.style.height = `${maxHeight}px`;
+
+    date.addEventListener('click', () => {
+        if (isAnimating) {
+            gsap.delayedCall(0, () => {
+                chronologyAnimation(date, index);
+            });
+        } else {
+            chronologyAnimation(date, index);
+        }
+    });
+});
+
+let isAnimating = false;
+
+function chronologyAnimation(date, index) {
+    const previousFact = document.querySelector('.timeline-fact[data-activity="activ"]');
+    const previousDate = document.querySelector('.timeline-date[data-activity="activ"]');
+
+    if (previousDate == date) {
+        return;
+    } else {
+
+        if (previousDate === date) {
+            return;
+        }
+
+        isAnimating = true;
+        dates.forEach(date => date.setAttribute('data-activity', ''));
+        date.setAttribute('data-activity', 'activ');
+
+        facts[index].setAttribute('data-activity', 'activ')
+        gsap.killTweensOf(previousFact);                
+        gsap.timeline()
+            .fromTo(previousFact,
+                {opacity: 1},
+                {   opacity: 0,
+                    duration: 0.5,
+                    onComplete: () => {previousFact.setAttribute('data-activity', '');}
+                })
+            .fromTo(facts[index],
+                {opacity: 0},
+                {   opacity: 1,
+                    duration: 0.5
+                }, 0)
+            .call(() => {
+                    isAnimating = false;
+                });
+    }
+}
+
+const cardNames = document.querySelectorAll('.catalog-name')
+const photoHolders = document.querySelectorAll('.photo-holder');
+photoHolders.forEach(holder => holder.style.maxHeight = 0);
+cardNames.forEach(name => {
+    name.addEventListener('click', (event) => {
+        const onclick = event.target.getAttribute('data-onclick');
+        if (window.innerWidth < 1025) {
+            const selectedPhotoHolder = event.target.closest('.catalog-card').querySelector('.photo-holder');
+            const openedPhotoHolder = document.querySelector('.photo-holder.opened');
+
+            if (openedPhotoHolder && openedPhotoHolder !== selectedPhotoHolder) {
+                gsap.to(openedPhotoHolder, { opacity: 0, maxHeight: 0, duration: 1});
+
+                openedPhotoHolder.classList.remove('opened');
+            }
+            
+            if (selectedPhotoHolder.style.maxHeight === '0px') {              
+                gsap.to(selectedPhotoHolder, { opacity: 1, maxHeight: selectedPhotoHolder.scrollHeight, duration: 1});             
+
+                selectedPhotoHolder.classList.add('opened');
+            } else {
+                gsap.to(selectedPhotoHolder, { opacity: 0, maxHeight: 0, duration: 1});
+
+                selectedPhotoHolder.classList.remove('opened');  
+            }
+        } else {
+            console.log('it was click from dexctop on', onclick);
+            openModal(onclick);
+        }
+    })
+})
+
+const placeholders = document.querySelectorAll('.faq-placeholder');
+placeholders.forEach(placeholder => {
+    const answer = placeholder.querySelector('.answer');
+    const cross = placeholder.querySelector('.cross');
+
+    // answer.style.display = 'none';
+    answer.style.maxHeight = '0';
+
+    cross.addEventListener('click', () => {
+        const openedPlaceholder = document.querySelector('.faq-placeholder.opened');
+        if (openedPlaceholder && openedPlaceholder !== placeholder) {
+            const openedAnswer = openedPlaceholder.querySelector('.answer');
+            const openedCross = openedPlaceholder.querySelector('.cross');
+
+            const tlClose = gsap.timeline();
+            tlClose.to(openedAnswer, { opacity: 0, maxHeight: 0, duration: 1});
+            tlClose.to(openedCross, {rotation: 0, duration: 1}, "<");
+
+            openedPlaceholder.classList.remove('opened');
+        }
+        
+        if (answer.style.maxHeight === '0px') {
+            const tl = gsap.timeline();
+            tl.to(answer, { opacity: 1, maxHeight: answer.scrollHeight, duration: 1});
+            tl.to(cross, {rotation: 45, duration: 1}, "<");
+
+            placeholder.classList.add('opened');
+        } else {
+            const tl = gsap.timeline();
+            tl.to(answer, { opacity: 0, maxHeight: 0, duration: 1});
+            tl.to(cross, {rotation: 0, duration: 1}, "<");
+
+            placeholder.classList.remove('opened');  
+        }
+    });
+});
 
 
 function openModal(contentType) {
@@ -426,7 +521,9 @@ function openModal(contentType) {
         
         modalContainer.classList.replace('modal-black', 'modal-white');
         modalContainer.style.display = 'flex';
-        modalContent.style.display = 'grid';       
+        if (window.innerWidth <= 1024) {
+            modalContent.style.display = 'flex';
+        } else {modalContent.style.display = 'grid';}     
     }
 
     const instrumentCards = document.querySelectorAll('.instrument-card');
@@ -501,13 +598,10 @@ document.querySelectorAll('.instrument-card').forEach(card => {
 
     const paginatorList = document.createElement('ul');
 
-    console.log(images);
-    console.log(paginatorLeft);
-    console.log(paginatorRight);
-
     // creating list of images and give any items click-listener
     images.forEach((image, index) => {
         const listItem = document.createElement('li');
+        listItem.classList.add('paginator-index'); 
         listItem.textContent = index + 1;
         listItem.addEventListener('click', () => {
             currentImageIndex = index;
@@ -528,12 +622,7 @@ document.querySelectorAll('.instrument-card').forEach(card => {
             }
         });
     }
-    if (!isInitialized) {
-        changeImage(currentImageIndex);
-        updatePaginator();
-        isInitialized = true;
-    }
-
+    
     function updatePaginator() {
         const listItems = paginatorList.querySelectorAll('li');
         listItems.forEach((item, index) => {
@@ -542,14 +631,17 @@ document.querySelectorAll('.instrument-card').forEach(card => {
             } else {
                 item.classList.replace('active-paginator-index', 'paginator-index');
             }
-            
         });
-
+        
         paginatorLeft.disabled = currentImageIndex === 0;
         paginatorRight.disabled = currentImageIndex === images.length - 1;
     }
-
-    updatePaginator();
+    
+    if (!isInitialized) {
+        changeImage(currentImageIndex);
+        updatePaginator();
+        isInitialized = true;
+    }
 
     function prevImage() {
         if (currentImageIndex > 0) {
@@ -595,9 +687,79 @@ document.querySelectorAll('.instrument-card').forEach(card => {
     // }    
 });
 
+const mainPhotoElement = document.querySelector('.catalog-main-photo img');
+
+const catalogCards = document.querySelectorAll('.catalog-card');
+
+const imagePaths = [
+    'assets/img/instruments/regal/regal_1.jpg',
+    'assets/img/instruments/imperial/imperial_1.jpg',
+    'assets/img/instruments/pan/pan_1.jpg',
+    'assets/img/instruments/rocket/rocket_2.jpg',
+    'assets/img/instruments/horn/eh_1.jpg'
+];
+function changeMainPhoto(index) {    
+    if (index >= 0 && index < imagePaths.length) {
+        gsap.killTweensOf(mainPhotoElement);
+        gsap.to(mainPhotoElement, {
+            duration: 0.5,
+            opacity: 0,
+            onComplete: () => {
+                mainPhotoElement.src = imagePaths[index];
+                gsap.to(mainPhotoElement, { duration: 0.5, opacity: 1 });
+            }
+        });
+    }
+}
 
 
+catalogCards.forEach((card, index) => {
+    const button = card.querySelector('.catalog-button');
 
+    card.addEventListener('mouseenter', () => {
+        
+        button.classList.add('hovered');
+
+        switch (index) {
+            case 0:
+                changeMainPhoto(0)
+                // mainPhotoElement.src = 'assets/img/instruments/regal/regal_1.jpg';
+                break;
+            case 1:
+                changeMainPhoto(1)
+                // mainPhotoElement.src = 'assets/img/instruments/imperial/imperial_1.jpg';
+                break;
+            case 2:
+                changeMainPhoto(2)
+                // mainPhotoElement.src = 'assets/img/instruments/pan/pan_1.jpg';
+                break;
+            case 3:
+                changeMainPhoto(3)
+                // mainPhotoElement.src = 'assets/img/instruments/rocket/rocket_2.jpg';
+                break;
+            case 4:
+                changeMainPhoto(4)
+                // mainPhotoElement.src = 'assets/img/instruments/horn/eh_1.jpg';
+                break;
+
+            default:
+                break;
+        }
+    });
+
+    card.addEventListener('mouseleave', () => {
+        button.classList.remove('hovered');
+    });   
+});
+
+let currentIndex = 0;
+
+setInterval(() => {
+    if ([...document.querySelectorAll('.catalog-button')].every(button => !button.classList.contains('hovered'))) {
+        changeMainPhoto(currentIndex);
+        currentIndex = (currentIndex + 1) % imagePaths.length;
+    }
+}, 4000);
 
 const inputFields = document.querySelectorAll('input[type="username"], input[type="email"], input[type="tel"]');
 function handleFocus(event) {
