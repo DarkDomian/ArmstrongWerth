@@ -33,6 +33,7 @@ body {
   font-size: 12px;
   line-height: 120%;
 
+  cursor: default;
   overflow-x: hidden;
   border-color: var(--dr-gray);
 }
@@ -167,7 +168,11 @@ svg[data-arrow="true"][ alt="right arrow"] {transform:translate(-50%, -50%) rota
   gap: 20px;
 }
 .catalog-template img {
-  padding: 5px 0;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  position: absolute;
+  
 }
 .catalog-template .catalog-numbers {font-size: 8px;}
 .catalog-template .catalog-name {
@@ -176,6 +181,17 @@ svg[data-arrow="true"][ alt="right arrow"] {transform:translate(-50%, -50%) rota
   font-style: normal;
   font-weight: 400;
   line-height: 100%;
+
+  cursor: pointer;
+}
+.photo-holder {
+  padding: 5px 0;
+
+  width: 100%;
+  height: auto;
+  aspect-ratio: 6/7;
+  overflow: hidden;
+  position: relative;
 }
 
 .catalog-main-photo {display: none;}
@@ -864,9 +880,10 @@ footer {
   height: 100%;
   padding: 0 10px;
 
-  overflow: auto;
+  overflow-y: auto;
   background-color: var(--bg-white);
 }
+/* #modal-container > div {height: 100%;} */
 #modal-container.modal-black {
   background-color: var(--bg-black);
   color: var(--white);
@@ -876,6 +893,7 @@ footer {
   position: absolute;
   right: 10px;
   top: 20px;
+  z-index: 1;
   transform: rotate(45deg);
 
   height: 24px;
@@ -904,8 +922,11 @@ footer {
 #modal-container.modal-black .instrument-nav {display: none;}
 #modal-container.modal-white .instrument-nav {
   position: absolute;
-  right: 10px;
+  right: 0;
   bottom: 20px;
+
+  width: 100%;
+  height: 36px;
 
   display: flex;
   gap: 10px;
@@ -924,9 +945,8 @@ button:disabled{
 /* .button:disabled img path {fill: var(--black-tr); stroke: var(--black-tr);} */
 .instrument-arrow {
   position: relative;
-  max-width: 39px;
-  height: auto;
-  aspect-ratio: 1/1;
+  width: 36px;
+  height: 36px;
   padding: 0;  
 }
 /* .instrument-arrow img path {fill: var(--dr-gray); stroke: var(--dr-gray);} */
@@ -944,6 +964,8 @@ button:disabled{
   display: none; /* swithc into flex */
   flex-direction: column;
   gap: 10px;
+
+  padding-bottom: 66px;
 }
 .instrument-name {
   order: -3;
@@ -958,12 +980,14 @@ button:disabled{
   order: -1;
   width: 100%;
   height: auto; 
+  aspect-ratio: 6/7;
   overflow: hidden; 
   position: relative;
   
   margin: 10px 0;
 }
 .instrument-photos img {
+  position: absolute;
   width: 100%; 
   height: 100%; 
   object-fit: cover;
@@ -1122,7 +1146,6 @@ button:disabled{
   .about-numbers-grid {margin-top: 20px;}
   
   .catalog-template > div {gap: 20px;}
-  .catalog-template img {padding: 0;}
 
   .catalog-template > div {
     display: grid;
@@ -1136,6 +1159,8 @@ button:disabled{
   {order: 3; grid-column: span 2;}
   .catalog-template > div > div:nth-child(3) 
   {order: 2;}
+
+  .photo-holder {max-height: 0px; padding: 0;}
 
   .catalog-template .catalog-numbers {font-size: 14px;}
   .catalog-template .catalog-name {font-size: 60px;}
@@ -1307,8 +1332,12 @@ button:disabled{
   
   #modal-container {padding: 0 20px;}
   #modal-container.modal-white .modal-cross {right: 28px; top: 30px;}
-  #modal-container.modal-white .instrument-nav {right: 28px; bottom: 30px;}
-  .instrument-card {margin: 30px 0; gap: 20px;}
+  #modal-container.modal-white .instrument-nav {width: 40%; height: 44px; bottom: 30px;}
+  .instrument-card {
+    margin: 30px 0;
+    gap: 20px;
+    padding-bottom: 116px;
+  }
   .instrument-name {font-size: 60px;}
   .instrument-discription {font-size: 18px; width: 92%;}
   .instrument-photos {margin: 10px 0 20px 0;}
@@ -1335,7 +1364,7 @@ button:disabled{
     width: 44%;
     margin-left: auto;
   }
-  .instrument-arrow {max-width: 55px; aspect-ratio: auto;}
+  .instrument-arrow {width: 50px; height: 44px;}
   
   #data-sent {padding: 29px 19px 27px 36px;}
   #data-sent img {height: 14vw;}
@@ -1471,6 +1500,7 @@ button:disabled{
   }
   .catalog-template > div > div:nth-child(1) 
   {order: 1;}
+  .photo-holder {max-height: 0px; padding: 0;}
   .catalog-template > div > div:nth-child(2) 
   {order: 3; grid-column: span 2;}
   .catalog-template > div > div:nth-child(3) 
@@ -1507,7 +1537,8 @@ button:disabled{
     
     transition-timing-function: linear;
   }
-  .catalog-button:hover {
+  .catalog-button:hover,
+  .catalog-button.hovered {
     width: 246.83px;
     cursor: pointer;
   }
@@ -1756,13 +1787,13 @@ button:disabled{
   
   #modal-container {padding: 0 50px;}
   #modal-container.modal-white .modal-cross {right: 50px; top: 50px;}
-  #modal-container.modal-white .instrument-nav {right: 50px; bottom: 50px;}
+  #modal-container.modal-white .instrument-nav {bottom: 50px; height: 44px; width: 30%;}
   .instrument-card {     
     grid-template-columns: auto 1fr;
-    grid-auto-rows: auto;
-    align-content: start;
+    grid-template-rows: auto auto auto 1fr 44px;
+    /* align-content: start; */
     
-    height: 900px;
+    height: auto;
     padding: 50px 0;
     margin: 0;
     row-gap: 30px;
@@ -1776,6 +1807,7 @@ button:disabled{
     grid-column: 1/2;
     grid-row: 1/6;
     margin: 0;
+    aspect-ratio: auto;
 
     width: 41vw;
   }
@@ -1803,13 +1835,14 @@ button:disabled{
   }
   
   .marker {width: 20px;}
-  .instrument-nav {gap: 20px;}
-  .instrument-nav button {
-    width: 253px;
+  .instrument-nav {
+    gap: 20px;
     height: 44px;
-    padding: 0 25px;   
   }
-  .instrument-arrow {max-width: 55px; aspect-ratio: auto;}
+  .instrument-nav button {
+    padding: 0 25px;
+  }
+  .instrument-arrow {width: 50px; height: 44px;}
   
   #data-sent {padding: 60px 50px;}
   #data-sent img {height:180px;}
@@ -1835,6 +1868,11 @@ button:disabled{
     }
     .welcome-cta {
       margin-left: max(61.25vw - 880px, 50px);
+    }
+
+    .instrument-card {
+      height: 100vh;
+      grid-template-rows: auto auto auto 1fr;
     }
     
   }
