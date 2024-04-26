@@ -57,7 +57,7 @@
             <div>
                 <p class="welcome-p-animation">Experience the beauty of music with our exceptional collection of oboes</p>
             </div>
-            <div><button onclick="openModal('feedbackForm')" class="welcome-button-animation">Explore Now</button></div>
+            <div><button onclick="openModal('feedbackForm')" class="welcome-button-animation">contact us</button></div>
         </div>
     </section>
     
@@ -498,7 +498,7 @@
             
             <div class="catalog-template-big">
                 <div class="catalog-main-photo">
-                    <img src="assets/img/lorem-ipsum.jpeg" alt="">
+                    <div><img src="assets/img/lorem-ipsum.jpeg" alt=""></div>
                 </div>
                 <div class="bordered-list catalog-template">
                     <div class="catalog-card">
@@ -506,7 +506,9 @@
                             <div class="catalog-numbers">01/</div>
                             <div class="catalog-name" data-onclick="regal-oboe">Regal Oboe</div>
                         </div>
-                        <div class="photo-holder"><img src="assets/img/instruments/regal/regal_1.jpg" alt="regal oboe image"></div>
+                        <div  class="photo-holder">
+                            <div><img src="assets/img/instruments/regal/regal_1.jpg" alt="regal oboe image"></div>
+                        </div>
                         <div><button onclick="openModal('regal-oboe')" class="catalog-button">learn more</button></div>
                         <!-- <img class="right-arrows" src="assets/img/arrow.svg" alt="->" data-arrow="true"> -->
                     </div>
@@ -627,14 +629,14 @@
                     Your musical journey starts with a click.
                 </p>
             </div>
-            <div class="founder-overlay">
+            <!-- <div class="founder-overlay">
                 <svg class="founder-overlay-svg" xmlns="http://www.w3.org/2000/svg"  width="100%" height="100%" >
                     <path></path>
                     
-                    <!-- <rect x="0" y="100" width="100%" height="10" fill="red"/> -->
-                    <!-- <path d="M 0 850 H100% V 950 H0 Z" fill="red"/> -->
+                    <rect x="0" y="100" width="100%" height="10" fill="red"/>
+                    <path d="M 0 850 H100% V 950 H0 Z" fill="red"/>
                 </svg>
-            </div>
+            </div> -->
             <div class="retailers">
                 <div class="retailers-card">
                     <div class="retailers-image"><img src="way/to/retailers/img" alt="zasmusuc"></div>
@@ -643,7 +645,7 @@
                             <div class="retailers-name">name</div>
                             <div class="retailers-country">country</div>
                         </div>
-                        <button><img class="right-arrows" src="assets/img/arrow.svg" alt="->" data-arrow="true"></button>
+                        <button onclick="redirectToLink(0)"><img class="right-arrows" src="assets/img/arrow.svg" alt="->" data-arrow="true"></button>
                     </div>
                 </div>                
                 <div class="retailers-card">
@@ -653,7 +655,7 @@
                             <div class="retailers-name">name</div>
                             <div class="retailers-country">country</div>
                         </div>
-                        <button><img class="right-arrows" src="assets/img/arrow.svg" alt="->" data-arrow="true"></button>
+                        <button onclick="redirectToLink(1)"><img class="right-arrows" src="assets/img/arrow.svg" alt="->" data-arrow="true"></button>
                     </div>
                 </div>                
                 <div class="retailers-card">
@@ -663,7 +665,7 @@
                             <div class="retailers-name">name</div>
                             <div class="retailers-country">country</div>
                         </div>
-                        <button><img class="right-arrows" src="assets/img/arrow.svg" alt="->" data-arrow="true"></button>
+                        <button onclick="redirectToLink(2)"><img class="right-arrows" src="assets/img/arrow.svg" alt="->" data-arrow="true"></button>
                     </div>
                 </div>                
                 <div class="retailers-card">
@@ -673,7 +675,7 @@
                             <div class="retailers-name">name</div>
                             <div class="retailers-country">country</div>
                         </div>
-                        <button><img class="right-arrows" src="assets/img/arrow.svg" alt="->" data-arrow="true"></button>
+                        <button onclick="redirectToLink(3)"><img class="right-arrows" src="assets/img/arrow.svg" alt="->" data-arrow="true"></button>
                     </div>
                 </div>                
                 <div class="retailers-card">
@@ -683,7 +685,7 @@
                             <div class="retailers-name">name</div>
                             <div class="retailers-country">country</div>
                         </div>
-                        <button><img class="right-arrows" src="assets/img/arrow.svg" alt="->" data-arrow="true"></button>
+                        <button onclick="redirectToLink(4)"><img class="right-arrows" src="assets/img/arrow.svg" alt="->" data-arrow="true"></button>
                     </div>
                 </div>                
             </div>
@@ -998,7 +1000,7 @@
                     <input type="username" id="username" name="username" value="NAME">                 
                     <input type="email" id="email" name="email" value="E-MAIL">               
                     <input type="tel" id="tel" name="tel" value="TELEPHONE">               
-                    <input type="submit" value="LEARN MORE">
+                    <input type="submit" value="SUBMIT">
                     <div class="checkbox">
                         <input type="checkbox" id="consentCheckbox" name="consentCheckbox">
                         <label for="consentCheckbox"><a href="">I agree with the privacy policy</a></label>
@@ -1025,17 +1027,17 @@
             <dl id="contacts">
                 <div>
                     <td>E-mail</td>
-                    <dd>Example@aytlook.com</dd>
+                    <dd><a href="mailto:example@autlook.com">example@autlook.com</a></dd>
                 </div>
                 <div>
                     <td>Tel</td>
-                    <dd>+123 45 67-89-10</dd>
+                    <dd><a href="tel:+12345678910">+123 45 67-89-10</a></dd>
                 </div>
                 <div>
                     <td>Community</td>
                     <div class="social-media">
-                        <dd>Instagramm</dd>
-                        <dd>Facebook</dd>
+                        <dd><a href="">Instagramm</a></dd>
+                        <dd><a href="">Facebook</a></dd>
                     </div>
                 </div>
             </dl>
