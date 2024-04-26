@@ -829,10 +829,11 @@ window.addEventListener('load', () =>{
             if (currentScroll < lastScrollPosition && !scrollingUp) {
                 if (handleScroll.clicked) {
                     handleScroll(false);
+                    scrollingUp = currentScroll > lastScrollPosition;
                 } else {
                     handleScroll(true);
+                    scrollingUp = true;
                 }
-                scrollingUp = true;       
 
             } else if (currentScroll > lastScrollPosition && scrollingUp) {
                 handleScroll(false);
