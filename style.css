@@ -37,6 +37,7 @@ body {
   overflow-x: hidden;
   border-color: var(--dr-gray);
 }
+
 main {z-index: 1;}
 
 /* maijer distanse between sactions */
@@ -160,8 +161,10 @@ svg[data-arrow="true"][ alt="right arrow"] {transform:translate(-50%, -50%) rota
 .catalog-template > div{
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 5px;
+  transition: gap 0.8s ease;
 }
+.catalog-card.opened {gap: 15px;}
 .catalog-template > div div:first-child {
   display: flex;
   flex-direction: row;
@@ -185,7 +188,7 @@ svg[data-arrow="true"][ alt="right arrow"] {transform:translate(-50%, -50%) rota
   cursor: pointer;
 }
 .photo-holder {
-  padding: 5px 0;
+  /* display: none; */
 
   width: 100%;
   height: auto;
@@ -193,7 +196,7 @@ svg[data-arrow="true"][ alt="right arrow"] {transform:translate(-50%, -50%) rota
   overflow: hidden;
   position: relative;
 }
-
+/* .photo-holder.opened {display: block;} */
 .catalog-main-photo {display: none;}
 
 /* FAQ tamplates - dependency, location */
@@ -206,10 +209,10 @@ svg[data-arrow="true"][ alt="right arrow"] {transform:translate(-50%, -50%) rota
   flex-direction: column;
   margin-right: auto;
   
-  width: 91%; /* was 78.75vw */
-
-  gap: 10px;
+  width: 91%;
 }
+.faq-placeholder > div:first-child{gap: 0px; transition: gap 0.6s ease;}
+.faq-placeholder.opened > div:first-child{gap: 10px;}
 .faq-template > div div:first-child dt {
   font-family: "Playfair Display";
   font-size: 18px;
@@ -247,7 +250,7 @@ header > div {
   justify-content: space-between;
   align-items: center;
 
-  padding-top: 10px;
+  /* padding-top: 10px; */
 }
 .header-logo {
   height: 40px;
@@ -264,7 +267,7 @@ header nav {
   display: none;
   flex-direction: column;
   justify-content: space-between;
-  height: calc(100vh - 50px);
+  height: calc(100vh - 40px);
   align-items: center;
 }
 header ul {
@@ -413,6 +416,7 @@ header a {color: var(--white);}
   aspect-ratio: 1/1;
   overflow: hidden;
   
+  will-change: transform, scale;
   transform: translateY(280px);
   scale: 0.8;
 }
@@ -422,6 +426,9 @@ header a {color: var(--white);}
   width: 100%;
   height: 100%;
   transform: rotate(15deg)  scale(1.3);
+
+  will-change: transform;
+  /* transform-origin: bottom center; */
 }
 .process-photo::after {
   content: "";
@@ -520,7 +527,7 @@ header a {color: var(--white);}
   flex-direction: column;
   justify-content: center;
   
-
+  margin-top: 0;
   gap: 50px;
 }
 /* first section with many text */
@@ -533,7 +540,7 @@ header a {color: var(--white);}
 }
 #founder .founder-title {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   
   bottom: -35px;
   margin-top: -35px;
@@ -543,11 +550,37 @@ header a {color: var(--white);}
   width: 50vw;
   aspect-ratio: 0.8/1;
   overflow: hidden;
+  position: relative;
+
 }
+#founder .founder-photo-rectangle::before {
+  content: "";
+  z-index: 1;
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  width: calc(100% + 10px);
+  height: 100px;
+  background: linear-gradient(to bottom, rgba(12, 12, 14, 1), rgba(12, 12, 14, 0));
+}
+#founder .founder-photo-rectangle::after {
+  content: "";
+  z-index: 1;
+  position: absolute;
+  bottom: -5px;
+  left: -5px;
+  width: calc(100% + 10px);
+  height: 100px;
+  background: linear-gradient(to top, rgba(12, 12, 14, 1), rgba(12, 12, 14, 0));  
+}
+
+
 #founder .founder-photo-rectangle img{
   width: 100%;
   height: 100%;
   object-fit: cover;
+  will-change: transform;
+  transform-origin: top center;
 }
 #founder h4 {
   color: var(--white);
@@ -865,6 +898,17 @@ footer {
   font-size: 16px;
   color: var(--dr-gray);
 }
+#contacts a {
+  text-decoration: none;
+  transition: color 0.3s ease;
+  color: inherit;
+}
+#contacts a:hover {
+  color: var(--gold);
+}
+#contacts a:active {
+  color: var(--gold); 
+}
 
 /* modal container and its contants */
 #modal-container {
@@ -1082,8 +1126,12 @@ button:disabled{
 }
 .underfooter a {
   color: var(--black-tr);
+  transition: color 0.3s ease;
   text-transform: lowercase;
   font-size: 9px;
+}
+.underfooter a:hover {
+  color: var(--gray);
 }
 
 /* animation */
@@ -1124,7 +1172,7 @@ button:disabled{
   }
 
   header {padding: 0 20px;}
-  header nav {height: calc(100vh - 86px);}
+  header nav {height: calc(100vh - 76px);} /* here was - 86px, but we delete padding at header */
   .header-button {width: 55%;}
   .header-logo {height: 76px;}
   .header-toggle {width: 30px;}
@@ -1145,14 +1193,17 @@ button:disabled{
   .about-numbers div:last-child {width: 100px;}
   .about-numbers-grid {margin-top: 20px;}
   
-  .catalog-template > div {gap: 20px;}
+  .catalog-template > div {gap: 10px;}
+  .catalog-card.opened {gap: 20px;}
 
   .catalog-template > div {
     display: grid;
     grid-template-columns: 1fr auto;
-    gap: 20px;    
+    row-gap: 0;
+    transition: gap 0.8s ease;
     align-items: center;
   }
+  .catalog-card.opened {row-gap: 20px;}
   .catalog-template > div > div:nth-child(1) 
   {order: 1;}
   .catalog-template > div > div:nth-child(2) 
@@ -1160,7 +1211,7 @@ button:disabled{
   .catalog-template > div > div:nth-child(3) 
   {order: 2;}
 
-  .photo-holder {max-height: 0px; padding: 0;}
+  .photo-holder {max-height: 0px; padding: 0; margin: 0;}
 
   .catalog-template .catalog-numbers {font-size: 14px;}
   .catalog-template .catalog-name {font-size: 60px;}
@@ -1237,8 +1288,9 @@ button:disabled{
   .section-faq {gap: 30px;}
   .section-faq  p
   {font-size: 18px; margin-right: 22.8%;}
+  .faq-placeholder.opened > div:first-child {gap: 20px;}
   .faq-template > div div:first-child 
-  {gap: 20px; width: 88.2%;}
+  {width: 88.2%;}
   .faq-template > div div:first-child dt {font-size: 30px;}
 
   .feedback-section {gap: 20px;}
@@ -1407,7 +1459,7 @@ button:disabled{
   header {padding: 0 50px; flex-direction: row; justify-content: space-between;}
   header a {font-size: 15px;}
   header nav {
-    padding-top: 10px;
+    /* padding-top: 10px; */
     display: flex;
     flex-direction: row;
     height: auto;
@@ -1489,18 +1541,18 @@ button:disabled{
   .opacity-paragraph {max-width: 370px;}
 
   .catalog-template {flex: 1;}
-  .catalog-template > div {gap: 20px;}
+  .catalog-card.opened {gap: 20px;}
   .catalog-template img {display: none;}
 
   .catalog-template > div {
     display: grid;
     grid-template-columns: 1fr auto;
-    gap: 20px;    
+    gap: 0;    
     align-items: center;
   }
   .catalog-template > div > div:nth-child(1) 
   {order: 1;}
-  .photo-holder {max-height: 0px; padding: 0;}
+  .photo-holder {max-height: 0px; padding: 0; margin: 0;}
   .catalog-template > div > div:nth-child(2) 
   {order: 3; grid-column: span 2;}
   .catalog-template > div > div:nth-child(3) 
@@ -1514,12 +1566,17 @@ button:disabled{
     flex: 0 0 36%;
     display: block;
     padding-right: calc(9.375vw - 80px);
-    align-items: start;    
+  }
+  .catalog-main-photo > div {
+    position: relative;
     overflow: hidden;
+    width: 100%;
+    height: 100%;
   }
   .catalog-main-photo img {
     width: 100%;
     height: 100%;
+    position: absolute;
     object-fit: cover;
   }
   
@@ -1636,7 +1693,7 @@ button:disabled{
   #founder {gap: 180px;}
   #founder .founder-bio {gap: 20px;}
   #founder .founder-title
-  { bottom: -70px; margin-top: -50px;}
+  { bottom: -55px; margin-top: -35px;}
   #founder .founder-photo-rectangle {width: 450px;}
   #founder .founder-bio h4 {max-width: 1185px;}
   #founder .founder-bio-text
@@ -1685,15 +1742,16 @@ button:disabled{
   .section-faq {gap: 30px; margin-left: 26%;}
   .section-faq  p
   {max-width: 370px;}
+  .faq-placeholder.opened > div:first-child {gap: 30px;}
   .faq-template > div div:first-child 
-  {gap: 20px; width: 88.2%;}
+  {width: 88.2%;}
   .faq-template > div div:first-child dt {font-size: 30px;}
 
   .feedback-section {gap: 40px;}  
   .feedback-text p {margin-left: 36%; max-width: 570px; margin-right: auto;}
   .feedback-form {margin-left: 36%; max-width: 570px; margin-right: auto;}
 
-  .feedback-form > input[type="submit"] {margin-top: 15px;}
+  .feedback-form > input[type="submit"] {margin-top: 15px; height: 44px;}
   .feedback-form > input 
   {margin-top: 10px; padding-bottom: 12px; padding-top: 0;}
 
