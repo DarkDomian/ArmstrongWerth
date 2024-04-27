@@ -3,6 +3,7 @@ gsap.registerPlugin(ScrollToPlugin);
 
 
 const headerMenu = document.querySelector('header');
+let isScrolling = false;
 document.addEventListener('DOMContentLoaded', () => {
 
     window.addEventListener('load', () => {
@@ -129,181 +130,70 @@ document.addEventListener('DOMContentLoaded', () => {
             trigger: '.about-desctop',
             strart: 'bottom 90%'
         }      
-    })    
-
-    function overlayFunction() {
-        const overlayMainSvg = document.querySelector('.main-overlay-svg');
-        const overlayFounderSvg = document.querySelector('.founder-overlay-svg');
-
-        const overlayMainObject = document.querySelector('.main-overlay');  
-        const overlayFounderObject = document.querySelector('.founder-overlay');
-        overlayMainObject.style.display = "none";
-        // overlayFounderObject.style.display = "none";
-
-        const VW = window.innerWidth;
-        const VH = window.innerHeight;
-
-        const halfScreen = (0.5 * VW);
-        const tiltAngle = Math.round(0.25 * VW);
-        const penHeight = (0.33 * VH);
-        const vaultHeight = (penHeight * 0.5);
-        const maxHeight = -50;
-
-        overlayMainSvg.setAttribute('viewBox', `0 0 ${VW} ${VH}`);
-        // overlayFounderSvg.setAttribute('viewBox', `0 0 ${VW} ${VH}`);
-        
-        
-        const start = `M0 ${VH - 1} S${tiltAngle} ${VH - 1} ${halfScreen} ${VH - 1} s${halfScreen} 1 ${halfScreen} 1 V${VH}H0Z`;
-
-        const midle = `M0 ${penHeight} S${tiltAngle} ${vaultHeight} ${halfScreen} ${vaultHeight} s${halfScreen} ${penHeight - vaultHeight} ${halfScreen} ${penHeight - vaultHeight} V${VH}H0Z`;
-
-        const end = `M0 0 S${tiltAngle} ${maxHeight} ${halfScreen} ${maxHeight} s${halfScreen} ${- maxHeight} ${halfScreen} ${- maxHeight} V${VH}H0Z`;
-        
-            // const start = `M0 1 S${tiltAngle} 1 ${halfScreen} 1 s${halfScreen} -1 ${halfScreen} -1 V0H0Z`;
-
-            // const midle = `M0 ${penHeight} S${tiltAngle} ${vaultHeight} ${halfScreen} ${vaultHeight} s${halfScreen} ${penHeight - vaultHeight} ${halfScreen} ${penHeight - vaultHeight} V0H0Z`;
-
-            // const end = `M0 ${VH} S${tiltAngle} ${maxHeight} ${halfScreen} ${maxHeight} s${halfScreen} ${VH - maxHeight} ${halfScreen} ${VH - maxHeight} V0H0Z`;
-
-        const mainPath = overlayMainSvg.querySelector('path');
-        mainPath.setAttribute('d', start);           
-        const founderPath = overlayFounderSvg.querySelector('path');
-        founderPath.setAttribute('d', start);           
-  
-        const mainObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {  
-                if (entry.isIntersecting && entry.boundingClientRect.y > 0) {
-                    if (overlayFunction.clicked){
-                        observer.unobserve(entry.target); 
-                    } else {
-                        const tl = gsap.timeline();
-                        overlayMainObject.style.display = "block";        
-                    
-                        // const start = "M0 2S175 1 500 1s500 1 500 1V0H0Z"
-                        // const start = "M0 502S175 272 500 272s500 230 500 230V0H0Z";
-                        // const end = "M0,1005S175,995,500,995s500,5,500,5V0H0Z";
-    
-                        tl.to(mainPath, 0.8, {
-                            attr: {
-                                d: midle
-                            },
-                            ease: Power2.easeIn,
-                        })
-                        tl.to(mainPath, 0.8, {
-                            attr: {
-                                d: end
-                            },
-                            ease: Power2.easeOut
-                        })
-                        tl.to(headerMenu, { y: '-100%' , duration: 0.8, ease: 'power1.out'}, "<");                
-                        tl.to(window, {
-                            duration: 1,
-                            scrollTo: {
-                                y: "#about",
-                                offsetY: 10                          
-                            },
-                            ease: Back.easeIn(1.4),
-                            onComplete: () => {
-                                overlayMainObject.style.display = "none";
-                                },
-                        }, "<")
-                        observer.unobserve(entry.target);                  
-
-                    }
-                }
-            });
-        }, {
-            root: null,
-            rootMargin: "10px",
-            threshold: 0.1,
-        });
-        mainObserver.observe(document.querySelector(".main-overlay-trigger"));
-
-        // const founderObserver = new IntersectionObserver((entries, observer) => {
-        //     entries.forEach(entry => {
-                
-        //         if (entry.isIntersecting && entry.boundingClientRect.y > 0 && !overlayFunction.clicked) {
-        //             const tl = gsap.timeline();
-        //             overlayFounderObject.style.display = "block";
-            
-                    
-        //             // const start = "M0 2S175 1 500 1s500 1 500 1V0H0Z"
-        //             // const start = "M0 502S175 272 500 272s500 230 500 230V0H0Z";
-        //             // const end = "M0,1005S175,995,500,995s500,5,500,5V0H0Z";
-        
-        //             tl.to(founderPath, 0.8, {
-        //                 attr: {
-        //                     d: midle
-        //                 },
-        //                 ease: Power2.easeIn                        
-        //             })
-        //             tl.to(founderPath, 0.8, {
-        //                 attr: {
-        //                     d: end
-        //                 },
-        //                 ease: Power2.easeOut
-        //             })                
-        //             tl.to(window, {
-        //                 duration: 1,
-        //                 scrollTo: {
-        //                     y: "#founder",
-        //                     offsetY: 0
-        //                 },
-        //                 ease: Back.easeIn(1.4),
-        //                 onComplete: () => {
-        //                     overlayFounderObject.style.display = "none";
-        //                     },
-        //             })
-    
-        //             observer.unobserve(entry.target);                    
-        //         }
-        //     });
-        // }, {
-        //     root: null,
-        //     rootMargin: "10px",
-        //     threshold: 0.1,
-        // });
-        // founderObserver.observe(document.querySelector(".founder-title"));
-
-    };
-    window.addEventListener('load', overlayFunction);
-
+    })
 });
 
+if (window.innerWidth >= 1025) {
+    const menuCharacters = document.querySelector('nav ul');
+    const menuButton = document.querySelector('.header-button');
+    const header = document.querySelector('header');
 
+    header.appendChild(menuCharacters);
+    header.appendChild(menuButton);
+}
 
 
 if (window.innerWidth < 1025) {
     const menu = document.querySelector('.header-toggle');
     const peaceOfMenu = document.querySelector('nav');
-    const clickableElements = [
-        document.querySelector('.header-logo'),
-        ...document.querySelectorAll('.menu-target-link'),
-        document.querySelector('.header-button')
-    ];
+
+    let menuIsAnimating = false;
+    gsap.set(peaceOfMenu, {x: '100%', y: 0});
+    document.querySelector('.header-button').addEventListener('click', () => {
+        if (!menuIsAnimating) {
+            menuModalBehaivor(false);
+        }
+    });
+
     
-    menu.addEventListener('click', toggleMenu);
-    
+    menu.addEventListener('click', () => {
+        if (!menuIsAnimating) {
+            toggleMenu();
+        }
+    });
+
     function toggleMenu() {
+        menuIsAnimating = true;
         if (window.getComputedStyle(peaceOfMenu).display === 'flex') {
     
             document.querySelector('body').style.overflowY = 'auto';
-            gsap.fromTo(peaceOfMenu, {x: 0}, {x: '100%', duration: 1, onComplete: () => {peaceOfMenu.style.display = 'none';}});            
+            gsap.to(peaceOfMenu, {x: '100%', duration: .9, onComplete: () => {peaceOfMenu.style.display = 'none'; menuIsAnimating = false;}});            
         } else {
-    
-            document.querySelector('body').style.overflowY = 'hidden';
+
+            document.querySelector('body').style.overflowY = 'hidden';            
             peaceOfMenu.style.display = 'flex';
-            gsap.fromTo(peaceOfMenu, {x: '100%'}, {x: 0, duration: 1});
+            gsap.to(peaceOfMenu, {x: 0, duration: .9, onComplete: () => {menuIsAnimating = false;}});
         }
     }
     
-    clickableElements.forEach(element => {
-        element.addEventListener('click', () => {
-            if (window.getComputedStyle(peaceOfMenu).display === 'flex') {
-                toggleMenu();
-            }
-        });
-    });
+    function menuModalBehaivor(scrolling) {
+        if (scrolling) {
+            menuIsAnimating = true;
+
+            document.querySelector('body').style.overflowY = 'auto';
+            gsap.to(peaceOfMenu, {y: '-101%', duration: 0.6, onComplete: () => {
+                peaceOfMenu.style.display = 'none';
+                menuIsAnimating = false;
+                gsap.set(peaceOfMenu, {x: '100%', y: 0});
+            }});
+        } else {
+            menuIsAnimating = true;
+
+            document.querySelector('body').style.overflowY = 'auto';
+            gsap.set(peaceOfMenu, {x: '100%', y: 0, delay: .9, onComplete: () => {peaceOfMenu.style.display = 'none'; menuIsAnimating = false;}});
+        }
+    }
+    
 }
 
 const links = [
@@ -348,18 +238,22 @@ function chronologyAnimation(date, index) {
         date.setAttribute('data-activity', 'activ');
 
         facts[index].setAttribute('data-activity', 'activ')
-        gsap.killTweensOf(previousFact);                
+        gsap.killTweensOf(previousFact);
         gsap.timeline()
+            .to(factsContainer, {
+                    height: `${facts[index].offsetHeight}px`,
+                    duration: 0.6
+                })
             .fromTo(previousFact,
                 {opacity: 1},
                 {   opacity: 0,
-                    duration: 0.5,
+                    duration: 0.6,
                     onComplete: () => {previousFact.setAttribute('data-activity', '');}
-                })
+                }, "<")
             .fromTo(facts[index],
                 {opacity: 0},
                 {   opacity: 1,
-                    duration: 0.5
+                    duration: 0.6
                 }, 0)
             .call(() => {
                     isAnimating = false;
@@ -376,13 +270,10 @@ function chronologyAnimation(date, index) {
 const factsContainer = document.querySelector('.bio-facts');
 const dates = document.querySelectorAll('.timeline-date');
 const facts = document.querySelectorAll('.timeline-fact');
-let maxHeight = 0;
-dates.forEach((date, index) => {
-    if (facts[index].offsetHeight > maxHeight) {
-        maxHeight = facts[index].offsetHeight;
-    }
-    factsContainer.style.height = `${maxHeight}px`;
 
+factsContainer.style.height =  `${facts[0].offsetHeight}px`;
+
+dates.forEach((date, index) => {
     date.addEventListener('click', () => {
         if (isAnimating) {
             pendingAnimation = {date, index};
@@ -487,9 +378,10 @@ placeholders.forEach(placeholder => {
 
 
 function openModal(contentType) {
-    document.querySelector('body').style.overflowY = 'hidden';
     const modalContent = document.getElementById(contentType);
     const modalContainer = document.getElementById('modal-container');
+    document.querySelector('body').style.overflowY = 'hidden';
+    modalContainer.style.overflowY = 'auto';
     
     const feedbackSection = document.querySelector('.feedback-section');
 
@@ -569,9 +461,7 @@ function openModal(contentType) {
     
     function closeModal() {
         if (contentType === 'feedbackForm') {
-            feedbackSection.style.marginTop = '0';
-            feedbackSection.style.marginBottom = marginStyle;
-            feedbackSection.style.setProperty('--before-content', '');
+            modalContainer.style.overflowY = 'hidden';
             gsap.fromTo(modalContainer,{y: 0}, {
                 y: '110%',
                 duration: 1,
@@ -583,7 +473,11 @@ function openModal(contentType) {
                     }
                 }
             });
+            feedbackSection.style.marginTop = '0';
+            feedbackSection.style.marginBottom = marginStyle;
+            feedbackSection.style.setProperty('--before-content', '');
         } else {
+            modalContainer.style.overflowY = 'hidden';
             gsap.fromTo(modalContainer,{y: 0}, {
                 y: '110%',
                 duration: 1,
@@ -805,13 +699,146 @@ inputFields.forEach(input => {
 
 
 
+
+window.addEventListener('load', () => {
+
+    const overlayMainSvg = document.querySelector('.main-overlay-svg');
+    // const overlayFounderSvg = document.querySelector('.founder-overlay-svg');
+
+    const overlayMainObject = document.querySelector('.main-overlay');  
+    // const overlayFounderObject = document.querySelector('.founder-overlay');
+    overlayMainObject.style.display = "none";
+    // overlayFounderObject.style.display = "none";
+
+    const VW = window.innerWidth;
+    const VH = window.innerHeight;
+
+    const halfScreen = (0.5 * VW);
+    const tiltAngle = Math.round(0.25 * VW);
+    const penHeight = (0.33 * VH);
+    const vaultHeight = (penHeight * 0.5);
+    const maxHeight = -50;
+
+    overlayMainSvg.setAttribute('viewBox', `0 0 ${VW} ${VH}`);
+    // overlayFounderSvg.setAttribute('viewBox', `0 0 ${VW} ${VH}`);
+    
+    
+    const start = `M0 ${VH - 1} S${tiltAngle} ${VH - 1} ${halfScreen} ${VH - 1} s${halfScreen} 1 ${halfScreen} 1 V${VH}H0Z`;
+
+    const midle = `M0 ${penHeight} S${tiltAngle} ${vaultHeight} ${halfScreen} ${vaultHeight} s${halfScreen} ${penHeight - vaultHeight} ${halfScreen} ${penHeight - vaultHeight} V${VH}H0Z`;
+
+    const end = `M0 0 S${tiltAngle} ${maxHeight} ${halfScreen} ${maxHeight} s${halfScreen} ${- maxHeight} ${halfScreen} ${- maxHeight} V${VH}H0Z`;
+
+    const mainPath = overlayMainSvg.querySelector('path');
+    mainPath.setAttribute('d', start);           
+    // const founderPath = overlayFounderSvg.querySelector('path');
+    // founderPath.setAttribute('d', start);           
+    
+    const firstPosition = document.getElementById('about').offsetTop;
+    const mainObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {  
+            if (entry.isIntersecting && entry.boundingClientRect.y > 0) {                
+                console.log(firstPosition);
+                const tl = gsap.timeline();
+                overlayMainObject.style.display = "block";
+
+                // tl.to(headerMenu, { y: '-100%' , duration: 0.6, ease: 'power1.out'}, "<");
+                tl.to(mainPath, 0.6, {
+                    attr: {
+                        d: midle
+                    },
+                    ease: Power2.easeIn,
+                })
+                tl.to(mainPath, 0.6, {
+                    attr: {
+                        d: end
+                    },
+                    ease: Power2.easeOut,
+                    onComplete: () => {
+                        const secondPosition = window.scrollY;
+                        console.log(secondPosition);
+                        if (secondPosition < firstPosition) {
+                            gsap.to(window, {
+                                duration: 0.6,
+                                scrollTo: {
+                                    y: "#about",
+                                    offsetY: 10
+                                },
+                                ease: Back.easeIn(1.4),
+                                onComplete: () => {
+                                    overlayMainObject.style.display = "none";
+                                },
+                            })
+                        } else {
+                            overlayMainObject.style.display = "none";
+                        }
+                    }
+                })
+
+                observer.unobserve(entry.target);                
+            }
+        });
+    }, {
+        root: null,
+        rootMargin: "10px",
+        threshold: 0.1,
+    });
+    mainObserver.observe(document.querySelector(".main-overlay-trigger"));
+
+    // const founderObserver = new IntersectionObserver((entries, observer) => {
+    //     entries.forEach(entry => {
+            
+    //         if (entry.isIntersecting && entry.boundingClientRect.y > 0 && !overlayFunction.clicked) {
+    //             const tl = gsap.timeline();
+    //             overlayFounderObject.style.display = "block";
+        
+                
+    //             // const start = "M0 2S175 1 500 1s500 1 500 1V0H0Z"
+    //             // const start = "M0 502S175 272 500 272s500 230 500 230V0H0Z";
+    //             // const end = "M0,1005S175,995,500,995s500,5,500,5V0H0Z";
+    
+    //             tl.to(founderPath, 0.8, {
+    //                 attr: {
+    //                     d: midle
+    //                 },
+    //                 ease: Power2.easeIn                        
+    //             })
+    //             tl.to(founderPath, 0.8, {
+    //                 attr: {
+    //                     d: end
+    //                 },
+    //                 ease: Power2.easeOut
+    //             })                
+    //             tl.to(window, {
+    //                 duration: 1,
+    //                 scrollTo: {
+    //                     y: "#founder",
+    //                     offsetY: 0
+    //                 },
+    //                 ease: Back.easeIn(1.4),
+    //                 onComplete: () => {
+    //                     overlayFounderObject.style.display = "none";
+    //                     },
+    //             })
+
+    //             observer.unobserve(entry.target);                    
+    //         }
+    //     });
+    // }, {
+    //     root: null,
+    //     rootMargin: "10px",
+    //     threshold: 0.1,
+    // });
+    // founderObserver.observe(document.querySelector(".founder-title"));
+})
+
 window.addEventListener('load', () =>{
 
     function handleScroll(show) {        
         if (show) {
             gsap.to(headerMenu, { y: 0, duration: 0.6, ease: 'sine.out'});
         } else {
-            gsap.to(headerMenu, { y: '-100%' , duration: 0.6, ease: 'power1.out'});
+            gsap.to(headerMenu, { y: '-101%' , duration: 0.6, ease: 'power1.out'});
         }     
     }
 
@@ -823,23 +850,23 @@ window.addEventListener('load', () =>{
 
             if (scrollingUp === null) {
                 scrollingUp = currentScroll > lastScrollPosition;
-                console.log(scrollingUp);
-            }
+            }           
 
             if (currentScroll < lastScrollPosition && !scrollingUp) {
-                if (handleScroll.clicked) {
-                    handleScroll(false);
-                    scrollingUp = currentScroll > lastScrollPosition;
-                } else {
-                    handleScroll(true);
-                    scrollingUp = true;
-                }
+
+                handleScroll(true);
+                scrollingUp = true;
 
             } else if (currentScroll > lastScrollPosition && scrollingUp) {
-                handleScroll(false);
-                
+
+                handleScroll(false);                    
                 scrollingUp = false;                
             }
+            
+            // if (handleScroll.clicked) {
+            //     handleScroll(false);
+            //     scrollingUp = currentScroll > lastScrollPosition;                
+            // }
 
             lastScrollPosition = currentScroll;                
         });
@@ -850,24 +877,24 @@ window.addEventListener('load', () =>{
         const anchorId = link.getAttribute('href');
         link.addEventListener('click', (event) => {
             event.preventDefault();
-            // overlayFunction.clicked = true;
-            handleScroll.clicked = true;
-                gsap.to(window, {                
-                    duration: 1.5,
-                    scrollTo: {
-                        y: anchorId,
-                        offsetY: 75
-                    },
-                    ease: Power1.easeOut,
-                    onComplete: () => {
-                        handleScroll.clicked = false;
-                        // overlayFunction.clicked = false;                        
-                    }
-                })
+            
+            if (window.innerWidth < 1025) {menuModalBehaivor(true);}
+            
+            gsap.to(window, {                
+                duration: 1.5,
+                scrollTo: {
+                    y: anchorId,
+                    offsetY: 75
+                },
+                ease: Power1.easeOut
+            })
+        })
 
-            })            
-        });
-})
+
+
+    })            
+});
+
 
 
 

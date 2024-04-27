@@ -236,21 +236,16 @@ header {
   z-index: 800;
 
   display: none;
-  flex-direction: column;
+  /* flex-direction: column; */
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
   padding: 0 10px;
 
   background-color: var(--bg-black);
 }
 header.fullscreen {
   height: 100vh;
-}
-header > div {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-
-  /* padding-top: 10px; */
 }
 .header-logo {
   height: 40px;
@@ -263,28 +258,36 @@ header > div {
   padding: 0;
   border: none;
 }
-header nav {
+nav {
   display: none;
+  position: fixed;
+  z-index: 799;
+  width: 100vw;
+  height: 100vh;
+
+  left: 0;
+  bottom: 0;
+  background-color: var(--bg-black);
+
   flex-direction: column;
   justify-content: space-between;
-  height: calc(100vh - 40px);
   align-items: center;
 }
-header ul {
+header ul, nav ul {
   display: flex;
   align-items: center;
   flex-direction: column;
   gap: 30px; 
 
-  margin-top: 20vw;
+  margin-top: 50vw;
   font-size: 24px;  
   text-transform: uppercase;
   text-decoration: none;  
 }
-header a {color: var(--white);}
+header a, nav a {color: var(--white);}
 .header-button {
   margin-top: auto;
-  margin-bottom: 10vw;
+  margin-bottom: 30px;
 }
 
 /* main page - what ur see first */
@@ -628,7 +631,10 @@ header a {color: var(--white);}
 }
 #founder .timeline > div {
   color: var(--white-tr);
+  transition: color 0.6s ease;
   font-size: 18px;
+
+  will-change: color;
 
   font-family: "Playfair Display";
 }
@@ -670,6 +676,7 @@ header a {color: var(--white);}
 }
 #founder .bio-facts > div {
   display: none;
+  will-change: opacity;
 }
 #founder .quote-photo {
   position: relative;
@@ -976,6 +983,9 @@ footer {
   gap: 10px;
   align-items: stretch;
 }
+.paginator-index {transition: color 0.3s ease;}
+.paginator-index:hover {color: var(--gray);}
+
 button:disabled{
   color: var(--black-tr);
   border-color: var(--black-tr);
@@ -983,6 +993,7 @@ button:disabled{
   fill: var(--black-tr);
 
   cursor: default;
+
 }
 .paginator-index {color: var(--black-tr); cursor: pointer;}
 .activ-paginator-index {color: var(--bg-black);}
@@ -1173,7 +1184,7 @@ button:disabled{
 
   header {padding: 0 20px;}
   header nav {height: calc(100vh - 76px);} /* here was - 86px, but we delete padding at header */
-  .header-button {width: 55%;}
+  .header-button {width: 55%; margin-bottom: 50px;}
   .header-logo {height: 76px;}
   .header-toggle {width: 30px;}
   .welcome-page {padding-top: 126px;}
@@ -1467,7 +1478,10 @@ button:disabled{
   header ul {
     flex-direction: row;
     margin-top: 0;
-    margin-right: calc((100vw - 799.84px)/2);
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    /* margin-right: calc((100vw - 799.84px)/2); */
   }
   header ul li {white-space: nowrap;}
   .header-button {margin: 0; width: auto;} 
