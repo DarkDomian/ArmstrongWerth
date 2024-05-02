@@ -18,12 +18,7 @@
 
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <div class="main-overlay">
-        <svg class="main-overlay-svg" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" >
-            <path></path>
-        </svg>
-    </div>  
+<body>    
     <section class="bgblack welcome-page">
         <header class="full-screen"><!-- fullscrean for making menu -->
             
@@ -48,7 +43,7 @@
                 <div class="welcome-title-animation"><img class="welcome-title-animation-target" src="assets/img/desctop/werth.svg" alt="werth"></div>
             </div>
         </div>
-        <div class="welcome-photo">      
+        <div class="welcome-photo">
             <img class="welcome-photo-animation" src="assets/img/welcome-photo.png" alt="oboes" >
         </div>
         <div class="welcome-cta">
@@ -56,6 +51,11 @@
                 <p class="welcome-p-animation">Experience the beauty of music with our exceptional collection of oboes</p>
             </div>
             <div><button onclick="openModal('feedbackForm')" class="welcome-button-animation">contact us</button></div>
+        </div>
+        <div class="main-overlay">
+            <svg class="main-overlay-svg" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" >
+                <path></path>
+            </svg>
         </div>
     </section>
     
@@ -623,7 +623,7 @@
             <div class="newspaper-style">
                 <p> Our network of authorized retailers ensures a convenient and reliable shopping experience for our valued
                     customers.
-                    Simply click on the logos below to explore and make your purchase from our esteemed partners.
+                    Simply click on the arrows below to explore and make your purchase from our esteemed partners.
                     Your musical journey starts with a click.
                 </p>
             </div>
@@ -637,51 +637,53 @@
             </div> -->
             <div class="retailers">
                 <div class="retailers-card">
-                    <div class="retailers-image"><img src="way/to/retailers/img" alt="zasmusuc"></div>
+                    <div class="retailers-image"><img src="assets/img/retailers/zasmusic.jpg" alt="zasmusuc"></div>
                     <div class="retailers-infobar">
                         <div>
-                            <div class="retailers-name">name</div>
-                            <div class="retailers-country">country</div>
+                            <div class="retailers-name">Zasmusic</div>
+                            <div class="retailers-country">Spain</div>
                         </div>
                         <button onclick="redirectToLink(0)"><img class="right-arrows" src="assets/img/arrow.svg" alt="->" data-arrow="true"></button>
                     </div>
                 </div>                
                 <div class="retailers-card">
-                    <div class="retailers-image"><img src="way/to/retailers/img" alt="zasmusuc"></div>
+                    <div class="retailers-image"><img src="assets/img/retailers/aj-music.png" alt="aj-music"></div>
                     <div class="retailers-infobar">
                         <div>
-                            <div class="retailers-name">name</div>
-                            <div class="retailers-country">country</div>
+                            <div class="retailers-name">A.J.Musique</div>
+                            <div class="retailers-country">France</div>
                         </div>
                         <button onclick="redirectToLink(1)"><img class="right-arrows" src="assets/img/arrow.svg" alt="->" data-arrow="true"></button>
                     </div>
                 </div>                
                 <div class="retailers-card">
-                    <div class="retailers-image"><img src="way/to/retailers/img" alt="zasmusuc" data-arrow="true"></div>
+                    <div class="retailers-image">
+                        <!-- <img src="way/to/retailers/img" alt="zasmusuc" data-arrow="true"> -->
+                    </div>
                     <div class="retailers-infobar">
                         <div>
-                            <div class="retailers-name">name</div>
-                            <div class="retailers-country">country</div>
+                            <div class="retailers-name">Ying Min Min</div>
+                            <div class="retailers-country">China</div>
                         </div>
                         <button onclick="redirectToLink(2)"><img class="right-arrows" src="assets/img/arrow.svg" alt="->" data-arrow="true"></button>
                     </div>
                 </div>                
                 <div class="retailers-card">
-                    <div class="retailers-image"><img src="way/to/retailers/img" alt="zasmusuc"></div>
+                    <div class="retailers-image"><img src="assets/img/retailers/oboe-central.png" alt="oboe central"></div>
                     <div class="retailers-infobar">
                         <div>
-                            <div class="retailers-name">name</div>
-                            <div class="retailers-country">country</div>
+                            <div class="retailers-name">Oboe Central</div>
+                            <div class="retailers-country">Australia</div>
                         </div>
                         <button onclick="redirectToLink(3)"><img class="right-arrows" src="assets/img/arrow.svg" alt="->" data-arrow="true"></button>
                     </div>
                 </div>                
                 <div class="retailers-card">
-                    <div class="retailers-image"><img src="way/to/retailers/img" alt="zasmusuc"></div>
+                    <div class="retailers-image"><img src="assets/img/retailers/sax-and-woodwind.png" alt="Sax and Woodwind"></div>
                     <div class="retailers-infobar">
                         <div>
-                            <div class="retailers-name">name</div>
-                            <div class="retailers-country">country</div>
+                            <div class="retailers-name">Sax and Woodwind</div>
+                            <div class="retailers-country">Australia</div>
                         </div>
                         <button onclick="redirectToLink(4)"><img class="right-arrows" src="assets/img/arrow.svg" alt="->" data-arrow="true"></button>
                     </div>
@@ -994,16 +996,39 @@
                 </p>
             </div>
             <div>
-                <form class="feedback-form" action="" method="post">                    
-                    <input type="username" id="username" name="username" value="NAME">                 
-                    <input type="email" id="email" name="email" value="E-MAIL">               
-                    <input type="tel" id="tel" name="tel" value="TELEPHONE">               
+
+                <form action="https://api.web3forms.com/submit" method="POST">
+
+                    <input type="hidden" name="access_key" value="0d86761c-f416-4276-8434-6d3ef6c4739b">
+                
+                    <input type="text" name="name" required>
+                    <input type="email" name="email" required>
+                    <textarea name="message" required></textarea>
+                    <input type="hidden" name="redirect" value="https://web3forms.com/success">
+                    <button type="submit">Submit Form</button>
+                
+                </form>
+                <!-- <form action="https://api.web3forms.com/submit" class="feedback-form" method="POST">    
+                    
+                    <input type="hidden" name="access_key" value="0d86761c-f416-4276-8434-6d3ef6c4739b">
+
+                    <input type="username" id="username" name="username" value="NAME" maxlength="50">                 
+                    <input type="email" id="email" name="email" value="E-MAIL" maxlength="100">               
+                    <input type="tel" id="phone" name="phone" inputmode="tel" value="TELEPHONE" maxlength="26">
+                    <input type="hidden" name="redirect" value="https://web3forms.com/success">
+                    <input type="submit" value="SUBMIT">
+                    <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+                </form> -->
+                <!-- <form class="feedback-form" method="POST">                    
+                    <input type="username" id="username" name="username" value="NAME" maxlength="50">                 
+                    <input type="email" id="email" name="email" value="E-MAIL" maxlength="100">               
+                    <input type="tel" id="phone" name="phone" inputmode="tel" value="TELEPHONE" maxlength="26">
                     <input type="submit" value="SUBMIT">
                     <div class="checkbox">
                         <input type="checkbox" id="consentCheckbox" name="consentCheckbox">
-                        <label for="consentCheckbox"><a href="">I agree with the privacy policy</a></label>
+                        <label for="consentCheckbox"><a href="privaci-policy.html">I agree with the privacy policy</a></label>
                     </div>
-                </form>
+                </form> -->
             </div>
         </section>
  
@@ -1043,6 +1068,7 @@
     </footer>
     <div class="underfooter">
         <a href="https://t.me/Ministrely">designer</a>
+        <a href="privaci-policy.html">privacy policy</a>
         <a href="https://t.me/DarkVib">programmer</a>
     </div>    
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
