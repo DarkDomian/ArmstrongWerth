@@ -1,6 +1,7 @@
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(ScrollToPlugin);
 
+console.log('js are reeding');
 
 const headerMenu = document.querySelector('header');
 let isScrolling = false;
@@ -197,11 +198,11 @@ if (window.innerWidth < 1025) {
 }
 
 const links = [
-    'https://www.youtube.com/',
-    'https://example.com/link2',
-    'https://www.youtube.com/',
-    'https://example.com/link4',
-    'https://www.youtube.com/'
+    'http://www.zasmusic.com/',
+    'https://ajmusique.com/',
+    'mailto:18017867558@163.com',
+    'https://oboecentral.com.au/',
+    'https://www.saxandwoodwind.com.au/'
 ];
 function redirectToLink(index) {
     const selectedLink = links[index];
@@ -732,13 +733,15 @@ window.addEventListener('load', () => {
     const mainPath = overlayMainSvg.querySelector('path');
     mainPath.setAttribute('d', start);           
     // const founderPath = overlayFounderSvg.querySelector('path');
-    // founderPath.setAttribute('d', start);           
+    // founderPath.setAttribute('d', start);
+
+    marginValue = parseInt(getComputedStyle(document.querySelector('section:nth-child(2)')).marginTop) - 1 + 'px';
     
     const firstPosition = document.getElementById('about').offsetTop;
     const mainObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {  
-            if (entry.isIntersecting && entry.boundingClientRect.y > 0) {                
-                console.log(firstPosition);
+        entries.forEach(entry => {
+            // && entry.boundingClientRect.y > 0
+            if (entry.isIntersecting) {
                 const tl = gsap.timeline();
                 overlayMainObject.style.display = "block";
 
@@ -756,7 +759,6 @@ window.addEventListener('load', () => {
                     ease: Power2.easeOut,
                     onComplete: () => {
                         const secondPosition = window.scrollY;
-                        console.log(secondPosition);
                         if (secondPosition < firstPosition) {
                             gsap.to(window, {
                                 duration: 0.6,
@@ -779,11 +781,14 @@ window.addEventListener('load', () => {
             }
         });
     }, {
-        root: null,
-        rootMargin: "10px",
-        threshold: 0.1,
+        rootMargin: marginValue
+        // threshold: 0.01,
     });
-    mainObserver.observe(document.querySelector(".main-overlay-trigger"));
+
+    
+    if (window.scrollY < 20) {        
+        mainObserver.observe(document.querySelector("main > section:first-child"));
+    }
 
     // const founderObserver = new IntersectionObserver((entries, observer) => {
     //     entries.forEach(entry => {
@@ -889,16 +894,153 @@ window.addEventListener('load', () =>{
                 ease: Power1.easeOut
             })
         })
-
-
-
     })            
 });
 
+const isAllowedInput = (event) => {
+    const key = event.key;
+    const keyCode = event.keyCode;
+
+    const allowedCharacters = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ' ', '(', ')', '-', '+'];
+
+    if (allowedCharacters.includes(key)) {
+        return true;
+    }
+
+    if ((event.ctrlKey || event.metaKey) && ['a', 'c', 'v', 'x', 'z', 'ф', 'с', 'м', 'ч', 'я'].includes(key)) {
+        return true;
+    }
 
 
+    if ([8, 9, 13, 35, 36, 37, 38, 39, 40, 46].includes(keyCode)) {
+        return true;
+    }
 
+    return false
+};
 
+const enforceFormat = (event) => {
+    if (!isAllowedInput(event)) {
+        event.preventDefault();
+    }
+};
+
+const inputElement = document.getElementById('phone');
+inputElement.addEventListener('keydown', enforceFormat);
+
+const submitButton = document.querySelector('input[type="submit"]');
+
+document.querySelector('.feedback-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+    submitButton.disabled = true;
+
+    const formData = new FormData(this);
+
+    const nameInput = formData.get('username');
+    const emailInput = formData.get('email');
+    const phoneInput = formData.get('phone');
+
+    // if (!isValidName(nameInput) || !isValidEmail(emailInput) || !isValidPhone(phoneInput)) {
+    //     alert('Please fill in all fields correctly.');
+    //     return;
+    // }
+
+    const errors = [];
+
+    if (!isValidName(nameInput)) {
+        errors.push('Name: You can use only Latin letters and spaces');
+    }
+
+    if (!isValidEmail(emailInput)) {
+        errors.push('Email: Fill the address (following the example) example@example.com');
+    }
+
+    if (!isValidPhone(phoneInput)) {
+        errors.push("Phone: Please use digits and standard characters for phone numbers. Remember to include the country code, which should start with '+'.");
+    }
+
+    if (errors.length > 0) {
+        const errorMessage = 'Please fill in all fields correctly:\n\n' + errors.join('\n');
+        alert(errorMessage);
+        submitButton.disabled = false;
+        return;
+    }
+
+    
+
+    const consentCheckbox = this.querySelector('#consentCheckbox');
+    const consentValue = consentCheckbox.checked ? 'on' : 'off';
+    if (consentValue == 'on') {
+        submitButton.disabled = false;
+        return;
+    }
+    // formData.append('consentCheckbox', consentValue);
+    // console.log(consentValue);
+
+    fetch('http://127.0.0.1:5000/submit', {
+        method: 'POST',
+        body: formData
+        // mode: 'cors',
+        // headers: {
+        //     'Access-Control-Allow-Origin': 'http://new.aw-oboe.com.au'
+        // }
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            const sentMessage = document.getElementById('data-sent');
+            gsap.set(sentMessage, {opacity: 0});
+    
+            sentMessage.style.display = "block";
+    
+            gsap.timeline()
+                .fromTo(sentMessage, {
+                    opacity: 0
+                }, {
+                    opacity: 1,
+                    duration: 1.2
+                })
+                .to(sentMessage, {
+                    opacity: 0,
+                    delay: 2,
+                    duration: 1.2,
+                    onComplete: () => {
+                        sentMessage.style.display = "none";
+                    }
+                });
+            
+            // submitButton.disabled = false;
+            console.log(data.message);
+        } else {
+            submitButton.disabled = false;
+            console.error(data.message);
+            alert(data.message);
+        }
+
+        // const resultContainer = document.getElementById('resultContainer');
+        // resultContainer.textContent = data.message;
+    })
+    .catch(error => {
+        submitButton.disabled = false;
+        alert('Something went wrong: ', error)
+        console.error('Something went wrong: ', error);
+    });
+});
+
+function isValidName(name) {
+    if (name.toUpperCase() === 'NAME') {
+        return false;
+    }
+    return /^[A-Za-z\s]{1,50}$/.test(name);
+}
+
+function isValidEmail(email) {
+    return /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]+$/.test(email);
+}
+
+function isValidPhone(phone) {
+    return /^\+[0-9+()\s-]{11,26}$/.test(phone);
+}
 
 
 

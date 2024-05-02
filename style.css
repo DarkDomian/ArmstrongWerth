@@ -336,7 +336,7 @@ header a, nav a {color: var(--white);}
   width: 100vw;
   height: 100vh; 
   bottom: -10px;
-  left: 0;
+  left: -10px;
 
   z-index: 999;
 }
@@ -506,6 +506,21 @@ header a, nav a {color: var(--white);}
   height: 100px;
   border: 1px solid var(--black-tr);
   
+  position: relative;
+}
+.retailers-image img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+  position: absolute; 
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  scale: auto;
+  margin: auto;
+  padding: 10px;
 }
 .retailers-infobar {
   display: flex;
@@ -727,6 +742,14 @@ header a, nav a {color: var(--white);}
 
   border-bottom: 1px solid var(--white-tr);
 }
+.feedback-form > input:-webkit-autofill {
+  background-color: inherit;
+  color: var(--white-tr);
+}
+.feedback-form > input:-moz-placeholder {
+  background-color: inherit;
+  color: var(--white-tr);
+}
 .feedback-form > input:focus {
   outline: none;
   color: var(--white);
@@ -744,9 +767,21 @@ header a, nav a {color: var(--white);}
   border-radius: 120px;  
   font-family: "Commissioner", sans-serif;
   color: inherit;
+  border-color: var(--bg-white);
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+input[type="submit"]:disabled {
+  color: var(--white-tr);
+  border-color: var(--white-tr);
+}
+input[type="submit"]:disabled:hover {
+  cursor: default;
 }
 
+
 .checkbox {
+
+  z-index: -2;
   display: flex;
   flex-direction: row;
   gap: 15px;
@@ -756,11 +791,11 @@ header a, nav a {color: var(--white);}
   height: 14px;
 }
 .checkbox a {
-  color: var(--white-tr);
+  z-index: -2;
+  color: var(--bg-black);
   font-size: 0.75em;
   text-decoration: underline;
-  justify-self: center;
-  
+  justify-self: center;  
 }
 input[type="checkbox"] {
   height: 100%;
@@ -772,14 +807,14 @@ input[type="checkbox"] {
   -webkit-appearance: none;
   -moz-appearance: none;
   outline: none;
-  border: 1px solid var(--bg-white); 
+  border: 1px solid var(--bg-black); 
 }
 input[type="checkbox"]:checked {
   height: 100%;
   aspect-ratio: 1/1;  
   
-  background-image: url(assets/img/tick.svg);  
-  border-color:  var(--bg-white);
+  /* background-image: url(assets/img/tick.svg);   */
+  border-color:  var(--bg-black);
 } 
 
 
@@ -1141,6 +1176,12 @@ button:disabled{
   text-transform: lowercase;
   font-size: 9px;
 }
+/* .underfooter a:nth-child(2) {
+  color: var(--gray);
+}
+.underfooter a:nth-child(2):hover {
+  color: var(--dr-gray);
+} */
 .underfooter a:hover {
   color: var(--gray);
 }
@@ -1159,6 +1200,7 @@ button:disabled{
     padding: 0 20px;
   }
   h4 {font-size: 24px;}
+  .main-overlay {left: -20px;}
   
   button {font-size: 20px;}
   button img[data-arrow="true"],
@@ -1444,6 +1486,7 @@ button:disabled{
     padding: 0 50px;
   }
   h4 {font-size: 34px;}
+  .main-overlay {left: -50px;}
   
   button {font-size: 20px;}
   button img[data-arrow="true"],
