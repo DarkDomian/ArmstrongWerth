@@ -1,3 +1,8 @@
 assets/img/not used/
 style-old.css
 mail/
+mail.php
+/submit
+/cgi-bin
+.htaccess
+error_log

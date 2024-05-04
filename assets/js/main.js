@@ -970,22 +970,34 @@ document.querySelector('.feedback-form').addEventListener('submit', function(eve
 
     const consentCheckbox = this.querySelector('#consentCheckbox');
     const consentValue = consentCheckbox.checked ? 'on' : 'off';
-    if (consentValue == 'on') {
-        submitButton.disabled = false;
-        return;
-    }
-    // formData.append('consentCheckbox', consentValue);
-    // console.log(consentValue);
+    formData.append('consentCheckbox', consentValue);
 
-    fetch('http://127.0.0.1:5000/submit', {
+    // var data = {};
+    // formData.forEach((value, key) => data[key] = value);
+    
+    fetch('https://new.aw-oboe.com.au/mail.php', {
         method: 'POST',
-        body: formData
+        body: JSON.stringify(Object.fromEntries(formData)),
+        // body: formData,
         // mode: 'cors',
-        // headers: {
-        //     'Access-Control-Allow-Origin': 'http://new.aw-oboe.com.au'
-        // }
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+            // 'Access-Control-Allow-Origin': 'http://new.aw-oboe.com.au'
+        }
     })
-    .then(response => response.json())
+    // fetch('https://new.aw-oboe.com.au/mail.php', {
+    //     method: 'POST',
+    //     body: new URLSearchParams(formData).toString(),
+    //     headers: {
+    //         'Content-Type': 'application/x-www-form-urlencoded'
+    //     }
+    // })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
     .then(data => {
         if (data.success) {
             const sentMessage = document.getElementById('data-sent');
@@ -1010,6 +1022,7 @@ document.querySelector('.feedback-form').addEventListener('submit', function(eve
                 });
             
             // submitButton.disabled = false;
+            submitButton.disabled = false;
             console.log(data.message);
         } else {
             submitButton.disabled = false;
