@@ -996,30 +996,8 @@
                 </p>
             </div>
             <div>
-<!-- 
-                <form action="https://api.web3forms.com/submit" method="POST">
-
-                    <input type="hidden" name="access_key" value="0d86761c-f416-4276-8434-6d3ef6c4739b">
-                
-                    <input type="text" name="name" required>
-                    <input type="email" name="email" required>
-                    <textarea name="message" required></textarea>
-                    <input type="hidden" name="redirect" value="https://web3forms.com/success">
-                    <button type="submit">Submit Form</button>
-                
-                </form> -->
-                <!-- <form action="https://api.web3forms.com/submit" class="feedback-form" method="POST">    
-                    
-                    <input type="hidden" name="access_key" value="0d86761c-f416-4276-8434-6d3ef6c4739b">
-
-                    <input type="username" id="username" name="username" value="NAME" maxlength="50">                 
-                    <input type="email" id="email" name="email" value="E-MAIL" maxlength="100">               
-                    <input type="tel" id="phone" name="phone" inputmode="tel" value="TELEPHONE" maxlength="26">
-                    <input type="hidden" name="redirect" value="https://web3forms.com/success">
-                    <input type="submit" value="SUBMIT">
-                    <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
-                </form> -->
-                <form class="feedback-form" method="POST">                    
+                <form class="feedback-form" method="POST">
+                    <input type="hidden" name="csrf_token" value="<?php echo $token; ?>">
                     <input type="username" id="username" name="username" value="NAME" maxlength="50">                 
                     <input type="email" id="email" name="email" value="E-MAIL" maxlength="100">               
                     <input type="tel" id="phone" name="phone" inputmode="tel" value="TELEPHONE" maxlength="26">
