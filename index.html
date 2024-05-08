@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Armstrong & Werth oboe</title>
+    <!-- reCAPTHCA API -->    
+    <!-- <script src="https://www.google.com/recaptcha/enterprise.js?render=6Lfup9EpAAAAAKTMzsCsoK8014xYN6FZIWCaVKRF"></script>     -->
+
     <!-- commissioner font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -688,6 +691,26 @@
                         <button onclick="redirectToLink(4)"><img class="right-arrows" src="assets/img/arrow.svg" alt="->" data-arrow="true"></button>
                     </div>
                 </div>                
+                <div class="retailers-card">
+                    <div class="retailers-image"><img src="assets/img/retailers/argendonax.svg" alt="Argen Donax"></div>
+                    <div class="retailers-infobar">
+                        <div>
+                            <div class="retailers-name">Argen Donax</div>
+                            <div class="retailers-country">unknown</div>
+                        </div>
+                        <button onclick="redirectToLink(5)"><img class="right-arrows" src="assets/img/arrow.svg" alt="->" data-arrow="true"></button>
+                    </div>
+                </div>                
+                <div class="retailers-card">
+                    <div class="retailers-image"><img src="assets/img/retailers/wamusic.png" alt="WA Music"></div>
+                    <div class="retailers-infobar">
+                        <div>
+                            <div class="retailers-name">WA Music</div>
+                            <div class="retailers-country">Australia</div>
+                        </div>
+                        <button onclick="redirectToLink(6)"><img class="right-arrows" src="assets/img/arrow.svg" alt="->" data-arrow="true"></button>
+                    </div>
+                </div>                
             </div>
         </section>
 
@@ -996,10 +1019,10 @@
                 </p>
             </div>
             <div>
-                <form class="feedback-form" method="POST">
-                    <input type="hidden" name="csrf_token" value="<?php echo $token; ?>">
+                <form class="feedback-form" method="POST" autocomplete="off">
                     <input type="username" id="username" name="username" value="NAME" maxlength="50">                 
                     <input type="email" id="email" name="email" value="E-MAIL" maxlength="100">               
+                    <input type="hidden" id="cookie" name="submitted_hash" value="">              
                     <input type="tel" id="phone" name="phone" inputmode="tel" value="TELEPHONE" maxlength="26">
                     <input type="submit" value="SUBMIT">
                     <div class="checkbox">
@@ -1045,7 +1068,7 @@
         </div>        
     </footer>
     <div class="underfooter">
-        <a href="https://t.me/Ministrely">designer</a>
+        <a href="https://www.behance.net/leria21ff44">designer</a>
         <a href="privaci-policy.html">privacy policy</a>
         <a href="https://t.me/DarkVib">programmer</a>
     </div>    

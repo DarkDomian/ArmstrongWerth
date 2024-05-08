@@ -1,7 +1,23 @@
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(ScrollToPlugin);
 
-console.log('js are reeding');
+function getCookieValue(cookieName) {
+    const cookiePairs = document.cookie.split(';');
+
+    for (let pair of cookiePairs) {
+      const [name, value] = pair.trim().split('=');
+      if (name === cookieName) {
+        return decodeURIComponent(value);
+      }
+    }
+  
+    return null;
+  }
+  
+  const submittedHashValue = getCookieValue('submitted_hash');
+  if (submittedHashValue) {
+    document.getElementById('cookie').value = submittedHashValue;
+  }
 
 const headerMenu = document.querySelector('header');
 let isScrolling = false;
@@ -202,7 +218,9 @@ const links = [
     'https://ajmusique.com/',
     'mailto:18017867558@163.com',
     'https://oboecentral.com.au/',
-    'https://www.saxandwoodwind.com.au/'
+    'https://www.saxandwoodwind.com.au/',
+    'https://www.argendonax.com/',
+    'https://www.wamusic.com.au/'
 ];
 function redirectToLink(index) {
     const selectedLink = links[index];
@@ -940,11 +958,6 @@ document.querySelector('.feedback-form').addEventListener('submit', function(eve
     const emailInput = formData.get('email');
     const phoneInput = formData.get('phone');
 
-    // if (!isValidName(nameInput) || !isValidEmail(emailInput) || !isValidPhone(phoneInput)) {
-    //     alert('Please fill in all fields correctly.');
-    //     return;
-    // }
-
     const errors = [];
 
     if (!isValidName(nameInput)) {
@@ -967,31 +980,19 @@ document.querySelector('.feedback-form').addEventListener('submit', function(eve
     }
 
     
-
     const consentCheckbox = this.querySelector('#consentCheckbox');
     const consentValue = consentCheckbox.checked ? 'on' : 'off';
     formData.append('consentCheckbox', consentValue);
 
-    // var data = {};
-    // formData.forEach((value, key) => data[key] = value);
     
     fetch('https://new.aw-oboe.com.au/mail.php', {
         method: 'POST',
+        credentials: 'same-origin',
         body: JSON.stringify(Object.fromEntries(formData)),
-        // body: formData,
-        // mode: 'cors',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
-            // 'Access-Control-Allow-Origin': 'http://new.aw-oboe.com.au'
         }
     })
-    // fetch('https://new.aw-oboe.com.au/mail.php', {
-    //     method: 'POST',
-    //     body: new URLSearchParams(formData).toString(),
-    //     headers: {
-    //         'Content-Type': 'application/x-www-form-urlencoded'
-    //     }
-    // })
     .then(response => {
         if (!response.ok) {
             throw new Error('Network response was not ok');
@@ -1021,7 +1022,11 @@ document.querySelector('.feedback-form').addEventListener('submit', function(eve
                     }
                 });
             
-            // submitButton.disabled = false;
+            const expires = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toUTCString();
+            
+            document.getElementById('cookie').value = data.cookie;
+            document.cookie = `submitted_hash=${data.cookie}; path=/; expires=${expires}`;
+
             submitButton.disabled = false;
             console.log(data.message);
         } else {
@@ -1029,9 +1034,6 @@ document.querySelector('.feedback-form').addEventListener('submit', function(eve
             console.error(data.message);
             alert(data.message);
         }
-
-        // const resultContainer = document.getElementById('resultContainer');
-        // resultContainer.textContent = data.message;
     })
     .catch(error => {
         submitButton.disabled = false;

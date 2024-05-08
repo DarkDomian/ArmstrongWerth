@@ -6,5 +6,4 @@ mail.php
 /cgi-bin
 .htaccess
 error_log
-cill-the-sessions.php
-generate-token.php
+/.vscode
