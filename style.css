@@ -342,21 +342,6 @@ header a, nav a {color: var(--white);}
 }
 #partners {position: relative;}
 .main-overlay svg path {fill: var(--bg-white);}
-.founder-overlay {
-  position: absolute;
-  text-align: left;
-  width: 100vw;
-  height: 100vh;
-  bottom: -60px;
-  left: -10px;
-  margin: 0;
-  padding: 0;
-
-  z-index: 999;
-}
-.founder-overlay svg path {fill: var(--bg-black);}
-
-
 
 /* numbers in 'about' section */
 .about-numbers-grid {

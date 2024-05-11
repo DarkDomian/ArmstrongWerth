@@ -1,0 +1,19 @@
+User-agent: *
+Disallow: /.gitignore
+Disallow: /.htaccess
+Disallow: /error_log
+Disallow: /mail.php
+Disallow: /main.js
+Disallow: /README.md
+Disallow: /style.css
+
+Disallow: /images/
+Disallow: /.git/
+
+Allow: /images/instruments/
+Allow: /images/timeline/
+Allow: /images/founder-rectangle.jpg
+Allow: /images/founder-cercle.jpg
+Allow: /images/process-photo.jpg
+
+Sitemap: https://new.aw-oboe.com.au/sitemap.xml

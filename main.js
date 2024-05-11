@@ -23,30 +23,31 @@ const headerMenu = document.querySelector('header');
 let isScrolling = false;
 document.addEventListener('DOMContentLoaded', () => {
 
-    window.addEventListener('load', () => {
-        if (window.scrollY === 0) {
-            headerMenu.classList.add('fixed-header');
-            gsap.from('header', {duration: 1.5, opasity: 0, y: '-100%', ease: 'circ.out', deley: .5});
-        } else {
-            headerMenu.classList.add('fixed-header');
-            gsap.set('header', {y: '-100%'});
-        }
-    });
-    gsap.from('.welcome-title-animation', {duration: 3, y: '60%', ease: 'circ.out', delay: .5});
-    gsap.to('.welcome-title-animation-target', { duration: 2, y: 0, ease: 'sine.out', deley: .5});
-    gsap.to('.welcome-photo-animation', {duration: 1.5, y: 0, opacity: 1, ease: 'circ.uot', delay: .5});
-    gsap.to('.welcome-photo-animation', {duration: 3, scale: 1.1, ease: 'circ.uot', delay: .5});
-    gsap.to('.welcome-p-animation', {duration: 2.5, y: 0, ease: 'sine.out', deley: .5});
-    gsap.to('.welcome-button-animation', {duration: 2.5, y: 0, ease: 'sine.out', deley: .5});
+    // window.addEventListener('load', () => {
+    // });
+    if (window.scrollY <= 500) {
+        headerMenu.classList.add('fixed-header');
+        gsap.from('header', {duration: 0.6, opacity: 0, y: '-100%', ease: 'power2.inOut', delay: .6});
+    } else {
+        headerMenu.classList.add('fixed-header');
+        gsap.set('header', {y: '-100%'});
+    }
+
+    gsap.from('.welcome-title-animation', {duration: 1.8, y: '60%', ease: 'circ.out', delay: .6});
+    gsap.to('.welcome-title-animation-target', { duration: 1.2, y: 0, ease: 'power2.inOut', delay: .6});
+    gsap.to('.welcome-photo-animation', {duration: 1.2, y: 0, opacity: 1, ease: 'power2.inOut', delay: .6});
+    gsap.to('.welcome-photo-animation', {duration: 1.2, scale: 1.1, ease: 'power2.inOut', delay: .6});
+    gsap.to('.welcome-p-animation', {duration: 0.6, y: 0, ease: 'power2.inOut', delay: .6});
+    gsap.to('.welcome-button-animation', {duration: 0.6, y: 0, ease: 'power2.inOut', delay: .6});
 
     const paragraph = document.querySelectorAll('.opacity-paragraph');
     paragraph.forEach( ph => {
 
         gsap.to(ph, {
-            duration: 1.5,
-            delay: 1.5,
+            duration: 0.3,
+            delay: 0.6,
             opacity: 1,
-            ease: 'none',
+            ease: 'power2.inOut',
             scrollTrigger: {
                 trigger: ph,
                 start: 'center bottom',
@@ -55,25 +56,25 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    const photoHolderHint = document.querySelectorAll('.photo-holder')[1];
-    gsap.to(photoHolderHint, {
-        opacity: 1,
-        maxHeight: photoHolderHint.scrollHeight,
-        duration: 1.2,
-        scrollTrigger: {
-            trigger: '.catalog-template',
-            start: 'center center'
-        },
-        onComplete: () => {
-            photoHolderHint.classList.add('opened');
-        }
-    })
+    // const photoHolderHint = document.querySelectorAll('.photo-holder')[1];
+    // gsap.to(photoHolderHint, {
+    //     opacity: 1,
+    //     maxHeight: photoHolderHint.scrollHeight,
+    //     duration: 1.2,
+    //     scrollTrigger: {
+    //         trigger: '.catalog-template',
+    //         start: 'center center'
+    //     },
+    //     onComplete: () => {
+    //         photoHolderHint.classList.add('opened');
+    //     }
+    // })
 
     gsap.to('.process-photo', {
-        duration: 2.5,
+        duration: 1.2,
         y: 0,
         scale: 1,
-        ease: 'none',
+        ease: 'power2.inOut',
         scrollTrigger: {
             trigger: '.process-photo',
             start: 'center bottom',
@@ -81,11 +82,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
     gsap.to('.process-photo-position', {
-        duration: 2.5,
+        duration: 1.2,
         y: 0,
         scale: 1.5,
         rotation: 25,
-        ease: 'none',
+        ease: 'power2.inOut',
         scrollTrigger: {
             trigger: '.process-photo',
             start: 'center bottom',
@@ -103,19 +104,19 @@ document.addEventListener('DOMContentLoaded', () => {
     //     }
     // });
     gsap.to('.quote-photo', {
-        duration: 3,
+        duration: 1.2,
         scale: 1,
-        ease: 'circ.in',
+        ease: 'power2.inOut',
         scrollTrigger: {
             trigger: '.quote-photo',
             start: 'center bottom'
         }
     });
     gsap.to('.quote-animation', {
-        duration: 2,
+        duration: 1.2,
         y: 0,
         opacity: 1,
-        ease: 'circ.in',
+        ease: 'power2.inOut',
         scrollTrigger: {
             trigger: '.quote-photo',
             start: 'center bottom'
@@ -131,8 +132,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         gsap.to(image, {
             y: 0,
-            duration: 2,
-            ease: 'expoScale(0.5,7,none)',
+            duration: 1.2,
+            ease: 'power2.inOut',
+            // ease: 'expoScale(0.5,7,none)',
             scrollTrigger: {
                 trigger: container,
                 start: 'bottom 90%'
@@ -142,12 +144,107 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     gsap.fromTo ('.about-desctop', {y: -20}, {
-        duration: 2, delay: 1, y: 0, ease: 'expoScale(0.5,7,none)',
+        duration: 1.2, delay: 1, y: 0, ease: 'power2.inOut',
         scrollTrigger: {
             trigger: '.about-desctop',
             strart: 'bottom 90%'
         }
     })
+
+    
+    const roImages = [
+        'img/instruments/regal/regal_1.jpg',
+        'img/instruments/regal/regal_2.jpg',
+        'img/instruments/regal/regal_3.jpg',
+        'img/instruments/regal/regal_4.jpg'        
+    ];
+    document.querySelectorAll('img[alt="Regal Oboe"]').forEach((container, index) => container.src = roImages[index] || '');
+
+    const ioImages = [
+        'img/instruments/imperial/imperial_1.jpg',
+        'img/instruments/imperial/imperial_2.jpg',
+        'img/instruments/imperial/imperial_3.jpg',
+        'img/instruments/imperial/imperial_4.jpg',
+        'img/instruments/imperial/imperial_5.jpg'
+    ];
+    document.querySelectorAll('img[alt="Imperial Oboe"]').forEach((container, index) => container.src = ioImages[index] || '');
+
+    const poImages = [
+        'img/instruments/pan/pan_1.jpg',
+        'img/instruments/pan/pan_2.jpg'
+    ];
+    document.querySelectorAll('img[alt="Pan Oboe"]').forEach((container, index) => container.src = poImages[index] || '');
+
+    const rpoImages = [
+        'img/instruments/rocket/rocket_1.jpg',
+        'img/instruments/rocket/rocket_2.jpg'
+    ];
+    document.querySelectorAll('img[alt="Rocket Oboe"]').forEach((container, index) => container.src = rpoImages[index] || '');
+
+    const ehImages = [
+        'img/instruments/horn/eh_1.png',
+        'img/instruments/horn/eh_2.jpg',
+        'img/instruments/horn/eh_3.jpg',
+        'img/instruments/horn/eh_4.jpg',
+        'img/instruments/horn/eh_5.jpg'
+    ];
+    document.querySelectorAll('img[alt="English Horn"]').forEach((container, index) => container.src = ehImages[index] || '');
+
+    document.querySelector('img[alt="catalog main photo"]').src = 'img/instruments/imperial/imperial_1.jpg';
+
+    document.querySelector('img[alt="photo of process"]').src = 'img/process-photo.jpg';
+
+    const retailersContsiners = [
+        document.querySelector('img[alt="zasmusuc"]'),
+        document.querySelector('img[alt="aj-music"]'),
+        document.querySelector('img[alt="Ying Min Min"]'),
+        document.querySelector('img[alt="oboe central"]'),
+        document.querySelector('img[alt="Sax and Woodwind"]'),
+        document.querySelector('img[alt="Argen Donax"]'),
+        document.querySelector('img[alt="WA Music"]')
+    ];
+    const retailersImages = [
+        'img/retailers/zasmusic.jpg',
+        'img/retailers/aj-music.png',
+        'img/retailers/min-min-v1.png',
+        'img/retailers/oboe-central.png',
+        'img/retailers/sax-and-woodwind.png',
+        'img/retailers/argendonax.svg',
+        'img/retailers/wamusic.png'
+    ];
+    retailersContsiners.forEach((container, index) => {        
+        container.src = retailersImages[index] || '';        
+    })
+
+
+    document.querySelector('img[alt="founder photo"]').src = 'img/founder-rectangle.jpg';
+
+    const timelineContainers = [
+        document.querySelector('img[alt="1980"]'),
+        document.querySelector('img[alt="1989"]'),
+        document.querySelector('img[alt="2003"]'),
+        document.querySelector('img[alt="2006"]'),
+        document.querySelector('img[alt="2008"]'),
+        document.querySelector('img[alt="2012"]'),
+        document.querySelector('img[alt="2020"]'),
+        document.querySelector('img[alt="Present"]')
+    ];
+    const timelineImages = [
+        'img/timeline/1980.jpg',
+        'img/timeline/1989.jpg',
+        'img/timeline/2003.jpg',
+        'img/timeline/2006.jpg',
+        'img/timeline/2008.jpg',
+        'img/timeline/2012.jpg',
+        'img/timeline/2020.jpg',
+        'img/timeline/now.jpg'
+    ];
+    timelineContainers.forEach((container, index) => {        
+        container.src = timelineImages[index] || '';        
+    })
+
+    document.querySelector('img[alt="photo of John"]').src = 'img/founder-cercle.jpg';
+
 });
 
 if (window.innerWidth >= 1025) {
@@ -163,6 +260,25 @@ if (window.innerWidth >= 1025) {
 if (window.innerWidth < 1025) {
     const menu = document.querySelector('.header-toggle');
     const peaceOfMenu = document.querySelector('nav');
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const catalogContainers = [
+            document.querySelector('img[alt="regal oboe image"]'),
+            document.querySelector('img[alt="imperial oboe image"]'),
+            document.querySelector('img[alt="pan oboe image"]'),
+            document.querySelector('img[alt="rocket oboe image"]'),
+            document.querySelector('img[alt="horn image"]')
+        ];
+        const catalogImages = [
+            'img/instruments/regal/regal_1.jpg',
+            'img/instruments/imperial/imperial_1.jpg',
+            'img/instruments/pan/pan_1.jpg',
+            'img/instruments/rocket/rocket_2.jpg',
+            'img/instruments/horn/eh_1.png'
+        ];
+        catalogContainers.forEach((container, index) => container.src = catalogImages[index] || '');
+    })
+
 
     let menuIsAnimating = false;
     gsap.set(peaceOfMenu, {x: '100%', y: 0});
@@ -184,12 +300,12 @@ if (window.innerWidth < 1025) {
         if (window.getComputedStyle(peaceOfMenu).display === 'flex') {
 
             document.querySelector('body').style.overflowY = 'auto';
-            gsap.to(peaceOfMenu, {x: '100%', duration: .9, onComplete: () => {peaceOfMenu.style.display = 'none'; menuIsAnimating = false;}});
+            gsap.to(peaceOfMenu, {x: '100%', duration: 1.2, onComplete: () => {peaceOfMenu.style.display = 'none'; menuIsAnimating = false;}});
         } else {
 
             document.querySelector('body').style.overflowY = 'hidden';
             peaceOfMenu.style.display = 'flex';
-            gsap.to(peaceOfMenu, {x: 0, duration: .9, onComplete: () => {menuIsAnimating = false;}});
+            gsap.to(peaceOfMenu, {x: 0, duration: 1.2, onComplete: () => {menuIsAnimating = false;}});
         }
     }
 
@@ -207,10 +323,9 @@ if (window.innerWidth < 1025) {
             menuIsAnimating = true;
 
             document.querySelector('body').style.overflowY = 'auto';
-            gsap.set(peaceOfMenu, {x: '100%', y: 0, delay: .9, onComplete: () => {peaceOfMenu.style.display = 'none'; menuIsAnimating = false;}});
+            gsap.set(peaceOfMenu, {x: '100%', y: 0, delay: 1.2, onComplete: () => {peaceOfMenu.style.display = 'none'; menuIsAnimating = false;}});
         }
-    }
-
+    }    
 }
 
 const links = [
@@ -235,8 +350,8 @@ document.querySelector('.faq-button').addEventListener('click', () => {
     document.querySelector('.faq-closing').classList.remove('faq-closing');
     gsap.set(hiddenPlaceholders, {display: 'flex'})
 
-    tl.to('.faq-button', { opacity: 0, duration: 0.5, display: 'none'});
-    tl.fromTo(hiddenPlaceholders, { opacity: 0, y: 100}, {opacity: 1, y: 0, duration: 0.5, stagger: 0.4,}, "<");
+    tl.to('.faq-button', { opacity: 0, duration: 0.3, display: 'none'});
+    tl.fromTo(hiddenPlaceholders, { opacity: 0, y: 100}, {opacity: 1, y: 0, duration: 0.6, stagger: 0.3,}, "<");
 });
 
 let isAnimating = false;
@@ -321,7 +436,7 @@ cardNames.forEach(name => {
                 gsap.to(openedPhotoHolder, {
                     opacity: 0,
                     maxHeight: 0,
-                    duration: 1,
+                    duration: 0.3,
                     onComplete: () => {
                         openedPhotoHolder.classList.remove('opened');
                     }
@@ -331,14 +446,14 @@ cardNames.forEach(name => {
             if (selectedPhotoHolder.style.maxHeight === '0px') {
                 selectedCard.classList.add('opened');
                 selectedPhotoHolder.classList.add('opened');
-                gsap.fromTo(selectedPhotoHolder, { opacity: 0, maxHeight: 0},{ opacity: 1, maxHeight: selectedPhotoHolder.scrollHeight, duration: 1});
+                gsap.fromTo(selectedPhotoHolder, { opacity: 0, maxHeight: 0},{ opacity: 1, maxHeight: selectedPhotoHolder.scrollHeight, duration: 0.3});
 
             } else {
                 selectedCard.classList.remove('opened');
                 gsap.to(selectedPhotoHolder, {
                     opacity: 0,
                     maxHeight: 0,
-                    duration: 1,
+                    duration: 0.3,
                     onComplete: () => {
                         selectedPhotoHolder.classList.remove('opened');
                     }
@@ -376,22 +491,22 @@ placeholders.forEach(placeholder => {
             openedPlaceholder.classList.remove('opened');
 
             const tlClose = gsap.timeline();
-            tlClose.to(openedAnswer, { opacity: 0, maxHeight: 0, duration: 1});
-            tlClose.to(openedCross, {rotation: 0, duration: 1}, "<");
+            tlClose.to(openedAnswer, { opacity: 0, maxHeight: 0, duration: 0.3});
+            tlClose.to(openedCross, {rotation: 0, duration: 0.3}, "<");
         }
 
         if (answer.style.maxHeight === '0px') {
             placeholder.classList.add('opened');
 
             const tl = gsap.timeline();
-            tl.to(answer, { opacity: 1, maxHeight: answer.scrollHeight, duration: 1});
-            tl.to(cross, {rotation: 45, duration: 1}, "<");
+            tl.to(answer, { opacity: 1, maxHeight: answer.scrollHeight, duration: 0.3});
+            tl.to(cross, {rotation: 45, duration: 0.3}, "<");
         } else {
             placeholder.classList.remove('opened');
 
             const tl = gsap.timeline();
-            tl.to(answer, { opacity: 0, maxHeight: 0, duration: 1});
-            tl.to(cross, {rotation: 0, duration: 1}, "<");
+            tl.to(answer, { opacity: 0, maxHeight: 0, duration: 0.3});
+            tl.to(cross, {rotation: 0, duration: 0.3}, "<");
         }
     }
 });
@@ -434,12 +549,12 @@ function openModal(contentType) {
         feedbackSection.style.marginTop = '70px';
         feedbackSection.style.marginBottom = '0';
         modalContainer.style.display = 'flex';
-        gsap.fromTo(modalContainer, {y: '110%'}, {y: 0, duration: 1});
+        gsap.fromTo(modalContainer, {y: '110%'}, {y: 0, duration: 1.2});
     } else {
 
         modalContainer.classList.replace('modal-black', 'modal-white');
         modalContainer.style.display = 'flex';
-        gsap.fromTo(modalContainer, {y: '110%'}, {y: 0, duration: 1});
+        gsap.fromTo(modalContainer, {y: '110%'}, {y: 0, duration: 1.2});
         if (window.innerWidth <= 1024) {
             modalContent.style.display = 'flex';
         } else {modalContent.style.display = 'grid';}
@@ -484,7 +599,7 @@ function openModal(contentType) {
             modalContainer.style.overflowY = 'hidden';
             gsap.fromTo(modalContainer,{y: 0}, {
                 y: '110%',
-                duration: 1,
+                duration: 1.2,
                 onComplete: () => {
                     feedbackParent.appendChild(feedbackSection);
                     modalContainer.style.display = 'none';
@@ -500,7 +615,7 @@ function openModal(contentType) {
             modalContainer.style.overflowY = 'hidden';
             gsap.fromTo(modalContainer,{y: 0}, {
                 y: '110%',
-                duration: 1,
+                duration: 1.2,
                 onComplete: () => {
                     instrumentCards[currentIndex].style.display = 'none';
                     modalContainer.style.display = 'none';
@@ -630,21 +745,21 @@ const mainPhotoElement = document.querySelector('.catalog-main-photo img');
 const catalogCards = document.querySelectorAll('.catalog-card');
 
 const imagePaths = [
-    'assets/img/instruments/regal/regal_1.jpg',
-    'assets/img/instruments/imperial/imperial_1.jpg',
-    'assets/img/instruments/pan/pan_1.jpg',
-    'assets/img/instruments/rocket/rocket_2.jpg',
-    'assets/img/instruments/horn/eh_1.png'
+    'img/instruments/regal/regal_1.jpg',
+    'img/instruments/imperial/imperial_1.jpg',
+    'img/instruments/pan/pan_1.jpg',
+    'img/instruments/rocket/rocket_2.jpg',
+    'img/instruments/horn/eh_1.png'
 ];
 function changeMainPhoto(index) {
     if (index >= 0 && index < imagePaths.length) {
         gsap.killTweensOf(mainPhotoElement);
         gsap.to(mainPhotoElement, {
-            duration: 0.5,
+            duration: 0.6,
             opacity: 0,
             onComplete: () => {
                 mainPhotoElement.src = imagePaths[index];
-                gsap.to(mainPhotoElement, { duration: 0.5, opacity: 1 });
+                gsap.to(mainPhotoElement, { duration: 0.6, opacity: 1 });
             }
         });
     }
@@ -661,23 +776,23 @@ catalogCards.forEach((card, index) => {
         switch (index) {
             case 0:
                 changeMainPhoto(0)
-                // mainPhotoElement.src = 'assets/img/instruments/regal/regal_1.jpg';
+                // mainPhotoElement.src = 'img/instruments/regal/regal_1.jpg';
                 break;
             case 1:
                 changeMainPhoto(1)
-                // mainPhotoElement.src = 'assets/img/instruments/imperial/imperial_1.jpg';
+                // mainPhotoElement.src = 'img/instruments/imperial/imperial_1.jpg';
                 break;
             case 2:
                 changeMainPhoto(2)
-                // mainPhotoElement.src = 'assets/img/instruments/pan/pan_1.jpg';
+                // mainPhotoElement.src = 'img/instruments/pan/pan_1.jpg';
                 break;
             case 3:
                 changeMainPhoto(3)
-                // mainPhotoElement.src = 'assets/img/instruments/rocket/rocket_2.jpg';
+                // mainPhotoElement.src = 'img/instruments/rocket/rocket_2.jpg';
                 break;
             case 4:
                 changeMainPhoto(4)
-                // mainPhotoElement.src = 'assets/img/instruments/horn/eh_1.jpg';
+                // mainPhotoElement.src = 'img/instruments/horn/eh_1.jpg';
                 break;
 
             default:
@@ -799,7 +914,7 @@ window.addEventListener('load', () => {
     });
 
 
-    if (window.scrollY < 20) {
+    if (window.scrollY < 20 && window.innerWidth >= 1025) {
         mainObserver.observe(document.querySelector("main > section:first-child"));
     }
 })
@@ -808,9 +923,9 @@ window.addEventListener('load', () =>{
 
     function handleScroll(show) {
         if (show) {
-            gsap.to(headerMenu, { y: 0, duration: 0.6, ease: 'sine.out'});
+            gsap.to(headerMenu, { y: 0, duration: 0.6, ease: 'power2.inOut'});
         } else {
-            gsap.to(headerMenu, { y: '-101%' , duration: 0.6, ease: 'power1.out'});
+            gsap.to(headerMenu, { y: '-101%' , duration: 0.6, ease: 'power2.inOut'});
         }
     }
 
@@ -853,7 +968,7 @@ window.addEventListener('load', () =>{
             if (window.innerWidth < 1025) {menuModalBehaivor(true);}
 
             gsap.to(window, {
-                duration: 1.5,
+                duration: 1.2,
                 scrollTo: {
                     y: anchorId,
                     offsetY: 75
@@ -960,12 +1075,12 @@ document.querySelector('.feedback-form').addEventListener('submit', function(eve
                     opacity: 0
                 }, {
                     opacity: 1,
-                    duration: 1.2
+                    duration: 0.6
                 })
                 .to(sentMessage, {
                     opacity: 0,
-                    delay: 2,
-                    duration: 1.2,
+                    delay: 1.5,
+                    duration: 0.6,
                     onComplete: () => {
                         sentMessage.style.display = "none";
                     }
