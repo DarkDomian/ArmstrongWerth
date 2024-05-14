@@ -6,20 +6,15 @@ This repository contains the source code for a landing page of a musical instrum
 
 This website serves as a brochure-style platform for showcasing musical instruments, providing detailed information about available products, links to distributors, and a contact form for inquiries. The goal of the website is to attract potential customers and facilitated communication with distributors.
 
-## Screenshots
-
 <details>
-  <summary>### Click to expand!</summary>
+  <summary>Click to view screenshots</summary>
 
-  ![Welcome](screenshots/welcome-section.jpg) ![Products](screenshots/products.jpg) ![retailers](screenshots/retailers.jpg) ![timeline](screenshots/timeline.jpg) ![feedback](screenshots/feedback.jpg)
+  ![Welcome](screenshots/welcome-section.jpg)
+  ![Products](screenshots/products.jpg)
+  ![timeline](screenshots/timeline.jpg)
+  ![retailers](screenshots/retailers.jpg)
+  ![feedback](screenshots/feedback.jpg)
 </details>
-<!-- <div style="display: flex; overflow-x: auto; max-width: 100%; gap: 10px;">
-  <img src="screenshots/welcome-section.jpg" alt="Welcome section" style="width: 700px; margin-bottom: 10px;">
-  <img src="screenshots/products.jpg" alt="prodects grid" style="width: 700px; margin-bottom: 10px;">
-  <img src="screenshots/timeline.jpg" alt="company timeline" style="width: 700px; margin-bottom: 10px;">
-  <img src="screenshots/retailers.jpg" alt="retailers desk" style="width: 700px; margin-bottom: 10px;">
-  <img src="screenshots/feedback.jpg" alt="feedback form" style="width: 700px; margin-bottom: 10px;">
-</div> -->
 
 ## Technologies Used
 
