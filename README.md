@@ -32,7 +32,7 @@ To view the website locally, make sure you have Git installed on your computer. 
 git clone https://github.com/DarkDomian/darkdomian.github.io.git AW-website
 ```
 
-Alternatively, you can visit the live website using the following [link](new.aw-oboe.com.au).
+Alternatively, you can visit the live website using the following [link](https://new.aw-oboe.com.au).
 
 ## Structure
 
