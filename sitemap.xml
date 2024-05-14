@@ -6,22 +6,22 @@
 	<changefreq>monthly</changefreq>
 	<priority>1.0</priority>
 	<image:image>
-        <image:loc>https://new.aw-oboe.com.au/assets/img/founder-rectangle.jpg</image:loc>
+        <image:loc>https://new.aw-oboe.com.au/img/founder-rectangle.jpg</image:loc>
         <image:title>Founder of Armstrong - Werth Company</image:title>
         <image:caption>Take a look at the founder of our company with his product in hand - the professional oboe "Regal". Discover the story behind our flagship product.</image:caption>
     </image:image>
 	<image:image>
-        <image:loc>https://new.aw-oboe.com.au/assets/img/founder-cercle.jpg</image:loc>
+        <image:loc>https://new.aw-oboe.com.au/img/founder-cercle.jpg</image:loc>
         <image:title>Founder of Armstrong - Werth Company playing the oboe</image:title>
         <image:caption>John Armstrong playing his oboe at the Sydney Opera House</image:caption>
     </image:image>
 	<image:image>
-        <image:loc>https://new.aw-oboe.com.au/assets/img/instruments/imperial/imperial_2.jpg</image:loc>
+        <image:loc>https://new.aw-oboe.com.au/img/instruments/imperial/imperial_2.jpg</image:loc>
         <image:title>Oboe from Armstrong - Werth Company</image:title>
         <image:caption>Here is the professional oboe "Imperial" - our best-selling product</image:caption>
     </image:image>
 	<image:image>
-        <image:loc>https://new.aw-oboe.com.au/assets/img/instruments/regal/regal_1.jpg</image:loc>
+        <image:loc>https://new.aw-oboe.com.au/img/instruments/regal/regal_1.jpg</image:loc>
         <image:title>Oboe from Armstrong - Werth Company</image:title>
         <image:caption>Here is the professional oboe "Regal" - our best product for musicians</image:caption>
     </image:image>
