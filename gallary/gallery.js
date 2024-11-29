@@ -111,31 +111,46 @@ const $ = selector => {
     /* Next slide */
     
     if (element.classList.contains('next')) {
+      handleUserInteraction();
       next();
       
     /* Previous slide */
       
     } else if (element.classList.contains('prev')) {
+      handleUserInteraction();
       prev();
     }
   }
   
   /* CARUESEL LOGIC */
-  let autoPlayInterval;
-  function startAutoPlay() {
-    autoPlayInterval = setInterval(() => {
-      next();
-    }, 3000);
+  let autoScrollInterval;
+  let userInteracted = false;
+  let userInactiveTimeout;
+
+  function startAutoCycle() {
+      if (autoScrollInterval) return;
+      console.log('Starting auto-cycle...');
+      autoScrollInterval = setInterval(next, 3500);
   }
 
-  function stopAutoPlay() {
-    clearInterval(autoPlayInterval);
+  function stopAutoCycle() {
+      console.log('Stopping auto-cycle...');
+      clearInterval(autoScrollInterval);
+      autoScrollInterval = null;
   }
 
-  startAutoPlay();
+  function handleUserInteraction() {
+      userInteracted = true;
+      stopAutoCycle();
 
-  $(".list").addEventListener("mouseenter", () => stopAutoPlay());
-  $(".list").addEventListener("mouseleave", () => startAutoPlay());
+      clearTimeout(userInactiveTimeout);
+      userInactiveTimeout = setTimeout(() => {
+          userInteracted = false;
+          startAutoCycle();
+      }, 10000);
+  }
+
+  startAutoCycle();
 
 
   /* MAIN LISTENER AND EXECUTOR */
@@ -148,9 +163,11 @@ const $ = selector => {
   }
   
   swipe.on("swipeleft", (ev) => {
+    handleUserInteraction();
     next();
   });
   
   swipe.on("swiperight", (ev) => {
+    handleUserInteraction();
     prev();
   });
