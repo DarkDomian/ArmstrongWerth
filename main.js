@@ -156,7 +156,8 @@ document.addEventListener('DOMContentLoaded', () => {
         'img/instruments/regal/regal_1.jpg',
         'img/instruments/regal/regal_2.jpg',
         'img/instruments/regal/regal_3.jpg',
-        'img/instruments/regal/regal_4.jpg'        
+        'img/instruments/regal/regal_4.jpg',      
+        'img/instruments/regal/regal_5.jpg',      
     ];
     document.querySelectorAll('img[alt="Regal Oboe"]').forEach((container, index) => container.src = roImages[index] || '');
 
@@ -171,13 +172,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const poImages = [
         'img/instruments/pan/pan_1.jpg',
-        'img/instruments/pan/pan_2.jpg'
+        'img/instruments/pan/pan_2.jpg',
+        'img/instruments/pan/pan_3.jpg',
     ];
     document.querySelectorAll('img[alt="Pan Oboe"]').forEach((container, index) => container.src = poImages[index] || '');
 
     const rpoImages = [
         'img/instruments/rocket/rocket_1.jpg',
-        'img/instruments/rocket/rocket_2.jpg'
+        'img/instruments/rocket/rocket_2.jpg',
+        'img/instruments/rocket/rocket_3.jpg',
     ];
     document.querySelectorAll('img[alt="Rocket Oboe"]').forEach((container, index) => container.src = rpoImages[index] || '');
 
@@ -748,7 +751,7 @@ const imagePaths = [
     'img/instruments/regal/regal_1.jpg',
     'img/instruments/imperial/imperial_1.jpg',
     'img/instruments/pan/pan_1.jpg',
-    'img/instruments/rocket/rocket_2.jpg',
+    'img/instruments/rocket/rocket_1.jpg',
     'img/instruments/horn/eh_1.png'
 ];
 function changeMainPhoto(index) {

@@ -125,12 +125,14 @@ const $ = selector => {
   function startAutoPlay() {
     autoPlayInterval = setInterval(() => {
       next();
-    }, 4000);
+    }, 3000);
   }
 
   function stopAutoPlay() {
     clearInterval(autoPlayInterval);
   }
+
+  startAutoPlay();
 
   $(".list").addEventListener("mouseenter", () => stopAutoPlay());
   $(".list").addEventListener("mouseleave", () => startAutoPlay());
