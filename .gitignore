@@ -1,4 +1,16 @@
+# servers config and logs
 .htaccess
 error_log
+
+# seo things
 robots.txt
 sitemap.xml
+
+# data fetched from server
+from-server
+
+# seo plugin on server-side
+seo-admin
+
+# workspace configuration
+.vscode

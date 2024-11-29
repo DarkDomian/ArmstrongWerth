@@ -1,0 +1,146 @@
+/* MOBILE */
+
+#gallery {
+    /* overflow: hidden; */
+
+    position: relative;
+    height: 600px;
+    text-align: center;
+    /* background: #87ceeb; */
+  }
+  
+.list {
+    background: blue;
+
+    height: 100%;
+    width: fit-content;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+  }
+  
+  .list li {
+    list-style-type: none;
+    will-change: 'opacity, transofrm, box-shadow' ;
+
+    z-index: 100;
+    
+    width: 400px;
+    height: 600px;
+    opacity: .25;
+    position: absolute;
+    border-radius: 10px;
+    background: transparent;
+    transition: transform 1s, opacity 1s, box-shadow 1s;
+
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.06);
+  }
+
+  /* number of image */
+  .list li::before {
+    content: attr(data-index);
+    position: absolute;
+    top: 10px;  
+    left: 10px;
+    color: var(--gray);
+    font-size: 8px; 
+    font-family: "Commissioner", sans-serif;
+    font-weight: 300;
+    line-height: 120%;
+    z-index: 1;
+  }
+  
+  .list img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 10px;
+    z-index: 1;
+  }
+  
+  .list .act {
+    opacity: 1;
+
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2), 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .list .prev > img,
+  .list .next:not(.new-next) > img {
+    cursor: pointer;
+  }
+  
+  /* .list .prev::after,
+  .list .next:not(.new-next)::after {
+    content: '\2192';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 24px;
+    color: var(--gray);
+    z-index: 10;
+
+    opacity: 102;
+  } */
+  
+  .list .prev {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) translateX(-440px) scale(.85);
+  }
+  
+  .list .next {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) translateX(440px) scale(.85);
+  }
+  
+  .list .hide {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) translateX(-880px) scale(.65);
+  }
+  
+  .list .new-next {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) translateX(880px) scale(.65);
+  }
+  
+  .list .hide,
+  .list .new-next {
+    opacity: 0;
+    transition: opacity .5s, transform .5s;
+  }
+  
+  .swipe {
+    width: 470px;
+    height: 600px;
+    position: absolute;
+    border-radius: 2px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    opacity: 0;
+  }
+
+/* TABLET */
+@media only screen and (min-width: 601px) and (max-width: 1025px) {
+  .list li::before {
+    font-size: 14px;
+  }
+}
+
+/* DESCTOP */
+@media only screen and (min-width: 1025px) {
+  .list li::before {
+      font-size: 14px;
+    }
+  }
+
+

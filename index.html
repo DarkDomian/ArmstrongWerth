@@ -7,7 +7,7 @@
 
     <title>Armstrong & Werth oboe</title>
     <!-- favicon -->
-    <link rel="icon" type="image/x-icon" href="/img/favicon-gold.ico">
+    <link rel="icon" type="image/x-icon" href="./img/favicon.ico">
 
     <!-- commissioner font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,6 +20,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Commissioner:wght@100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./gallary/gallery.css">
 </head>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-QF96HR0B2S"></script>
@@ -620,6 +621,19 @@
             <div><button onclick="openModal('feedbackForm')">submit</button></div>
         </section>
 
+        <section id="gallery">
+            <ul class="list">
+                <li class="hide" data-index="09/"><img src="img/gallery/processed_DSC_1928.jpg" alt="Image with oboes №9"></li>
+                <li class="prev" data-index="10/"><img src="img/gallery/processed_DSC_1933.jpg" alt="Image with oboes №10"></li>
+                <li class="act" data-index="01/"><img src="img/gallery/processed_DSC_1878.jpg" alt="Image with oboes №1"></li>
+                <li class="next" data-index="02/"><img src="img/gallery/processed_DSC_1881.jpg" alt="Image with oboes №2"></li>
+                <li class="next new-next" data-index="03/"><img src="img/gallery/processed_DSC_1885.jpg" alt="Image with oboes №3"></li>
+            </ul>
+            <div class="swipe"></div>
+
+            <script src="https://hammerjs.github.io/dist/hammer.js" defer></script>
+        </section>
+
         <section id="partners">
             <div class="newspaper-style">
                 <div class="retailers-mobile title-animation-body"><img loading="lazy" class="title-animation-target" src="img/mobile/retailers.svg" alt="Explore Authorized Retailers"></div>
@@ -1071,11 +1085,12 @@
     <div class="underfooter">
         <a href="https://www.behance.net/leria21ff44">designer</a>
         <a href="privaci-policy.html">privacy policy</a>
-        <a href="https://github.com/DarkDomian">programmer</a>
+        <a href="https://github.com/DarkDomian">developer</a>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollToPlugin.min.js" defer></script>
     <script src="main.js" defer></script>
+    <script src="./gallary/gallery.js" defer></script>
 </body>
 </html>
